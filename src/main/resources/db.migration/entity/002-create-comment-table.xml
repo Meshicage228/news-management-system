@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog logicalFilePath="db.changelog-master.xml" xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <changeSet id="create-comments" author="vlad.zherko">
+        <createTable tableName="comments" schemaName="public">
+            <column name="id" type="BIGINT" remarks="comment ID" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false" unique="true"/>
+            </column>
+            <column name="title" type="VARCHAR(40)" remarks="comment title">
+                <constraints nullable="false"/>
+            </column>
+            <column name="creation_date" type="DATE" remarks="comment creation date">
+                <constraints nullable="false"/>
+            </column>
+            <column name="text" type="VARCHAR(255)" remarks="content of comment">
+                <constraints nullable="false"/>
+            </column>
+            <column name="author_name" type="VARCHAR(40)" remarks="comment author nickname">
+                <constraints nullable="false"/>
+            </column>
+            <column name="news_id" type="BIGINT" remarks="comment for that news">
+                <constraints foreignKeyName="fk_news_id"
+                             nullable="false"
+                             referencedTableName="news"
+                             referencedColumnNames="id"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>

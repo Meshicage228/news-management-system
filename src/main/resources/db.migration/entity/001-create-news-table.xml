@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog logicalFilePath="db.changelog-master.xml" xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <changeSet id="create-news" author="vlad.zherko">
+        <createTable tableName="news" schemaName="public">
+            <column name="id" type="BIGINT" remarks="news ID" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false" unique="true"/>
+            </column>
+            <column name="news_title" type="VARCHAR(50)" remarks="news title">
+                <constraints nullable="false"/>
+            </column>
+            <column name="creation_date" type="DATE" remarks="news creation date">
+                <constraints nullable="false"/>
+            </column>
+            <column name="text" type="VARCHAR(255)" remarks="news content">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>
