@@ -4,50 +4,45 @@ plugins {
     id 'io.spring.dependency-management' version '1.1.6'
 }
 
-group = 'ru.clevertec'
+group = 'ru.clevertec.news'
 version = '0.0.1-SNAPSHOT'
-
-java {
-    toolchain {
-        languageVersion = JavaLanguageVersion.of(21)
-    }
-}
 
 repositories {
     mavenCentral()
-    mavenLocal()
 }
 
 ext {
-    versions = [
-            lombok            : '1.18.32',
-            mapstruct         : '1.5.3.Final',
-            liquibase         : '4.27.0',
-            springCloudVersion: '2023.0.3'
-    ]
+    set('liquibase', '4.27.0')
+    set('springBootVersion', '3.3.5')
+    set('springDependencyManagementVersion', '1.1.6')
+    set('springCloudVersion', '2023.0.3')
+    set('liquibase', '4.27.0')
+    set('wiremockVersion', '3.3.1')
+    set('lombokVersion', '1.18.32')
+    set('mapstructVersion', '1.5.3.Final')
+    set('lombokMapstructBinding', '0.2.0')
 }
 
 dependencies {
 
     // Spring
-    implementation 'org.springframework.boot:spring-boot-starter'
-    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation "org.springframework.boot:spring-boot-starter:${springBootVersion}"
+    implementation "org.springframework.boot:spring-boot-starter-web:${springBootVersion}"
     implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
     implementation 'org.springframework.boot:spring-boot-starter-validation'
 
-//    implementation project(":core") todo
+    implementation project(':core')
 
     // Db
-    runtimeOnly 'org.postgresql:postgresql'
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-    implementation "org.liquibase:liquibase-core:${versions.liquibase}"
+    implementation "org.liquibase:liquibase-core:${liquibase}"
 
     // Utils
-    implementation "org.mapstruct:mapstruct:${versions.mapstruct}"
+    implementation "org.mapstruct:mapstruct:${mapstructVersion}"
     annotationProcessor "org.projectlombok:lombok-mapstruct-binding:0.2.0"
-    annotationProcessor "org.mapstruct:mapstruct-processor:${versions.mapstruct}"
-    compileOnly "org.projectlombok:lombok:${versions.lombok}"
-    annotationProcessor "org.projectlombok:lombok:${versions.lombok}"
+    annotationProcessor "org.mapstruct:mapstruct-processor:${mapstructVersion}"
+    compileOnly "org.projectlombok:lombok:${lombokVersion}"
+    annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
 
     // Tests
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
@@ -59,14 +54,8 @@ dependencies {
 
 dependencyManagement {
     imports {
-        mavenBom "org.springframework.cloud:spring-cloud-dependencies:${versions.springCloudVersion}"
+        mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
     }
-}
-
-compileJava {
-    options.compilerArgs = [
-            '-Amapstruct.defaultComponentModel=spring'
-    ]
 }
 
 tasks.named('test') {
