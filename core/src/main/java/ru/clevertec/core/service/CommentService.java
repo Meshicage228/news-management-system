@@ -12,7 +12,7 @@ public interface CommentService {
 
     CreatedCommentDto createComment(Long newsSource, CreateCommentDto createCommentDto);
 
-    UpdatedCommentDto partCommentUpdate(Long newsSource, Long commentToUpdate, UpdateCommentDto updateCommentDto);
+    UpdatedCommentDto partCommentUpdate(Long commentToUpdate, UpdateCommentDto updateCommentDto);
 
-    void deleteComment(Long newsSource, Long commentToDelete);
+    void deleteComment(Long commentToDelete);
 }

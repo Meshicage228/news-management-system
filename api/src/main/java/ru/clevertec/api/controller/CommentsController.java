@@ -28,15 +28,13 @@ public class CommentsController {
 
     @PatchMapping("/{commentsId}")
     public UpdatedCommentDto partUpdateComment(@PathVariable Long commentsId,
-                                               @PathVariable Long newsId,
                                                @RequestBody UpdateCommentDto updateCommentDto) {
-        return commentService.partCommentUpdate(newsId, commentsId, updateCommentDto);
+        return commentService.partCommentUpdate(commentsId, updateCommentDto);
     }
 
     @DeleteMapping("/{commentsId}")
     @ResponseStatus(NO_CONTENT)
-    public void deleteComment(@PathVariable Long newsId,
-                              @PathVariable Long commentsId) {
-        commentService.deleteComment(newsId, commentsId);
+    public void deleteComment(@PathVariable Long commentsId) {
+        commentService.deleteComment(commentsId);
     }
 }

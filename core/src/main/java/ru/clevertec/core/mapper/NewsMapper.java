@@ -1,10 +1,7 @@
 package ru.clevertec.core.mapper;
 
 import org.mapstruct.*;
-import ru.clevertec.core.dto.news.CreateNewsDto;
-import ru.clevertec.core.dto.news.CreatedNewsDto;
-import ru.clevertec.core.dto.news.ExtendedNewsDto;
-import ru.clevertec.core.dto.news.UpdateNewsDto;
+import ru.clevertec.core.dto.news.*;
 import ru.clevertec.core.entity.NewsEntity;
 
 import java.time.LocalDate;
@@ -32,4 +29,6 @@ public interface NewsMapper {
     @Mapping(target = "title", source = "title")
     @Mapping(target = "text", source = "text")
     NewsEntity fullUpdate(@MappingTarget NewsEntity newsEntity, UpdateNewsDto updateNewsDto);
+
+    UpdatedNewsDto toUpdatedDto(NewsEntity newsEntity);
 }
