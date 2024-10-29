@@ -3,13 +3,15 @@ package ru.clevertec.api.exception.handler;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
-import ru.clevertec.core.exception.ResourceNotFoundException;
+import ru.clevertec.api.aspect.LogRequestResponse;
+import ru.clevertec.core.exception.abstr.ResourceNotFoundException;
 
 import static org.springframework.http.HttpStatus.INTERNAL_SERVER_ERROR;
 import static org.springframework.http.HttpStatus.NOT_FOUND;
 
 @RestControllerAdvice
-public class AppExceptionHandler {
+@LogRequestResponse
+public class ApiExceptionHandler {
 
     @ExceptionHandler(Exception.class)
     @ResponseStatus(INTERNAL_SERVER_ERROR)

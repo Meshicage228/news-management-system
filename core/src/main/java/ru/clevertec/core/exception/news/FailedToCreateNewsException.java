@@ -1,4 +1,6 @@
-package ru.clevertec.core.exception;
+package ru.clevertec.core.exception.news;
+
+import ru.clevertec.core.exception.abstr.FailedToCreateResourceException;
 
 public class FailedToCreateNewsException extends FailedToCreateResourceException {
     private static final String message = "Failed to create new news resource";
