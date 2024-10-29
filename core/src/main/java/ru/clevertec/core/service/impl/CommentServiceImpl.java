@@ -1,20 +1,24 @@
 package ru.clevertec.core.service.impl;
 
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
-import ru.clevertec.core.dto.comment.CreateCommentDto;
-import ru.clevertec.core.dto.comment.CreatedCommentDto;
-import ru.clevertec.core.dto.comment.UpdateCommentDto;
-import ru.clevertec.core.dto.comment.UpdatedCommentDto;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Service;
+import ru.clevertec.core.dto.comment.*;
 import ru.clevertec.core.entity.CommentEntity;
-import ru.clevertec.core.exception.NewsNotFoundException;
+import ru.clevertec.core.entity.NewsEntity;
+import ru.clevertec.core.exception.comment.CommentNotFoundException;
+import ru.clevertec.core.exception.news.FailedToCreateNewsException;
+import ru.clevertec.core.exception.news.NewsNotFoundException;
 import ru.clevertec.core.mapper.CommentMapper;
 import ru.clevertec.core.repository.CommentsRepository;
 import ru.clevertec.core.repository.NewsRepository;
 import ru.clevertec.core.service.CommentService;
 
-import java.util.List;
 import java.util.Optional;
 
+@Service
+@Slf4j
 @RequiredArgsConstructor
 public class CommentServiceImpl implements CommentService {
     private final CommentMapper commentMapper;
@@ -22,30 +26,36 @@ public class CommentServiceImpl implements CommentService {
     private final CommentsRepository commentsRepository;
 
     @Override
-    public List<CreatedCommentDto> getAllNews(Integer pageNo, Integer pageSize) {
-        return List.of();
-    }
-
-    @Override
-    public CreatedCommentDto createComment(Long newsSource, CreateCommentDto createCommentDto) {
-        return Optional.of(newsRepository.getReferenceById(newsSource))
-                .map(newsEntity -> {
+    @Transactional
+    public void createComment(Long newsSource, CreateCommentDto createCommentDto) {
+        log.info("Creating new comment for {}, on base of : {}", newsSource, createCommentDto);
+        Optional.of(newsRepository.getReferenceById(newsSource))
+                .ifPresentOrElse(newsEntity -> {
                     CommentEntity entity = commentMapper.toEntity(createCommentDto);
-                    newsEntity.getComments().add(entity);
-                }).orElseThrow(new NewsNotFoundException(newsSource));
-
+                    newsEntity.addComment(entity);
+                }, FailedToCreateNewsException::new);
     }
 
     @Override
+    @Transactional
     public UpdatedCommentDto partCommentUpdate(Long commentToUpdate, UpdateCommentDto updateCommentDto) {
+        log.info("Updating comment for {}, on base of : {}", commentToUpdate, updateCommentDto);
         return Optional.of(commentsRepository.getReferenceById(commentToUpdate))
-                .map((comment) -> commentMapper.patchUpdate(comment, updateCommentDto))
+                .map(comment -> commentMapper.patchUpdate(comment, updateCommentDto))
                 .map(commentMapper::toUpdatedComment)
                 .orElseThrow(() -> new NewsNotFoundException(commentToUpdate));
     }
 
     @Override
-    public void deleteComment(Long commentToDelete) {
-        newsRepository.deleteById(commentToDelete);
+    @Transactional
+    public void deleteComment(Long newsSource, Long commentToDelete) {
+        log.info("Deleting comment for news with id : {}, on base of :{}", newsSource, commentToDelete);
+        NewsEntity newsEntity = newsRepository.findById(newsSource)
+                .orElseThrow(() -> new NewsNotFoundException(newsSource));
+
+        CommentEntity commentEntity = commentsRepository.findById(commentToDelete)
+                .orElseThrow(() -> new CommentNotFoundException(commentToDelete));
+
+        newsEntity.removeComment(commentEntity);
     }
 }

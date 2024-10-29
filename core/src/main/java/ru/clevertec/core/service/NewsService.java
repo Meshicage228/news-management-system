@@ -1,12 +1,12 @@
 package ru.clevertec.core.service;
 
-
+import org.springframework.data.domain.Page;
+import ru.clevertec.core.dto.filter.CommentFilter;
 import ru.clevertec.core.dto.news.*;
-
-import java.util.List;
+import ru.clevertec.core.dto.filter.NewsFilter;
 
 public interface NewsService {
-    List<CreatedNewsDto> getAllNews(Integer pageNo, Integer pageSize);
+    Page<ShortNewsDto> getAllShortNews(Integer pageNo, Integer pageSize, NewsFilter filter);
 
     CreatedNewsDto createNews(CreateNewsDto createNewsDto);
 
@@ -16,5 +16,5 @@ public interface NewsService {
 
     void deleteNews(Long id);
 
-    ExtendedNewsDto getNewsWithComments(Long id);
+    ExtendedNewsDto getNewsWithComments(Integer pageNo, Integer pageSize, CommentFilter commentFilter);
 }

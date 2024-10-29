@@ -1,10 +1,10 @@
 package ru.clevertec.core.dto.news;
 
 import lombok.*;
+import org.springframework.data.domain.Page;
 import ru.clevertec.core.dto.comment.CreatedCommentDto;
 
 import java.time.LocalDate;
-import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -18,5 +18,5 @@ public class ExtendedNewsDto {
     private LocalDate time;
     private String author;
     @ToString.Exclude
-    private List<CreatedCommentDto> comments;
+    private Page<CreatedCommentDto> comments;
 }

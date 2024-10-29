@@ -13,14 +13,12 @@ import java.time.LocalDate;
 public interface NewsMapper {
     NewsEntity toEntity(CreateNewsDto createdNewsDto);
 
-    @AfterMapping
-    default void setCreationDate(NewsEntity createdNews){
-        createdNews.setTime(LocalDate.now());
-    }
-
     CreatedNewsDto toDto(NewsEntity newsEntity);
 
+    @Mapping(target = "comments", ignore = true)
     ExtendedNewsDto toExtendedDto(NewsEntity newsEntity);
+
+    ShortNewsDto toShortDto(NewsEntity newsEntity);
 
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
     NewsEntity patchUpdate(@MappingTarget NewsEntity newsEntity, UpdateNewsDto updateNewsDto);

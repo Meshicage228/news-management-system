@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.FieldNameConstants;
+import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
@@ -25,6 +26,7 @@ public class CommentEntity {
 
     @Column(name = "creation_date")
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+    @CreationTimestamp
     @Temporal(value = TemporalType.DATE)
     private LocalDate time;
 

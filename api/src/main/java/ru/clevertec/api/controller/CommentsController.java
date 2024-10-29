@@ -3,8 +3,8 @@ package ru.clevertec.api.controller;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+import ru.clevertec.api.aspect.LogRequestResponse;
 import ru.clevertec.core.dto.comment.CreateCommentDto;
-import ru.clevertec.core.dto.comment.CreatedCommentDto;
 import ru.clevertec.core.dto.comment.UpdateCommentDto;
 import ru.clevertec.core.dto.comment.UpdatedCommentDto;
 import ru.clevertec.core.service.CommentService;
@@ -15,15 +15,16 @@ import static org.springframework.http.HttpStatus.NO_CONTENT;
 
 @RestController
 @RequestMapping("/news/{newsId}/comments")
+@LogRequestResponse
 @RequiredArgsConstructor
 public class CommentsController {
-    private CommentService commentService;
+    private final CommentService commentService;
 
     @PostMapping
     @ResponseStatus(CREATED)
-    public CreatedCommentDto createComment(@PathVariable Long newsId,
-                                           @RequestBody @Valid CreateCommentDto createCommentDto) {
-        return commentService.createComment(newsId, createCommentDto);
+    public void createComment(@PathVariable Long newsId,
+                              @RequestBody @Valid CreateCommentDto createCommentDto) {
+        commentService.createComment(newsId, createCommentDto);
     }
 
     @PatchMapping("/{commentsId}")
@@ -34,7 +35,8 @@ public class CommentsController {
 
     @DeleteMapping("/{commentsId}")
     @ResponseStatus(NO_CONTENT)
-    public void deleteComment(@PathVariable Long commentsId) {
-        commentService.deleteComment(commentsId);
+    public void deleteComment(@PathVariable Long newsId,
+                              @PathVariable Long commentsId) {
+        commentService.deleteComment(newsId, commentsId);
     }
 }
