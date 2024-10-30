@@ -5,6 +5,7 @@ import lombok.experimental.UtilityClass;
 import org.springframework.data.jpa.domain.Specification;
 import ru.clevertec.core.dto.filter.CommentFilter;
 import ru.clevertec.core.entity.CommentEntity;
+import ru.clevertec.core.entity.NewsEntity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,7 +31,7 @@ public class CommentSpecificationService {
                     .filter(s -> !s.isEmpty())
                     .filter(s -> !s.isBlank())
                     .ifPresent(s -> {
-                        predicates.add(builder.like(root.get(text), String.format("%%%s%%", s)));
+                        predicates.add(builder.like(root.get(CommentEntity.Fields.text), String.format("%%%s%%", s)));
                     });
 
             Optional.ofNullable(commentAuthor)
@@ -42,7 +43,7 @@ public class CommentSpecificationService {
 
             Optional.ofNullable(newsId)
                     .ifPresent(s -> {
-                        predicates.add(builder.equal(root.get(newsEntity), newsId));
+                        predicates.add(builder.equal(root.get(newsEntity).get(NewsEntity.Fields.id), newsId));
                     });
 
             return builder.and(predicates.toArray(Predicate[]::new));

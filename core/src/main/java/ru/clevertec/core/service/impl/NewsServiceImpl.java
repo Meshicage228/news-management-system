@@ -43,7 +43,7 @@ public class NewsServiceImpl implements NewsService {
     public ExtendedNewsDto getNewsWithComments(Integer pageNo, Integer pageSize, CommentFilter commentFilter) {
         log.info("Get new with comments");
         Page<CreatedCommentDto> commentDtos = commentsRepository
-                .findAll(createCommentSpecification(commentFilter), PageRequest.of(pageNo, pageNo))
+                .findAll(createCommentSpecification(commentFilter), PageRequest.of(pageNo, pageSize))
                 .map(commentMapper::toDto);
 
         ExtendedNewsDto extendedNewsDto = Optional.of(newsRepository.getReferenceById(commentFilter.getNewsId()))

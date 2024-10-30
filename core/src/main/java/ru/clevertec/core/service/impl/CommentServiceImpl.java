@@ -31,8 +31,8 @@ public class CommentServiceImpl implements CommentService {
         log.info("Creating new comment for {}, on base of : {}", newsSource, createCommentDto);
         Optional.of(newsRepository.getReferenceById(newsSource))
                 .ifPresentOrElse(newsEntity -> {
-                    CommentEntity entity = commentMapper.toEntity(createCommentDto);
-                    newsEntity.addComment(entity);
+                    CommentEntity comment = commentMapper.toEntity(createCommentDto);
+                    newsEntity.addComment(comment);
                 }, FailedToCreateNewsException::new);
     }
 
@@ -56,6 +56,6 @@ public class CommentServiceImpl implements CommentService {
         CommentEntity commentEntity = commentsRepository.findById(commentToDelete)
                 .orElseThrow(() -> new CommentNotFoundException(commentToDelete));
 
-        newsEntity.removeComment(commentEntity);
+        newsEntity.getComments().remove(commentEntity);
     }
 }

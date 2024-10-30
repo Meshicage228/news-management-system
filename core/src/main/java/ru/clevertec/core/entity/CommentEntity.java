@@ -1,10 +1,7 @@
 package ru.clevertec.core.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import lombok.experimental.FieldNameConstants;
 import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -13,6 +10,7 @@ import java.time.LocalDate;
 
 @AllArgsConstructor
 @FieldNameConstants
+@EqualsAndHashCode(exclude = "newsEntity")
 @NoArgsConstructor
 @Getter
 @Setter
@@ -35,7 +33,7 @@ public class CommentEntity {
     @Column(name = "author_name")
     private String authorName;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "news_id", nullable = false)
     private NewsEntity newsEntity;
 }

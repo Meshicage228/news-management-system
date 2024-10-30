@@ -14,7 +14,7 @@ import static org.springframework.http.HttpStatus.CREATED;
 import static org.springframework.http.HttpStatus.NO_CONTENT;
 
 @RestController
-@RequestMapping("/news/{newsId}/comments")
+@RequestMapping("/api/v1/news/{newsId}/comments")
 @LogRequestResponse
 @RequiredArgsConstructor
 public class CommentsController {
@@ -22,21 +22,21 @@ public class CommentsController {
 
     @PostMapping
     @ResponseStatus(CREATED)
-    public void createComment(@PathVariable Long newsId,
+    public void createComment(@PathVariable("newsId") Long newsId,
                               @RequestBody @Valid CreateCommentDto createCommentDto) {
         commentService.createComment(newsId, createCommentDto);
     }
 
     @PatchMapping("/{commentsId}")
-    public UpdatedCommentDto partUpdateComment(@PathVariable Long commentsId,
+    public UpdatedCommentDto partUpdateComment(@PathVariable("commentsId") Long commentsId,
                                                @RequestBody UpdateCommentDto updateCommentDto) {
         return commentService.partCommentUpdate(commentsId, updateCommentDto);
     }
 
     @DeleteMapping("/{commentsId}")
     @ResponseStatus(NO_CONTENT)
-    public void deleteComment(@PathVariable Long newsId,
-                              @PathVariable Long commentsId) {
+    public void deleteComment(@PathVariable("newsId") Long newsId,
+                              @PathVariable("commentsId") Long commentsId) {
         commentService.deleteComment(newsId, commentsId);
     }
 }

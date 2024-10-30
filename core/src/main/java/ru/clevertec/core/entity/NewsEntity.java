@@ -1,10 +1,7 @@
 package ru.clevertec.core.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import lombok.experimental.FieldNameConstants;
 import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -16,6 +13,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @FieldNameConstants
+@EqualsAndHashCode(exclude = "comments")
 @Getter
 @Setter
 
@@ -37,16 +35,11 @@ public class NewsEntity {
 
     private String text;
 
-    @OneToMany(cascade = {CascadeType.REMOVE}, fetch = FetchType.LAZY, mappedBy = "newsEntity")
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "newsEntity", orphanRemoval = true)
     private List<CommentEntity> comments = new ArrayList<>();
 
     public void addComment(CommentEntity comment) {
         comments.add(comment);
         comment.setNewsEntity(this);
-    }
-
-    public void removeComment(CommentEntity comment) {
-        comments.remove(comment);
-        comment.setNewsEntity(null);
     }
 }

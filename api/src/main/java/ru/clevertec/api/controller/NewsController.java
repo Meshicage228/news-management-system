@@ -49,13 +49,13 @@ public class NewsController {
     }
 
     @PutMapping("/{newsId}")
-    public UpdatedNewsDto fullUpdate(@PathVariable Long newsId,
+    public UpdatedNewsDto fullUpdate(@PathVariable("newsId") Long newsId,
                                      @RequestBody @Validated(FullUpdateNewsMarker.class) UpdateNewsDto updatedNewsDto) {
         return newsService.fullNewsUpdate(newsId, updatedNewsDto);
     }
 
     @PatchMapping("/{newsId}")
-    public UpdatedNewsDto partUpdateNewsDto(@PathVariable Long newsId,
+    public UpdatedNewsDto partUpdateNewsDto(@PathVariable("newsId") Long newsId,
                                             @RequestBody UpdateNewsDto updatedNewsDto) {
         return newsService.partNewsUpdate(newsId, updatedNewsDto);
     }

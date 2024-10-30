@@ -16,8 +16,6 @@ public interface CommentMapper {
 
     CommentEntity toEntity(CreateCommentDto createdCommentDto);
 
-    CommentEntity toEntity(UpdatedCommentDto updatedCommentDto);
-
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
     CommentEntity patchUpdate(@MappingTarget CommentEntity commentEntity, UpdateCommentDto createdCommentDto);
 
