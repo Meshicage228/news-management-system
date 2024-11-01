@@ -3,11 +3,11 @@ package ru.clevertec.api.controller;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
-import ru.clevertec.api.aspect.LogRequestResponse;
 import ru.clevertec.core.dto.comment.CreateCommentDto;
 import ru.clevertec.core.dto.comment.UpdateCommentDto;
 import ru.clevertec.core.dto.comment.UpdatedCommentDto;
 import ru.clevertec.core.service.CommentService;
+import ru.clevertec.loggingstarter.annotation.LogRequestResponse;
 
 import static org.springframework.http.HttpStatus.CREATED;
 import static org.springframework.http.HttpStatus.NO_CONTENT;
