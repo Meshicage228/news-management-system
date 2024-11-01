@@ -1,4 +1,4 @@
-package ru.clevertec.api.aspect;
+package ru.clevertec.loggingstarter.aspect;
 
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 @Slf4j
 @Component
 public class LogAspect {
-    @Pointcut("within(@ru.clevertec.api.aspect.LogRequestResponse *) && execution(* *(..))")
+    @Pointcut("within(@ru.clevertec.loggingstarter.annotation.LogRequestResponse *) && execution(* *(..))")
     public void annotatedByLoggableWithDuration() {}
 
     @Around("annotatedByLoggableWithDuration()")

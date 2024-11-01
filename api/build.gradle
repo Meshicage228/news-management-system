@@ -18,6 +18,7 @@ ext {
     set('lombokVersion', '1.18.32')
     set('mapstructVersion', '1.5.3.Final')
     set('lombokMapstructBinding', '0.2.0')
+    set('springdoc', '2.6.0')
 }
 
 dependencies {
@@ -29,15 +30,19 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-validation'
     implementation 'org.springframework.boot:spring-boot-starter-aop'
 
-
     // Db
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation "org.liquibase:liquibase-core:${liquibase}"
 
+    // Submodules
     implementation project(':core')
+    implementation project(':global-exception-handling-starter')
+    implementation project(':logging-starter')
+
+    // Doc
+    implementation "org.springdoc:springdoc-openapi-starter-webmvc-ui:${springdoc}"
 
     // Utils
-    implementation "org.springdoc:springdoc-openapi-starter-webmvc-ui"
     implementation "org.mapstruct:mapstruct:${mapstructVersion}"
     annotationProcessor "org.projectlombok:lombok-mapstruct-binding:${lombokMapstructBinding}"
     annotationProcessor "org.mapstruct:mapstruct-processor:${mapstructVersion}"

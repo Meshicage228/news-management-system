@@ -1,4 +1,4 @@
-package ru.clevertec.api.aspect;
+package ru.clevertec.loggingstarter.annotation;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

@@ -2,6 +2,8 @@ server:
   port: 8080
 
 spring:
+  profiles:
+    active: prod
   datasource:
     driver-class-name: org.postgresql.Driver
     password: 123123
