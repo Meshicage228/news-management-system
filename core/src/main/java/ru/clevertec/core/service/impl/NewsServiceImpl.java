@@ -10,13 +10,13 @@ import ru.clevertec.core.dto.comment.CreatedCommentDto;
 import ru.clevertec.core.dto.filter.CommentFilter;
 import ru.clevertec.core.dto.news.*;
 import ru.clevertec.core.dto.filter.NewsFilter;
-import ru.clevertec.core.exception.news.FailedToCreateNewsException;
-import ru.clevertec.core.exception.news.NewsNotFoundException;
 import ru.clevertec.core.mapper.CommentMapper;
 import ru.clevertec.core.mapper.NewsMapper;
 import ru.clevertec.core.repository.CommentsRepository;
 import ru.clevertec.core.repository.NewsRepository;
 import ru.clevertec.core.service.NewsService;
+import ru.clevertec.globalexceptionhandlingstarter.exception.news.NewsNotFoundException;
+import ru.clevertec.globalexceptionhandlingstarter.exception.news.FailedToCreateNewsException;
 
 import java.util.Optional;
 

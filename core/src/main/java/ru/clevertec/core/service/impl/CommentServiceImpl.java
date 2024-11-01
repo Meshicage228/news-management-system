@@ -7,13 +7,13 @@ import org.springframework.stereotype.Service;
 import ru.clevertec.core.dto.comment.*;
 import ru.clevertec.core.entity.CommentEntity;
 import ru.clevertec.core.entity.NewsEntity;
-import ru.clevertec.core.exception.comment.CommentNotFoundException;
-import ru.clevertec.core.exception.news.FailedToCreateNewsException;
-import ru.clevertec.core.exception.news.NewsNotFoundException;
 import ru.clevertec.core.mapper.CommentMapper;
 import ru.clevertec.core.repository.CommentsRepository;
 import ru.clevertec.core.repository.NewsRepository;
 import ru.clevertec.core.service.CommentService;
+import ru.clevertec.globalexceptionhandlingstarter.exception.comment.CommentNotFoundException;
+import ru.clevertec.globalexceptionhandlingstarter.exception.news.NewsNotFoundException;
+import ru.clevertec.globalexceptionhandlingstarter.exception.news.FailedToCreateNewsException;
 
 import java.util.Optional;
 
