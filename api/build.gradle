@@ -37,7 +37,7 @@ dependencies {
     implementation project(':core')
 
     // Utils
-
+    implementation "org.springdoc:springdoc-openapi-starter-webmvc-ui"
     implementation "org.mapstruct:mapstruct:${mapstructVersion}"
     annotationProcessor "org.projectlombok:lombok-mapstruct-binding:${lombokMapstructBinding}"
     annotationProcessor "org.mapstruct:mapstruct-processor:${mapstructVersion}"
