@@ -5,11 +5,11 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-import ru.clevertec.core.dto.filter.CommentFilter;
-import ru.clevertec.core.dto.news.*;
-import ru.clevertec.core.dto.filter.NewsFilter;
-import ru.clevertec.core.service.NewsService;
-import ru.clevertec.core.util.FullUpdateNewsMarker;
+import ru.clevertec.api.dto.filter.CommentFilter;
+import ru.clevertec.api.dto.filter.NewsFilter;
+import ru.clevertec.api.dto.news.*;
+import ru.clevertec.api.service.NewsService;
+import ru.clevertec.api.util.FullUpdateNewsMarker;
 import ru.clevertec.loggingstarter.annotation.LogRequestResponse;
 
 import static org.springframework.http.HttpStatus.CREATED;

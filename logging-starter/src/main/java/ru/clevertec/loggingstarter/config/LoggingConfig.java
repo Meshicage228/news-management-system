@@ -6,8 +6,8 @@ import ru.clevertec.loggingstarter.aspect.LogAspect;
 
 @Configuration
 public class LoggingConfig {
-    @Bean
-    public LogAspect logAspect(){
-        return new LogAspect();
-    }
+//    @Bean
+//    public LogAspect logAspect(){
+//        return new LogAspect();
+//    }
 }

@@ -2,8 +2,10 @@ server:
   port: 8080
 
 spring:
-  profiles:
-    active: prod
+  cache:
+    lru:
+      max-entries:
+        size: 120
   datasource:
     driver-class-name: org.postgresql.Driver
     password: 123123
@@ -22,3 +24,5 @@ spring:
   jackson:
     serialization:
       fail-on-empty-beans: false
+  profiles:
+    active: lru
