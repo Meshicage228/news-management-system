@@ -29,10 +29,10 @@ public class NewsController {
         return newsService.getAllShortNews(page, size, newsFilter);
     }
 
-    @GetMapping("/{newsId}")
+    @GetMapping("/comments")
     public ExtendedNewsDto getNewsById(@RequestParam(defaultValue = "0", required = false, value = "page") Integer page,
                                        @RequestParam(defaultValue = "10", required = false, value = "size") Integer size,
-                                       @RequestBody(required = false) CommentFilter newsFilter) {
+                                       @RequestBody(required = false) @Valid CommentFilter newsFilter) {
         return newsService.getNewsWithComments(page, size, newsFilter);
     }
 

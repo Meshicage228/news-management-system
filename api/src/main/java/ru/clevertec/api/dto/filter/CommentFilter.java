@@ -8,7 +8,7 @@ import lombok.Data;
 public class CommentFilter {
     @NotNull(message = "provide news id")
     @JsonProperty(value = "news_id")
-    private Long newsId;
+    private long newsId;
     private String text;
     private String authorName;
 }

@@ -6,11 +6,11 @@ import java.util.*;
 import java.util.concurrent.Callable;
 
 public class LFUCache implements Cache {
-    private String name;
-    private int capacity;
-    private boolean allowNullValues;
-    private Map<Object, Object> cache;
-    private Map<Object, Integer> frequencyMap;
+    private final String name;
+    private final int capacity;
+    private final boolean allowNullValues;
+    private final Map<Object, Object> cache;
+    private final Map<Object, Integer> frequencyMap;
     private final Map<Integer, Set<Object>> frequencyList;
     private int minFrequency;
 
@@ -64,6 +64,7 @@ public class LFUCache implements Cache {
         return null;
     }
 
+    @SuppressWarnings("unchecked")
     @Override
     public <T> T get(Object key, Callable<T> valueLoader) {
         ValueWrapper valueWrapper = get(key);

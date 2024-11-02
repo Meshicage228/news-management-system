@@ -1,21 +1,20 @@
 package ru.clevertec.api.service.impl;
 
-import jakarta.transaction.Transactional;
+import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.cache.CacheManager;
 import org.springframework.stereotype.Service;
 import ru.clevertec.api.dto.comment.CreateCommentDto;
+import ru.clevertec.api.dto.comment.CreatedCommentDto;
 import ru.clevertec.api.dto.comment.UpdateCommentDto;
 import ru.clevertec.api.dto.comment.UpdatedCommentDto;
 import ru.clevertec.api.entity.CommentEntity;
 import ru.clevertec.api.entity.NewsEntity;
 import ru.clevertec.api.mapper.CommentMapper;
-import ru.clevertec.api.repository.CommentsRepository;
-import ru.clevertec.api.repository.NewsRepository;
 import ru.clevertec.api.service.CommentService;
-import ru.clevertec.globalexceptionhandlingstarter.exception.comment.CommentNotFoundException;
-import ru.clevertec.globalexceptionhandlingstarter.exception.news.FailedToCreateNewsException;
-import ru.clevertec.globalexceptionhandlingstarter.exception.news.NewsNotFoundException;
+import ru.clevertec.api.service.impl.cache.CacheCommentService;
+import ru.clevertec.api.service.impl.cache.CacheNewsService;
 
 import java.util.Optional;
 
@@ -24,40 +23,35 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class CommentServiceImpl implements CommentService {
     private final CommentMapper commentMapper;
-    private final NewsRepository newsRepository;
-    private final CommentsRepository commentsRepository;
+    private final CacheCommentService cacheCommentService;
+    private final CacheNewsService cacheNewsService;
+    private final CacheManager cacheManager;
 
     @Override
-    @Transactional
-    public void createComment(Long newsSource, CreateCommentDto createCommentDto) {
-        log.info("Creating new comment for {}, on base of : {}", newsSource, createCommentDto);
-        Optional.of(newsRepository.getReferenceById(newsSource))
-                .ifPresentOrElse(newsEntity -> {
-                    CommentEntity comment = commentMapper.toEntity(createCommentDto);
-                    newsEntity.addComment(comment);
-                }, FailedToCreateNewsException::new);
+    public CreatedCommentDto createComment(Long newsSource, CreateCommentDto createCommentDto) {
+        log.info("Creating new comment for {}, based on: {}", newsSource, createCommentDto);
+        NewsEntity newsById = cacheNewsService.getNewsById(newsSource);
+        CommentEntity entity = commentMapper.toEntity(createCommentDto);
+        entity.setNewsEntity(newsById);
+        CommentEntity commentEntity = cacheCommentService.saveComment(entity);
+        return commentMapper.toDto(commentEntity);
     }
 
     @Override
-    @Transactional
     public UpdatedCommentDto partCommentUpdate(Long commentToUpdate, UpdateCommentDto updateCommentDto) {
-        log.info("Updating comment for {}, on base of : {}", commentToUpdate, updateCommentDto);
-        return Optional.of(commentsRepository.getReferenceById(commentToUpdate))
-                .map(comment -> commentMapper.patchUpdate(comment, updateCommentDto))
+        log.info("Updating comment for {}, based on: {}", commentToUpdate, updateCommentDto);
+
+        return Optional.of(cacheCommentService.getComment(commentToUpdate))
+                .map(comment -> cacheCommentService.partCommentUpdate(comment, updateCommentDto))
                 .map(commentMapper::toUpdatedComment)
-                .orElseThrow(() -> new NewsNotFoundException(commentToUpdate));
+                .orElseThrow(() -> new EntityNotFoundException("Comment not found"));
     }
 
     @Override
-    @Transactional
     public void deleteComment(Long newsSource, Long commentToDelete) {
-        log.info("Deleting comment for news with id : {}, on base of :{}", newsSource, commentToDelete);
-        NewsEntity newsEntity = newsRepository.findById(newsSource)
-                .orElseThrow(() -> new NewsNotFoundException(newsSource));
-
-        CommentEntity commentEntity = commentsRepository.findById(commentToDelete)
-                .orElseThrow(() -> new CommentNotFoundException(commentToDelete));
-
-        newsEntity.getComments().remove(commentEntity);
+        log.info("Deleting comment for news with id: {}, based on: {}", newsSource, commentToDelete);
+        NewsEntity newsById = cacheNewsService.getNewsById(newsSource);
+        Optional.of(cacheCommentService.getComment(commentToDelete))
+                .ifPresent(c -> cacheCommentService.deleteComment(newsById, c));
     }
 }

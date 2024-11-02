@@ -35,7 +35,9 @@ dependencies {
     implementation "org.liquibase:liquibase-core:${liquibase}"
 
     // Cache
-    implementation 'org.springframework.boot:spring-boot-starter-cache'
+    implementation "org.springframework.boot:spring-boot-starter-cache"
+    implementation "org.springframework.boot:spring-boot-starter-data-redis"
+    implementation "org.springframework.boot:spring-boot-starter-json"
 
     // Submodules
     implementation project(':global-exception-handling-starter')
@@ -71,4 +73,9 @@ compileJava {
     options.compilerArgs = [
             '-Amapstruct.defaultComponentModel=spring'
     ]
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+    options.compilerArgs << "-parameters"
 }

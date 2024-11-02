@@ -1,11 +1,12 @@
 package ru.clevertec.api.service;
 
 import ru.clevertec.api.dto.comment.CreateCommentDto;
+import ru.clevertec.api.dto.comment.CreatedCommentDto;
 import ru.clevertec.api.dto.comment.UpdateCommentDto;
 import ru.clevertec.api.dto.comment.UpdatedCommentDto;
 
 public interface CommentService {
-    void createComment(Long newsSource, CreateCommentDto createCommentDto);
+    CreatedCommentDto createComment(Long newsSource, CreateCommentDto createCommentDto);
 
     UpdatedCommentDto partCommentUpdate(Long commentToUpdate, UpdateCommentDto updateCommentDto);
 

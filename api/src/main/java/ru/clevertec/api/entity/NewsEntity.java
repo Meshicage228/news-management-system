@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldNameConstants;
 import org.hibernate.annotations.CreationTimestamp;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
@@ -22,7 +24,7 @@ import java.util.List;
 public class NewsEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
 
     @Column(name = "creation_date")
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
@@ -37,9 +39,4 @@ public class NewsEntity {
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "newsEntity", orphanRemoval = true)
     private List<CommentEntity> comments = new ArrayList<>();
-
-    public void addComment(CommentEntity comment) {
-        comments.add(comment);
-        comment.setNewsEntity(this);
-    }
 }

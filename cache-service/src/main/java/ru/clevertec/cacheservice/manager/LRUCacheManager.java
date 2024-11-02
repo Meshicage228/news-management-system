@@ -25,6 +25,6 @@ public class LRUCacheManager extends AbstractCacheManager {
 
     @Override
     protected Cache getMissingCache(String name) {
-        return new LRUCache(name, lruCacheProperties.getSize());
+        return new LRUCache(true, name, lruCacheProperties.getSize());
     }
 }

@@ -8,25 +8,15 @@ import java.util.concurrent.Callable;
 
 public class LRUCache extends AbstractValueAdaptingCache {
     private final String name;
-    private final int capacity;
     private Map<Object, Object> store;
 
-    public LRUCache(String name, int capacity) {
-        super(false);
-        this.name = name;
-        this.capacity = capacity;
-    }
-
-    public LRUCache(boolean allowNullValues, int capacity, String name) {
-        super(allowNullValues);
-        this.capacity = capacity;
-        this.name = name;
+    public LRUCache(int capacity, String name) {
+        this(true, name, capacity);
     }
 
     public LRUCache(boolean allowNullValues, String name, int capacity) {
         super(allowNullValues);
         this.name = name;
-        this.capacity = capacity;
 
         this.store = new LinkedHashMap<>(capacity, 0.75f, true) {
             @Override

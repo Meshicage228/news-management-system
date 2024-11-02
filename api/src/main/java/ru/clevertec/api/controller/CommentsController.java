@@ -4,10 +4,10 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import ru.clevertec.api.dto.comment.CreateCommentDto;
+import ru.clevertec.api.dto.comment.CreatedCommentDto;
 import ru.clevertec.api.dto.comment.UpdateCommentDto;
 import ru.clevertec.api.dto.comment.UpdatedCommentDto;
 import ru.clevertec.api.service.CommentService;
-import ru.clevertec.cacheservice.cache.AbstractCache;
 import ru.clevertec.loggingstarter.annotation.LogRequestResponse;
 
 import static org.springframework.http.HttpStatus.CREATED;
@@ -22,9 +22,9 @@ public class CommentsController {
 
     @PostMapping
     @ResponseStatus(CREATED)
-    public void createComment(@PathVariable("newsId") Long newsId,
-                              @RequestBody @Valid CreateCommentDto createCommentDto) {
-        commentService.createComment(newsId, createCommentDto);
+    public CreatedCommentDto createComment(@PathVariable("newsId") Long newsId,
+                                           @RequestBody @Valid CreateCommentDto createCommentDto) {
+        return commentService.createComment(newsId, createCommentDto);
     }
 
     @PatchMapping("/{commentsId}")
