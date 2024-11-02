@@ -1,0 +1,13 @@
+package ru.clevertec.api.dto.comment;
+
+import lombok.Data;
+
+import java.time.LocalDate;
+
+@Data
+public class UpdatedCommentDto {
+    private Long id;
+    private LocalDate time;
+    private String text;
+    private String author;
+}
