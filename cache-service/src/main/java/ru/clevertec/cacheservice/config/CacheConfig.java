@@ -13,10 +13,24 @@ import ru.clevertec.cacheservice.property.LRUCacheProperties;
 
 import java.util.List;
 
+/**
+ * Конфигурация кэша для управления стратегиями кэширования.
+ *
+ * <p>Этот класс содержит определения бинов для менеджеров кэша. <p>
+ */
 @AutoConfiguration(before = CacheAutoConfiguration.class)
 @EnableConfigurationProperties(value = {LFUCacheProperties.class, LRUCacheProperties.class, CacheProperties.class})
 public class CacheConfig {
 
+    /**
+     * Создает и настраивает менеджер кэша LRU.
+     *
+     * <p>Этот метод будет вызван только при активном профиле {@code lru}.</p>
+     *
+     * @param cacheProperties Общие свойства кэша.
+     * @param lruCacheProperty Свойства для LRU кэша.
+     * @return Бин {@link LRUCacheManager}.
+     */
     @Bean
     @Profile("lru")
     public LRUCacheManager lruCacheManager(CacheProperties cacheProperties,
@@ -24,6 +38,15 @@ public class CacheConfig {
         return new LRUCacheManager(lruCacheProperty, cacheProperties);
     }
 
+    /**
+     * Создает и настраивает менеджер кэша LFU.
+     *
+     * <p>Этот метод будет вызван только при активном профиле {@code lfu}.</p>
+     *
+     * @param cacheProperties Общие свойства кэша.
+     * @param lfuCacheProperty Свойства для LFU кэша.
+     * @return Бин {@link LFUCacheManager}.
+     */
     @Bean
     @Profile("lfu")
     public LFUCacheManager lfuCacheManager(CacheProperties cacheProperties,
