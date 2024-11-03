@@ -3,6 +3,7 @@ package ru.clevertec.api.service.impl;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.cache.CacheManager;
 import org.springframework.stereotype.Service;
 import ru.clevertec.api.dto.comment.CreateCommentDto;
 import ru.clevertec.api.dto.comment.CreatedCommentDto;
@@ -28,6 +29,7 @@ public class CommentServiceImpl implements CommentService {
     private final CommentMapper commentMapper;
     private final CacheCommentService cacheCommentService;
     private final CacheNewsService cacheNewsService;
+    private final CacheManager cacheManager;
 
     /**
      * Создает новый комментарий для указанной новости.

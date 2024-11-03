@@ -1,5 +1,6 @@
 package ru.clevertec.api.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldNameConstants;
@@ -69,6 +70,7 @@ public class NewsEntity {
      * удалении новости.
      * </p>
      */
+    @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "newsEntity", orphanRemoval = true)
     private List<CommentEntity> comments = new ArrayList<>();
 }

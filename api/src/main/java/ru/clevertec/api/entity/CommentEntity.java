@@ -1,5 +1,6 @@
 package ru.clevertec.api.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldNameConstants;
@@ -67,5 +68,6 @@ public class CommentEntity {
      */
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "news_id", nullable = false)
+    @JsonBackReference
     private NewsEntity newsEntity;
 }

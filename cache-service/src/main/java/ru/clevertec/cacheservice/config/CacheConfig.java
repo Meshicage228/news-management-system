@@ -1,17 +1,27 @@
 package ru.clevertec.cacheservice.config;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.boot.autoconfigure.cache.CacheAutoConfiguration;
 import org.springframework.boot.autoconfigure.cache.CacheProperties;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.cache.CacheManager;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Profile;
+import org.springframework.data.redis.cache.RedisCacheConfiguration;
+import org.springframework.data.redis.serializer.GenericJackson2JsonRedisSerializer;
+import org.springframework.data.redis.serializer.RedisSerializationContext;
+import org.springframework.data.redis.serializer.StringRedisSerializer;
 import ru.clevertec.cacheservice.manager.LFUCacheManager;
 import ru.clevertec.cacheservice.manager.LRUCacheManager;
 import ru.clevertec.cacheservice.property.LFUCacheProperties;
 import ru.clevertec.cacheservice.property.LRUCacheProperties;
 
+import java.time.Duration;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * Конфигурация кэша для управления стратегиями кэширования.
@@ -57,5 +67,24 @@ public class CacheConfig {
             lfuCacheManager.setCacheNames(cacheNames);
         }
         return lfuCacheManager;
+    }
+
+    @Bean
+    @ConditionalOnMissingBean(value = {LFUCacheManager.class, LRUCacheManager.class, CacheManager.class})
+    @ConditionalOnProperty(prefix = "spring.cache", name = "type", havingValue = "redis", matchIfMissing = true)
+    public RedisCacheConfiguration defaultCacheConfig(CacheProperties properties, ObjectMapper objectMapper) {
+        CacheProperties.Redis redisProperties = properties.getRedis();
+        ObjectMapper redisObjectMapper = objectMapper.copy()
+                .activateDefaultTyping(
+                        objectMapper.getPolymorphicTypeValidator(),
+                        ObjectMapper.DefaultTyping.EVERYTHING
+                );
+        return RedisCacheConfiguration.defaultCacheConfig()
+                .entryTtl(Optional.ofNullable(redisProperties.getTimeToLive()).orElse(Duration.ZERO))
+                .prefixCacheNameWith(Optional.ofNullable(redisProperties.getKeyPrefix()).orElse(""))
+                .serializeKeysWith(RedisSerializationContext.SerializationPair
+                        .fromSerializer(new StringRedisSerializer()))
+                .serializeValuesWith(RedisSerializationContext.SerializationPair
+                        .fromSerializer(new GenericJackson2JsonRedisSerializer(redisObjectMapper)));
     }
 }
