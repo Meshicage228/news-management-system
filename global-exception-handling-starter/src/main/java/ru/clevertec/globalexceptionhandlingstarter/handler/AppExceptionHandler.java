@@ -19,9 +19,21 @@ import java.time.LocalDate;
 
 import static org.springframework.http.HttpStatus.*;
 
+/**
+ * Обработчик исключений приложения
+ */
 @Slf4j
 public class AppExceptionHandler extends ResponseEntityExceptionHandler {
 
+    /**
+     * Обработчик исключений для {@link CommentNotFoundException}.
+     *
+     * <p>При возникновении этого исключения возвращается ответ с статусом 404  и
+     * сообщением об ошибке.</p>
+     *
+     * @param e исключение, которое было выброшено
+     * @return объект {@link ExceptionResponse} с информацией об ошибке
+     */
     @ResponseStatus(NOT_FOUND)
     @ExceptionHandler(CommentNotFoundException.class)
     public ExceptionResponse handleCommentNotFoundException(CommentNotFoundException e) {
@@ -33,6 +45,15 @@ public class AppExceptionHandler extends ResponseEntityExceptionHandler {
                 .build();
     }
 
+    /**
+     * Обработчик исключений для {@link NewsNotFoundException}.
+     *
+     * <p>При возникновении этого исключения возвращается ответ с статусом 404 и
+     * сообщением об ошибке.</p>
+     *
+     * @param e исключение, которое было выброшено
+     * @return объект {@link ExceptionResponse} с информацией об ошибке
+     */
     @ResponseStatus(NOT_FOUND)
     @ExceptionHandler(NewsNotFoundException.class)
     public ExceptionResponse handleNewsNotFoundException(NewsNotFoundException e) {
@@ -44,6 +65,15 @@ public class AppExceptionHandler extends ResponseEntityExceptionHandler {
                 .build();
     }
 
+    /**
+     * Обработчик исключений для {@link FailedToCreateNewsException}.
+     *
+     * <p>При возникновении этого исключения возвращается ответ с статусом 500
+     * и сообщением об ошибке.</p>
+     *
+     * @param e исключение, которое было выброшено
+     * @return объект {@link ExceptionResponse} с информацией об ошибке
+     */
     @ResponseStatus(INTERNAL_SERVER_ERROR)
     @ExceptionHandler(FailedToCreateNewsException.class)
     public ExceptionResponse failedToCreateResource(FailedToCreateNewsException e) {
@@ -55,6 +85,18 @@ public class AppExceptionHandler extends ResponseEntityExceptionHandler {
                 .build();
     }
 
+    /**
+     * Обработка исключений, возникающих из-за невалидных аргументов.
+     *
+     * <p>Метод переопределяет поведение {@link ResponseEntityExceptionHandler} для обработки
+     * исключений {@link MethodArgumentNotValidException} и возвращает ответ с статусом 400.</p>
+     *
+     * @param ex исключение, которое было выброшено
+     * @param headers заголовки HTTP
+     * @param status статус ответа
+     * @param request объект запроса
+     * @return объект {@link ResponseEntity} с информацией об ошибке
+     */
     @Override
     protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex,
                                                                   HttpHeaders headers,

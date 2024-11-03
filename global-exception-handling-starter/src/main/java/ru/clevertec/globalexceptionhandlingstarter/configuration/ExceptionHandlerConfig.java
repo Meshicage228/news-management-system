@@ -1,18 +1,23 @@
 package ru.clevertec.globalexceptionhandlingstarter.configuration;
 
-import org.springframework.beans.factory.config.BeanDefinition;
-import org.springframework.boot.autoconfigure.AutoConfiguration;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Role;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
-import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 import ru.clevertec.globalexceptionhandlingstarter.handler.AppExceptionHandler;
 
+/**
+ * Конфигурация для обработки глобальных исключений в приложении.
+ */
 @Configuration
 public class ExceptionHandlerConfig {
 
+    /**
+     * Глобальный обработчик исключений для контроллеров REST.
+     *
+     * <p>Этот класс будет перехватывать исключения, выбрасываемые в контроллерах,
+     * и обрабатывать их соответствующим образом.</p>
+     */
     @RestControllerAdvice
     private class GlobalExceptionHandler extends AppExceptionHandler {
+
     }
 }
