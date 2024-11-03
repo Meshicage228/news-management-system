@@ -3,7 +3,6 @@ package ru.clevertec.api.service.impl;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.cache.CacheManager;
 import org.springframework.stereotype.Service;
 import ru.clevertec.api.dto.comment.CreateCommentDto;
 import ru.clevertec.api.dto.comment.CreatedCommentDto;
@@ -25,7 +24,6 @@ public class CommentServiceImpl implements CommentService {
     private final CommentMapper commentMapper;
     private final CacheCommentService cacheCommentService;
     private final CacheNewsService cacheNewsService;
-    private final CacheManager cacheManager;
 
     @Override
     public CreatedCommentDto createComment(Long newsSource, CreateCommentDto createCommentDto) {
@@ -50,8 +48,6 @@ public class CommentServiceImpl implements CommentService {
     @Override
     public void deleteComment(Long newsSource, Long commentToDelete) {
         log.info("Deleting comment for news with id: {}, based on: {}", newsSource, commentToDelete);
-        NewsEntity newsById = cacheNewsService.getNewsById(newsSource);
-        Optional.of(cacheCommentService.getComment(commentToDelete))
-                .ifPresent(c -> cacheCommentService.deleteComment(newsById, c));
+        cacheCommentService.deleteComment(commentToDelete);
     }
 }

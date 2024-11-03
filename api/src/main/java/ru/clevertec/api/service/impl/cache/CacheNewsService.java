@@ -28,7 +28,7 @@ public class CacheNewsService {
     private final CacheManager cacheManager;
 
     @Cacheable(value = "newsCache", key = "#id")
-    public NewsEntity getNewsById(long id) {
+    public NewsEntity getNewsById(Long id) {
         log.info("Fetching news from database for id: {}", id);
         return newsRepository.findById(id)
                 .orElseThrow(() -> new NewsNotFoundException(id));
@@ -52,10 +52,10 @@ public class CacheNewsService {
         return newsMapper.patchUpdate(newsEntity, updateNewsDto);
     }
 
-    @CacheEvict(value = "newsCache", key = "#newsEntity.id")
-    public void deleteNews(NewsEntity newsEntity) {
-        log.info("Evicting news from cache for id: {}", newsEntity.getId());
-        newsRepository.delete(newsEntity);
+    @CacheEvict(value = "newsCache", key = "#id")
+    public void deleteNews(Long id) {
+        log.info("Evicting news from cache for id: {}", id);
+        newsRepository.deleteById(id);
     }
 
     public Page<NewsEntity> getPaginatedNews(Integer pageNo, Integer pageSize, NewsFilter filter) {

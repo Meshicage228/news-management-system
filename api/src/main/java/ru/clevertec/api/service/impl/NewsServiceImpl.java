@@ -3,13 +3,13 @@ package ru.clevertec.api.service.impl;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.cache.CacheManager;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 import ru.clevertec.api.dto.comment.CreatedCommentDto;
 import ru.clevertec.api.dto.filter.CommentFilter;
 import ru.clevertec.api.dto.filter.NewsFilter;
 import ru.clevertec.api.dto.news.*;
+import ru.clevertec.api.entity.CommentEntity;
 import ru.clevertec.api.entity.NewsEntity;
 import ru.clevertec.api.mapper.CommentMapper;
 import ru.clevertec.api.mapper.NewsMapper;
@@ -27,7 +27,6 @@ public class NewsServiceImpl implements NewsService {
     private final CacheCommentService cacheCommentService;
     private final CommentMapper commentMapper;
     private final NewsMapper newsMapper;
-    private final CacheManager cacheManager;
 
     @Override
     public Page<ShortNewsDto> getAllShortNews(Integer pageNo, Integer pageSize, NewsFilter filter) {
@@ -82,9 +81,12 @@ public class NewsServiceImpl implements NewsService {
 
     @Override
     public void deleteNews(Long id) {
+        // todo : make cascade better
         log.info("Delete news: {}", id);
-        NewsEntity newsById = cacheNewsService.getNewsById(id);
-        newsById.getComments().forEach(comment -> cacheCommentService.deleteComment(newsById, comment));
-        cacheNewsService.deleteNews(newsById);
+        cacheNewsService.getNewsById(id).getComments()
+                .stream()
+                .map(CommentEntity::getId)
+                .forEach(cacheCommentService::deleteComment);
+        cacheNewsService.deleteNews(id);
     }
 }

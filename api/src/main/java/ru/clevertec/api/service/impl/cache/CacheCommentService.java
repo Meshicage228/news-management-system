@@ -12,7 +12,6 @@ import org.springframework.stereotype.Service;
 import ru.clevertec.api.dto.comment.UpdateCommentDto;
 import ru.clevertec.api.dto.filter.CommentFilter;
 import ru.clevertec.api.entity.CommentEntity;
-import ru.clevertec.api.entity.NewsEntity;
 import ru.clevertec.api.mapper.CommentMapper;
 import ru.clevertec.api.repository.CommentsRepository;
 import ru.clevertec.globalexceptionhandlingstarter.exception.comment.CommentNotFoundException;
@@ -29,8 +28,7 @@ public class CacheCommentService {
     @CachePut(value = "comment", key = "#result.id")
     public CommentEntity saveComment(CommentEntity comment) {
         log.info("Saving comment to cache for id: {}", comment.getId());
-        CommentEntity save = commentsRepository.save(comment);
-        return save;
+        return commentsRepository.save(comment);
     }
 
     @Cacheable(value = "comment", key = "#id")
@@ -46,10 +44,10 @@ public class CacheCommentService {
         return commentMapper.patchUpdate(comment, updateCommentDto);
     }
 
-    @Transactional
-    @CacheEvict(value = "comment", key = "#commentToDelete.id")
-    public void deleteComment(NewsEntity newsSource, CommentEntity commentToDelete) {
-        newsSource.getComments().remove(commentToDelete);
+    @CacheEvict(value = "comment", key = "#commentId")
+    public void deleteComment(Long commentId) {
+        log.info("Deleting comment for {}", commentId);
+        commentsRepository.deleteById(commentId);
     }
 
     public Page<CommentEntity> getPaginatedComments(CommentFilter commentFilter, Integer pageNo, Integer pageSize) {
