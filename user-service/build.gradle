@@ -32,11 +32,15 @@ dependencies {
 	implementation "org.springframework.boot:spring-boot-starter"
 	implementation "org.springframework.boot:spring-boot-starter-web"
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
+	implementation 'org.springframework.security:spring-security-crypto'
 
 	// Db
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	runtimeOnly 'org.postgresql:postgresql'
 	implementation "org.liquibase:liquibase-core:${liquibase}"
+
+	// exception
+	implementation project(':global-exception-handling-starter')
 
 	// Utils
 	implementation "org.mapstruct:mapstruct:${mapstructVersion}"
@@ -55,4 +59,10 @@ dependencies {
 
 tasks.named('test') {
 	useJUnitPlatform()
+}
+
+compileJava {
+	options.compilerArgs = [
+			'-Amapstruct.defaultComponentModel=spring'
+	]
 }
