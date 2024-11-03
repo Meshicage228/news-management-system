@@ -17,6 +17,10 @@ import ru.clevertec.api.service.impl.cache.CacheNewsService;
 
 import java.util.Optional;
 
+/**
+ * Реализация сервиса для работы с комментариями.
+ * Обеспечивает создание, обновление и удаление комментариев с использованием кэширования.
+ */
 @Service
 @Slf4j
 @RequiredArgsConstructor
@@ -25,6 +29,13 @@ public class CommentServiceImpl implements CommentService {
     private final CacheCommentService cacheCommentService;
     private final CacheNewsService cacheNewsService;
 
+    /**
+     * Создает новый комментарий для указанной новости.
+     *
+     * @param newsSource Идентификатор новости, к которой относится комментарий.
+     * @param createCommentDto Объект с данными для создания комментария.
+     * @return Объект, представляющий созданный комментарий.
+     */
     @Override
     public CreatedCommentDto createComment(Long newsSource, CreateCommentDto createCommentDto) {
         log.info("Creating new comment for {}, based on: {}", newsSource, createCommentDto);
@@ -35,6 +46,14 @@ public class CommentServiceImpl implements CommentService {
         return commentMapper.toDto(commentEntity);
     }
 
+    /**
+     * Частично обновляет существующий комментарий.
+     *
+     * @param commentToUpdate Идентификатор комментария, который нужно обновить.
+     * @param updateCommentDto Объект с данными для обновления комментария.
+     * @return Объект, представляющий обновленный комментарий.
+     * @throws EntityNotFoundException Если комментарий с указанным идентификатором не найден.
+     */
     @Override
     public UpdatedCommentDto partCommentUpdate(Long commentToUpdate, UpdateCommentDto updateCommentDto) {
         log.info("Updating comment for {}, based on: {}", commentToUpdate, updateCommentDto);
@@ -45,6 +64,12 @@ public class CommentServiceImpl implements CommentService {
                 .orElseThrow(() -> new EntityNotFoundException("Comment not found"));
     }
 
+    /**
+     * Удаляет комментарий для указанной новости.
+     *
+     * @param newsSource Идентификатор новости, к которой относится комментарий.
+     * @param commentToDelete Идентификатор комментария, который нужно удалить.
+     */
     @Override
     public void deleteComment(Long newsSource, Long commentToDelete) {
         log.info("Deleting comment for news with id: {}, based on: {}", newsSource, commentToDelete);

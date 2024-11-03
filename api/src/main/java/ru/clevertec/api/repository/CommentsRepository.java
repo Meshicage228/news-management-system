@@ -6,6 +6,16 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
 import ru.clevertec.api.entity.CommentEntity;
 
+/**
+ * Репозиторий для работы с сущностями комментариев.
+ *
+ * <p>
+ * Этот интерфейс предоставляет методы для выполнения CRUD операций
+ * над сущностями {@link CommentEntity}, а также поддерживает спецификации и постраничную навигацию.
+ * </p>
+ *
+ * @see CommentEntity
+ */
 @Repository
 public interface CommentsRepository extends JpaRepository<CommentEntity, Long>,
                                             JpaSpecificationExecutor<CommentEntity>,

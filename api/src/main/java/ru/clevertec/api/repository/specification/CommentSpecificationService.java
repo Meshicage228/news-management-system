@@ -14,8 +14,22 @@ import java.util.Optional;
 import static ru.clevertec.api.entity.CommentEntity.Fields.authorName;
 import static ru.clevertec.api.entity.CommentEntity.Fields.newsEntity;
 
+/**
+ * Утилитарный класс для создания спецификаций запросов к сущностям комментариев.
+ *
+ * <p>
+ * Этот класс предоставляет статический метод для создания {@link Specification} на основе
+ * заданного фильтра комментариев.
+ * </p>
+ */
 @UtilityClass
 public class CommentSpecificationService {
+    /**
+     * Создает спецификацию для фильтрации комментариев на основе заданного фильтра.
+     *
+     * @param filter Фильтр комментариев, содержащий параметры для фильтрации.
+     * @return Спецификация для фильтрации комментариев.
+     */
     public static Specification<CommentEntity> createCommentSpecification(CommentFilter filter){
         return (root, query, builder) -> {
             if(filter == null){
