@@ -5,6 +5,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import ru.clevertec.globalexceptionhandlingstarter.exception.role.RoleNotFountException;
 import ru.clevertec.globalexceptionhandlingstarter.exception.user.FailedToCreateUserException;
+import ru.clevertec.globalexceptionhandlingstarter.exception.user.IncorrectCredentialsException;
 import ru.clevertec.globalexceptionhandlingstarter.exception.user.UserNotFoundException;
 import ru.clevertec.userservice.dto.CreateUserDto;
 import ru.clevertec.userservice.dto.UserResponseDto;
@@ -33,19 +34,28 @@ public class UserServiceImpl implements UserService {
     private final RoleRepository roleRepository;
 
     /**
-     * Метод для входа пользователя в систему.
+     * Выполняет аутентификацию пользователя по его имени пользователя и паролю.
      *
-     * @param username имя пользователя, используемое для входа.
-     * @param password пароль пользователя.
-     * @return {@link UserResponseDto} объект, содержащий информацию о пользователе после успешного входа.
-     * @throws UserNotFoundException если пользователь с указанным именем не найден или пароль неверный.
+     * <p>Метод ищет пользователя в репозитории по имени пользователя. Если пользователь не найден,
+     * выбрасывается {@link UserNotFoundException}. Если пароль не совпадает с сохраненным паролем,
+     * выбрасывается {@link IncorrectCredentialsException}.</p>
+     *
+     * @param username имя пользователя, используемое для аутентификации
+     * @param password пароль, используемый для аутентификации
+     * @return объект {@link UserResponseDto}, содержащий информацию о пользователе
+     * @throws UserNotFoundException если пользователь с указанным именем не найден
+     * @throws IncorrectCredentialsException если указанный пароль неверен
      */
     @Override
     public UserResponseDto login(String username, String password) {
-        return userRepository.findByUsername(username)
-                .filter(userEntity -> encoder.matches(password, userEntity.getPassword()))
-                .map(userMapper::toDto)
-                .orElseThrow(UserNotFoundException::new);
+        UserEntity userEntity1 = userRepository.findByUsername(username)
+                .orElseThrow(() -> new UserNotFoundException(username));
+
+        if(!encoder.matches(password, userEntity1.getPassword())) {
+            throw new IncorrectCredentialsException();
+        }
+
+        return userMapper.toDto(userEntity1);
     }
 
     /**

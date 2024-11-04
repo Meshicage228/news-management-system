@@ -6,6 +6,6 @@ spring:
     url: jdbc:postgresql://localhost:5430/cleverDbApi
   liquibase:
     enabled: true
-    change-log: db.migration/changelog-master.xml
+    change-log: db.migration/user-changelog.xml
 server:
   port: 8081
