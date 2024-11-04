@@ -44,18 +44,18 @@ public class NewsController {
 
     @DeleteMapping("/{newsId}")
     @ResponseStatus(NO_CONTENT)
-    public void deleteNewsById(@PathVariable("newsId") Long newsId) {
+    public void deleteNewsById(@PathVariable Long newsId) {
         newsService.deleteNews(newsId);
     }
 
     @PutMapping("/{newsId}")
-    public UpdatedNewsDto fullUpdate(@PathVariable("newsId") Long newsId,
+    public UpdatedNewsDto fullUpdate(@PathVariable Long newsId,
                                      @RequestBody @Validated(FullUpdateNewsMarker.class) UpdateNewsDto updatedNewsDto) {
         return newsService.fullNewsUpdate(newsId, updatedNewsDto);
     }
 
     @PatchMapping("/{newsId}")
-    public UpdatedNewsDto partUpdateNewsDto(@PathVariable("newsId") Long newsId,
+    public UpdatedNewsDto partUpdateNewsDto(@PathVariable Long newsId,
                                             @RequestBody UpdateNewsDto updatedNewsDto) {
         return newsService.partNewsUpdate(newsId, updatedNewsDto);
     }

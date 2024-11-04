@@ -1,5 +1,6 @@
 package ru.clevertec.api.dto.news;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
@@ -13,4 +14,8 @@ public class UpdateNewsDto {
     @NotNull(message = "Provide news content!", groups = FullUpdateNewsMarker.class)
     @NotBlank(message = "News content cannot be blank", groups = FullUpdateNewsMarker.class)
     private String text;
+    @NotNull(message = "Provide news content!", groups = FullUpdateNewsMarker.class)
+    @NotBlank(message = "News content cannot be blank", groups = FullUpdateNewsMarker.class)
+    @JsonProperty(value = "author_name")
+    private String authorName;
 }

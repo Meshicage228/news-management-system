@@ -10,5 +10,5 @@ public class ShortNewsDto {
     private String title;
     private String text;
     private LocalDate time;
-    private String author;
+    private String authorName;
 }

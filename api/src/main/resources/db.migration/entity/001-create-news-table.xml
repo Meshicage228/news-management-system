@@ -17,6 +17,9 @@
             <column name="text" type="VARCHAR(255)" remarks="news content">
                 <constraints nullable="false"/>
             </column>
+            <column name="author_name" type="VARCHAR(120)" remarks="news author name">
+                <constraints nullable="false"/>
+            </column>
         </createTable>
     </changeSet>
 

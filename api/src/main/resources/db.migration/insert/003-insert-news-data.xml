@@ -9,6 +9,7 @@
             <column name="news_title">Новые технологии в 2024 году</column>
             <column name="creation_date">2024-01-01</column>
             <column name="text">В 2024 году ожидается множество новых технологий, которые изменят наш образ жизни.</column>
+            <column name="author_name">Vlad</column>
         </insert>
 
         <insert tableName="news">
@@ -16,6 +17,7 @@
             <column name="news_title">Спортивные достижения России</column>
             <column name="creation_date">2024-01-02</column>
             <column name="text">Российские спортсмены продолжают радовать нас своими успехами на международной арене.</column>
+            <column name="author_name">Vlad</column>
         </insert>
 
         <insert tableName="news">
@@ -23,6 +25,7 @@
             <column name="news_title">Экологические инициативы</column>
             <column name="creation_date">2024-01-03</column>
             <column name="text">В стране запускаются новые экологические инициативы для защиты окружающей среды.</column>
+            <column name="author_name">Tosha</column>
         </insert>
 
         <insert tableName="news">
@@ -30,6 +33,7 @@
             <column name="news_title">Культурные события месяца</column>
             <column name="creation_date">2024-01-04</column>
             <column name="text">В этом месяце пройдет множество интересных культурных мероприятий и выставок.</column>
+            <column name="author_name">Vlad</column>
         </insert>
 
         <insert tableName="news">
@@ -37,6 +41,7 @@
             <column name="news_title">Политические изменения в стране</column>
             <column name="creation_date">2024-01-05</column>
             <column name="text">В стране происходят важные политические изменения, которые могут повлиять на будущее.</column>
+            <column name="author_name">Tosha</column>
         </insert>
 
         <insert tableName="news">
@@ -44,6 +49,7 @@
             <column name="news_title">Научные открытия года</column>
             <column name="creation_date">2024-01-06</column>
             <column name="text">Ученые сделали несколько значительных открытий, которые могут изменить науку.</column>
+            <column name="author_name">Tosha</column>
         </insert>
 
         <insert tableName="news">
@@ -51,6 +57,7 @@
             <column name="news_title">Обзор новых книг</column>
             <column name="creation_date">2024-01-07</column>
             <column name="text">В этом месяце вышло множество интересных книг, которые стоит прочитать.</column>
+            <column name="author_name">Tosha</column>
         </insert>
 
         <insert tableName="news">
@@ -58,6 +65,7 @@
             <column name="news_title">Тренды в моде 2024</column>
             <column name="creation_date">2024-01-08</column>
             <column name="text">Модные тренды 2024 года удивляют своим разнообразием и креативностью.</column>
+            <column name="author_name">Tosha</column>
         </insert>
 
         <insert tableName="news">
@@ -65,6 +73,7 @@
             <column name="news_title">Обсуждение экономических вопросов</column>
             <column name="creation_date">2024-01-09</column>
             <column name="text">Экономические вопросы остаются в центре внимания на всех уровнях власти.</column>
+            <column name="author_name">Tosha</column>
         </insert>
 
         <insert tableName="news">
@@ -72,6 +81,7 @@
             <column name="news_title">Проблемы здравоохранения</column>
             <column name="creation_date">2024-01-10</column>
             <column name="text">Система здравоохранения сталкивается с новыми вызовами и проблемами.</column>
+            <column name="author_name">Tosha</column>
         </insert>
 
         <insert tableName="news">
@@ -79,6 +89,7 @@
             <column name="news_title">Туризм в 2024 году</column>
             <column name="creation_date">2024-01-11</column>
             <column name="text">Туризм в 2024 году ожидает множество изменений, включая новые направления и правила.</column>
+            <column name="author_name">Tosha</column>
         </insert>
 
         <insert tableName="news">
@@ -86,6 +97,7 @@
             <column name="news_title">Развитие цифровых технологий</column>
             <column name="creation_date">2024-01-12</column>
             <column name="text">Цифровые технологии продолжают развиваться, меняя привычный образ жизни людей.</column>
+            <column name="author_name">Vlad</column>
         </insert>
 
         <insert tableName="news">
@@ -93,6 +105,7 @@
             <column name="news_title">Проблемы изменения климата</column>
             <column name="creation_date">2024-01-13</column>
             <column name="text">Изменение климата становится все более актуальной темой для обсуждения на международной арене.</column>
+            <column name="author_name">Vlad</column>
         </insert>
 
         <insert tableName="news">
@@ -100,6 +113,7 @@
             <column name="news_title">Финансовые рынки в 2024 году</column>
             <column name="creation_date">2024-01-14</column>
             <column name="text">Финансовые рынки демонстрируют нестабильность, что вызывает беспокойство у инвесторов.</column>
+            <column name="author_name">Vlad</column>
         </insert>
 
         <insert tableName="news">
@@ -107,6 +121,7 @@
             <column name="news_title">Образование и новые методики</column>
             <column name="creation_date">2024-01-15</column>
             <column name="text">Образование продолжает эволюционировать, внедряя новые методики и технологии.</column>
+            <column name="author_name">Vlad</column>
         </insert>
 
         <insert tableName="news">
@@ -114,6 +129,7 @@
             <column name="news_title">Кибербезопасность в 2024 году</column>
             <column name="creation_date">2024-01-16</column>
             <column name="text">Кибербезопасность становится важной темой в свете увеличения числа кибератак.</column>
+            <column name="author_name">Vlad</column>
         </insert>
 
         <insert tableName="news">
@@ -121,6 +137,7 @@
             <column name="news_title">Здоровый образ жизни</column>
             <column name="creation_date">2024-01-17</column>
             <column name="text">Популярность здорового образа жизни продолжает расти среди молодежи.</column>
+            <column name="author_name">Tosha</column>
         </insert>
 
         <insert tableName="news">
@@ -128,6 +145,7 @@
             <column name="news_title">Космические исследования</column>
             <column name="creation_date">2024-01-18</column>
             <column name="text">Космические исследования открывают новые горизонты для человечества.</column>
+            <column name="author_name">Tosha</column>
         </insert>
 
         <insert tableName="news">
@@ -135,6 +153,7 @@
             <column name="news_title">Изменения в законодательстве</column>
             <column name="creation_date">2024-01-19</column>
             <column name="text">Обсуждаются важные изменения в законодательстве, касающиеся прав граждан.</column>
+            <column name="author_name">Tosha</column>
         </insert>
 
         <insert tableName="news">
@@ -142,6 +161,7 @@
             <column name="news_title">Развитие искусственного интеллекта</column>
             <column name="creation_date">2024-01-21</column>
             <column name="text">Искусственный интеллект продолжает развиваться и внедряться в различные сферы жизни.</column>
+            <column name="author_name">Tosha</column>
         </insert>
     </changeSet>
 </databaseChangeLog>

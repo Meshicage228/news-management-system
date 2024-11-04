@@ -8,61 +8,61 @@
             <column name="news_id">1</column>
             <column name="text">Интересно, какие именно технологии будут представлены.</column>
             <column name="creation_date">2024-01-02</column>
-            <column name="author_name">Алексей</column>
+            <column name="author_name">Lolita</column>
         </insert>
         <insert tableName="comments">
             <column name="news_id">2</column>
             <column name="text">Спортсмены действительно показывают отличные результаты!</column>
             <column name="creation_date">2024-01-03</column>
-            <column name="author_name">Мария</column>
+            <column name="author_name">Lolita</column>
         </insert>
         <insert tableName="comments">
             <column name="news_id">3</column>
             <column name="text">Экологические инициативы — это важный шаг вперед.</column>
             <column name="creation_date">2024-01-04</column>
-            <column name="author_name">Иван</column>
+            <column name="author_name">Lolita</column>
         </insert>
         <insert tableName="comments">
             <column name="news_id">4</column>
             <column name="text">С нетерпением жду культурных мероприятий!</column>
             <column name="creation_date">2024-01-05</column>
-            <column name="author_name">Екатерина</column>
+            <column name="author_name">Vlad</column>
         </insert>
         <insert tableName="comments">
             <column name="news_id">5</column>
             <column name="text">Политические изменения всегда вызывают много обсуждений.</column>
             <column name="creation_date">2024-01-06</column>
-            <column name="author_name">Дмитрий</column>
+            <column name="author_name">Vlad</column>
         </insert>
         <insert tableName="comments">
             <column name="news_id">6</column>
             <column name="text">Научные открытия вдохновляют на новые достижения.</column>
             <column name="creation_date">2024-01-07</column>
-            <column name="author_name">Ольга</column>
+            <column name="author_name">Vlad</column>
         </insert>
         <insert tableName="comments">
             <column name="news_id">7</column>
             <column name="text">Какие книги рекомендуете из новых поступлений?</column>
             <column name="creation_date">2024-01-08</column>
-            <column name="author_name">Сергей</column>
+            <column name="author_name">Tosha</column>
         </insert>
         <insert tableName="comments">
             <column name="news_id">8</column>
             <column name="text">Мода всегда меняется, и это здорово!</column>
             <column name="creation_date">2024-01-09</column>
-            <column name="author_name">Анна</column>
+            <column name="author_name">Tosha</column>
         </insert>
         <insert tableName="comments">
             <column name="news_id">9</column>
             <column name="text">Экономические вопросы актуальны для всех нас.</column>
             <column name="creation_date">2024-01-10</column>
-            <column name="author_name">Петр</column>
+            <column name="author_name">Tosha</column>
         </insert>
         <insert tableName="comments">
             <column name="news_id">10</column>
             <column name="text">Здравоохранение — это тема, которая касается каждого.</column>
             <column name="creation_date">2024-01-11</column>
-            <column name="author_name">Елена</column>
+            <column name="author_name">Tosha</column>
         </insert>
     </changeSet>
 </databaseChangeLog>

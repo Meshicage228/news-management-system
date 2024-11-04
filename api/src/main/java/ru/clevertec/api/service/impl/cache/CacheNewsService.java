@@ -1,5 +1,6 @@
 package ru.clevertec.api.service.impl.cache;
 
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cache.CacheManager;
@@ -64,6 +65,7 @@ public class CacheNewsService {
      * @return Обновленная новость.
      */
     @CachePut(value = "newsCache", key = "#result.id")
+    @Transactional
     public NewsEntity fullUpdateNews(NewsEntity newsEntity, UpdateNewsDto updateNewsDto) {
         log.info("Updating news to cache for id: {}", newsEntity.getId());
         return newsMapper.fullUpdate(newsEntity, updateNewsDto);
@@ -77,6 +79,7 @@ public class CacheNewsService {
      * @return Обновленная новость.
      */
     @CachePut(value = "newsCache", key = "#result.id")
+    @Transactional
     public NewsEntity patchUpdateNews(NewsEntity newsEntity, UpdateNewsDto updateNewsDto) {
         log.info("Part updating news to cache for id: {}", newsEntity.getId());
         return newsMapper.patchUpdate(newsEntity, updateNewsDto);

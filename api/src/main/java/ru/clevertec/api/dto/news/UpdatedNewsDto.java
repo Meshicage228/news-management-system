@@ -7,5 +7,5 @@ public class UpdatedNewsDto {
     private Long id;
     private String title;
     private String text;
-    private String author;
+    private String authorName;
 }

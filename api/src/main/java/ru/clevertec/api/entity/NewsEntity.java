@@ -63,6 +63,12 @@ public class NewsEntity {
     private String text;
 
     /**
+     * Автор новости.
+     */
+    @Column(name = "author_name")
+    private String authorName;
+
+    /**
      * Список комментариев, связанных с новостью.
      *
      * <p>

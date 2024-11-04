@@ -22,21 +22,21 @@ public class CommentsController {
 
     @PostMapping
     @ResponseStatus(CREATED)
-    public CreatedCommentDto createComment(@PathVariable("newsId") Long newsId,
+    public CreatedCommentDto createComment(@PathVariable Long newsId,
                                            @RequestBody @Valid CreateCommentDto createCommentDto) {
         return commentService.createComment(newsId, createCommentDto);
     }
 
     @PatchMapping("/{commentsId}")
-    public UpdatedCommentDto partUpdateComment(@PathVariable("commentsId") Long commentsId,
+    public UpdatedCommentDto partUpdateComment(@PathVariable Long commentsId,
                                                @RequestBody UpdateCommentDto updateCommentDto) {
         return commentService.partCommentUpdate(commentsId, updateCommentDto);
     }
 
     @DeleteMapping("/{commentsId}")
     @ResponseStatus(NO_CONTENT)
-    public void deleteComment(@PathVariable("newsId") Long newsId,
-                              @PathVariable("commentsId") Long commentsId) {
+    public void deleteComment(@PathVariable Long newsId,
+                              @PathVariable Long commentsId) {
         commentService.deleteComment(newsId, commentsId);
     }
 }

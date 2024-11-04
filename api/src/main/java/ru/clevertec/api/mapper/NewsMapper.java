@@ -80,6 +80,7 @@ public interface NewsMapper {
     @BeanMapping(ignoreByDefault = true)
     @Mapping(target = "title", source = "title")
     @Mapping(target = "text", source = "text")
+    @Mapping(target = "authorName", source = "authorName")
     NewsEntity fullUpdate(@MappingTarget NewsEntity newsEntity, UpdateNewsDto updateNewsDto);
 
     /**
