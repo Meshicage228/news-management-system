@@ -37,3 +37,9 @@ logging:
         transaction: debug
         orm:
           jpa: debug
+app:
+  clients:
+    user:
+      client-name: userClient
+      url: 127.0.0.1:8081
+      client-path: /api/v1/users
