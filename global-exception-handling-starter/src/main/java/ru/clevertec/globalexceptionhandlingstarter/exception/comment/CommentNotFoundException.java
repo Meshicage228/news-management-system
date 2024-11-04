@@ -1,9 +1,11 @@
 package ru.clevertec.globalexceptionhandlingstarter.exception.comment;
 
+import ru.clevertec.globalexceptionhandlingstarter.exception.abstr.ResourceNotFoundException;
+
 /**
  * Исключение, которое выбрасывается, когда комментарий с указанным идентификатором не найден.
  */
-public class CommentNotFoundException extends RuntimeException {
+public class CommentNotFoundException extends ResourceNotFoundException {
     private static final String message = "Comment with id : %s not found";
 
     /**

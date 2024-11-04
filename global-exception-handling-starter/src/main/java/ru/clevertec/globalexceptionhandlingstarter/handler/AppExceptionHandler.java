@@ -11,9 +11,9 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 import ru.clevertec.globalexceptionhandlingstarter.dto.ExceptionResponse;
-import ru.clevertec.globalexceptionhandlingstarter.exception.comment.CommentNotFoundException;
-import ru.clevertec.globalexceptionhandlingstarter.exception.news.FailedToCreateNewsException;
-import ru.clevertec.globalexceptionhandlingstarter.exception.news.NewsNotFoundException;
+import ru.clevertec.globalexceptionhandlingstarter.exception.abstr.FailedToCreateResourceException;
+import ru.clevertec.globalexceptionhandlingstarter.exception.abstr.ResourceNotFoundException;
+import ru.clevertec.globalexceptionhandlingstarter.exception.user.IncorrectCredentialsException;
 
 import java.time.LocalDate;
 
@@ -26,17 +26,17 @@ import static org.springframework.http.HttpStatus.*;
 public class AppExceptionHandler extends ResponseEntityExceptionHandler {
 
     /**
-     * Обработчик исключений для {@link CommentNotFoundException}.
+     * Обработчик исключений для {@link ResourceNotFoundException} и его наследников.
      *
-     * <p>При возникновении этого исключения возвращается ответ с статусом 404  и
-     * сообщением об ошибке.</p>
+     * <p>При возникновении этого исключения возвращается ответ с статусом 404
+     * и сообщением об ошибке.</p>
      *
      * @param e исключение, которое было выброшено
      * @return объект {@link ExceptionResponse} с информацией об ошибке
      */
     @ResponseStatus(NOT_FOUND)
-    @ExceptionHandler(CommentNotFoundException.class)
-    public ExceptionResponse handleCommentNotFoundException(CommentNotFoundException e) {
+    @ExceptionHandler(ResourceNotFoundException.class)
+    public ExceptionResponse handleResourceNotFoundException(ResourceNotFoundException e) {
         log.error(e.getMessage(), e);
         return ExceptionResponse.builder()
                 .status(NOT_FOUND.value())
@@ -46,27 +46,26 @@ public class AppExceptionHandler extends ResponseEntityExceptionHandler {
     }
 
     /**
-     * Обработчик исключений для {@link NewsNotFoundException}.
+     * Обработчик исключений для {@link IncorrectCredentialsException}.
      *
-     * <p>При возникновении этого исключения возвращается ответ с статусом 404 и
-     * сообщением об ошибке.</p>
+     * <p>Возникает, когда не совпадает пароль с паролем в бд.</p>
      *
      * @param e исключение, которое было выброшено
      * @return объект {@link ExceptionResponse} с информацией об ошибке
      */
-    @ResponseStatus(NOT_FOUND)
-    @ExceptionHandler(NewsNotFoundException.class)
-    public ExceptionResponse handleNewsNotFoundException(NewsNotFoundException e) {
+    @ResponseStatus(BAD_REQUEST)
+    @ExceptionHandler(IncorrectCredentialsException.class)
+    public ExceptionResponse incorrectCredentialsHandling(IncorrectCredentialsException e) {
         log.error(e.getMessage(), e);
         return ExceptionResponse.builder()
-                .status(NOT_FOUND.value())
+                .status(BAD_REQUEST.value())
                 .message(e.getMessage())
                 .timestamp(LocalDate.now())
                 .build();
     }
 
     /**
-     * Обработчик исключений для {@link FailedToCreateNewsException}.
+     * Обработчик исключений для {@link FailedToCreateResourceException} и его наследников.
      *
      * <p>При возникновении этого исключения возвращается ответ с статусом 500
      * и сообщением об ошибке.</p>
@@ -75,8 +74,8 @@ public class AppExceptionHandler extends ResponseEntityExceptionHandler {
      * @return объект {@link ExceptionResponse} с информацией об ошибке
      */
     @ResponseStatus(INTERNAL_SERVER_ERROR)
-    @ExceptionHandler(FailedToCreateNewsException.class)
-    public ExceptionResponse failedToCreateResource(FailedToCreateNewsException e) {
+    @ExceptionHandler(FailedToCreateResourceException.class)
+    public ExceptionResponse failedToCreateResource(FailedToCreateResourceException e) {
         log.error(e.getMessage(), e);
         return ExceptionResponse.builder()
                 .status(INTERNAL_SERVER_ERROR.value())
