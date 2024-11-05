@@ -1,62 +1,55 @@
 package ru.clevertec.api.controller;
 
-import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import ru.clevertec.api.controller.doc.NewsControllerDoc;
 import ru.clevertec.api.dto.filter.CommentFilter;
 import ru.clevertec.api.dto.filter.NewsFilter;
 import ru.clevertec.api.dto.news.*;
 import ru.clevertec.api.service.NewsService;
-import ru.clevertec.api.util.FullUpdateNewsMarker;
 import ru.clevertec.loggingstarter.annotation.LogRequestResponse;
-
-import static org.springframework.http.HttpStatus.CREATED;
-import static org.springframework.http.HttpStatus.NO_CONTENT;
 
 @RestController
 @LogRequestResponse
 @RequestMapping("/api/v1/news")
 @RequiredArgsConstructor
-public class NewsController {
+public class NewsController implements NewsControllerDoc {
     private final NewsService newsService;
 
-    @GetMapping
-    public Page<ShortNewsDto> getAllShortNews(@RequestParam(defaultValue = "0", required = false, value = "page") Integer page,
-                                              @RequestParam(defaultValue = "10", required = false, value = "size") Integer size,
-                                              @RequestBody(required = false) NewsFilter newsFilter) {
+    @Override
+    public Page<ShortNewsDto> getAllShortNews(Integer page,
+                                              Integer size,
+                                              NewsFilter newsFilter) {
         return newsService.getAllShortNews(page, size, newsFilter);
     }
 
-    @GetMapping("/comments")
-    public ExtendedNewsDto getNewsById(@RequestParam(defaultValue = "0", required = false, value = "page") Integer page,
-                                       @RequestParam(defaultValue = "10", required = false, value = "size") Integer size,
-                                       @RequestBody(required = false) @Valid CommentFilter newsFilter) {
+    @Override
+    public ExtendedNewsDto getNewsById(Integer page,
+                                       Integer size,
+                                       CommentFilter newsFilter) {
         return newsService.getNewsWithComments(page, size, newsFilter);
     }
 
-    @PostMapping
-    @ResponseStatus(CREATED)
-    public CreatedNewsDto createNews(@RequestBody @Valid CreateNewsDto createNewsDto) {
+    @Override
+    public CreatedNewsDto createNews(CreateNewsDto createNewsDto) {
         return newsService.createNews(createNewsDto);
     }
 
-    @DeleteMapping("/{newsId}")
-    @ResponseStatus(NO_CONTENT)
-    public void deleteNewsById(@PathVariable Long newsId) {
+    @Override
+    public void deleteNewsById(Long newsId) {
         newsService.deleteNews(newsId);
     }
 
-    @PutMapping("/{newsId}")
-    public UpdatedNewsDto fullUpdate(@PathVariable Long newsId,
-                                     @RequestBody @Validated(FullUpdateNewsMarker.class) UpdateNewsDto updatedNewsDto) {
+    @Override
+    public UpdatedNewsDto fullUpdate(Long newsId,
+                                     UpdateNewsDto updatedNewsDto) {
         return newsService.fullNewsUpdate(newsId, updatedNewsDto);
     }
 
-    @PatchMapping("/{newsId}")
-    public UpdatedNewsDto partUpdateNewsDto(@PathVariable Long newsId,
-                                            @RequestBody UpdateNewsDto updatedNewsDto) {
+    @Override
+    public UpdatedNewsDto partUpdateNewsDto(Long newsId,
+                                            UpdateNewsDto updatedNewsDto) {
         return newsService.partNewsUpdate(newsId, updatedNewsDto);
     }
 }

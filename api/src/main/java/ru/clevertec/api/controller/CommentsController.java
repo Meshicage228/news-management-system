@@ -1,8 +1,8 @@
 package ru.clevertec.api.controller;
 
-import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+import ru.clevertec.api.controller.doc.CommentsControllerDoc;
 import ru.clevertec.api.dto.comment.CreateCommentDto;
 import ru.clevertec.api.dto.comment.CreatedCommentDto;
 import ru.clevertec.api.dto.comment.UpdateCommentDto;
@@ -10,33 +10,25 @@ import ru.clevertec.api.dto.comment.UpdatedCommentDto;
 import ru.clevertec.api.service.CommentService;
 import ru.clevertec.loggingstarter.annotation.LogRequestResponse;
 
-import static org.springframework.http.HttpStatus.CREATED;
-import static org.springframework.http.HttpStatus.NO_CONTENT;
-
 @RestController
 @RequestMapping("/api/v1/news/{newsId}/comments")
 @LogRequestResponse
 @RequiredArgsConstructor
-public class CommentsController {
+public class CommentsController implements CommentsControllerDoc {
     private final CommentService commentService;
 
-    @PostMapping
-    @ResponseStatus(CREATED)
-    public CreatedCommentDto createComment(@PathVariable Long newsId,
-                                           @RequestBody @Valid CreateCommentDto createCommentDto) {
+    @Override
+    public CreatedCommentDto createComment(Long newsId, CreateCommentDto createCommentDto) {
         return commentService.createComment(newsId, createCommentDto);
     }
 
-    @PatchMapping("/{commentsId}")
-    public UpdatedCommentDto partUpdateComment(@PathVariable Long commentsId,
-                                               @RequestBody UpdateCommentDto updateCommentDto) {
+    @Override
+    public UpdatedCommentDto partUpdateComment(Long commentsId, UpdateCommentDto updateCommentDto) {
         return commentService.partCommentUpdate(commentsId, updateCommentDto);
     }
 
-    @DeleteMapping("/{commentsId}")
-    @ResponseStatus(NO_CONTENT)
-    public void deleteComment(@PathVariable Long newsId,
-                              @PathVariable Long commentsId) {
+    @Override
+    public void deleteComment(Long newsId, Long commentsId) {
         commentService.deleteComment(newsId, commentsId);
     }
 }
