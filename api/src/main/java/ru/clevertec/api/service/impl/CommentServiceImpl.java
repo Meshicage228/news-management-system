@@ -29,7 +29,6 @@ public class CommentServiceImpl implements CommentService {
     private final CommentMapper commentMapper;
     private final CacheCommentService cacheCommentService;
     private final CacheNewsService cacheNewsService;
-    private final CacheManager cacheManager;
 
     /**
      * Создает новый комментарий для указанной новости.
@@ -60,7 +59,7 @@ public class CommentServiceImpl implements CommentService {
     public UpdatedCommentDto partCommentUpdate(Long commentToUpdate, UpdateCommentDto updateCommentDto) {
         log.info("Updating comment for {}, based on: {}", commentToUpdate, updateCommentDto);
 
-        return Optional.of(cacheCommentService.getComment(commentToUpdate))
+        return Optional.ofNullable(cacheCommentService.getComment(commentToUpdate))
                 .map(comment -> cacheCommentService.partCommentUpdate(comment, updateCommentDto))
                 .map(commentMapper::toUpdatedComment)
                 .orElseThrow(() -> new EntityNotFoundException("Comment not found"));

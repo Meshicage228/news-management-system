@@ -7,6 +7,7 @@ import lombok.experimental.FieldNameConstants;
 import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 /**
  * Сущность, представляющая комментарий.
@@ -26,7 +27,7 @@ import java.time.LocalDate;
 
 @Entity
 @Table(name = "comments")
-public class CommentEntity {
+public class CommentEntity implements Serializable {
 
     /**
      * Уникальный идентификатор комментария.

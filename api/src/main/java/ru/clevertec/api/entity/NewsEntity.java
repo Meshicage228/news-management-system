@@ -7,6 +7,7 @@ import lombok.experimental.FieldNameConstants;
 import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -29,7 +30,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "news")
-public class NewsEntity {
+public class NewsEntity implements Serializable {
 
     /**
      * Уникальный идентификатор новости.

@@ -65,7 +65,7 @@ public class NewsServiceImpl implements NewsService {
         Page<CreatedCommentDto> commentsPage = cacheCommentService.getPaginatedComments(commentFilter, pageNo, pageSize)
                 .map(commentMapper::toDto);
 
-        return Optional.of(newsById)
+        return Optional.ofNullable(newsById)
                 .map(news -> {
                     ExtendedNewsDto extendedDto = newsMapper.toExtendedDto(news);
                     extendedDto.setComments(commentsPage);

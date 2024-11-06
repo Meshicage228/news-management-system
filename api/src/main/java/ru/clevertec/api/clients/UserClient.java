@@ -3,7 +3,7 @@ package ru.clevertec.api.clients;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import ru.clevertec.userservice.dto.UserResponseDto;
+import ru.clevertec.api.dto.user.UserResponseDto;
 
 @FeignClient(
         name = "${app.clients.user.client-name}",
