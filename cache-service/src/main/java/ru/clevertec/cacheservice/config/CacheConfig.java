@@ -9,15 +9,13 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.cache.CacheManager;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Profile;
 import org.springframework.data.redis.cache.RedisCacheConfiguration;
 import org.springframework.data.redis.serializer.GenericJackson2JsonRedisSerializer;
 import org.springframework.data.redis.serializer.RedisSerializationContext;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
 import ru.clevertec.cacheservice.manager.LFUCacheManager;
 import ru.clevertec.cacheservice.manager.LRUCacheManager;
-import ru.clevertec.cacheservice.property.LFUCacheProperties;
-import ru.clevertec.cacheservice.property.LRUCacheProperties;
+import ru.clevertec.cacheservice.property.CustomCacheProperties;
 
 import java.time.Duration;
 import java.util.List;
@@ -29,7 +27,7 @@ import java.util.Optional;
  * <p>Этот класс содержит определения бинов для менеджеров кэша. <p>
  */
 @AutoConfiguration(before = CacheAutoConfiguration.class)
-@EnableConfigurationProperties(value = {LFUCacheProperties.class, LRUCacheProperties.class, CacheProperties.class})
+@EnableConfigurationProperties(value = {CustomCacheProperties.class, CacheProperties.class})
 public class CacheConfig {
 
     /**
@@ -42,9 +40,9 @@ public class CacheConfig {
      * @return Бин {@link LRUCacheManager}.
      */
     @Bean
-    @Profile("lru")
+    @ConditionalOnProperty(prefix = "app.cache", name = "type", havingValue = "LRU")
     public LRUCacheManager lruCacheManager(CacheProperties cacheProperties,
-                                           LRUCacheProperties lruCacheProperty) {
+                                           CustomCacheProperties lruCacheProperty) {
         return new LRUCacheManager(lruCacheProperty, cacheProperties);
     }
 
@@ -58,9 +56,9 @@ public class CacheConfig {
      * @return Бин {@link LFUCacheManager}.
      */
     @Bean
-    @Profile("lfu")
+    @ConditionalOnProperty(prefix = "app.cache", name = "type", havingValue = "LFU")
     public LFUCacheManager lfuCacheManager(CacheProperties cacheProperties,
-                                           LFUCacheProperties lfuCacheProperty) {
+                                           CustomCacheProperties lfuCacheProperty) {
         LFUCacheManager lfuCacheManager = new LFUCacheManager(lfuCacheProperty.getSize());
         List<String> cacheNames = cacheProperties.getCacheNames();
         if (!cacheNames.isEmpty()) {

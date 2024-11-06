@@ -13,7 +13,6 @@ import java.util.concurrent.ConcurrentMap;
 
 /**
  * Менеджер кэша, реализующий стратегию LFU.
- * Этот класс управляет кэшами, используя мапу для хранения кэшей.
  */
 public class LFUCacheManager implements CacheManager {
 

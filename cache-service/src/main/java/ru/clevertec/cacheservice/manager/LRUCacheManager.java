@@ -5,14 +5,13 @@ import org.springframework.boot.autoconfigure.cache.CacheProperties;
 import org.springframework.cache.Cache;
 import org.springframework.cache.support.AbstractCacheManager;
 import ru.clevertec.cacheservice.cache.LRUCache;
-import ru.clevertec.cacheservice.property.LRUCacheProperties;
+import ru.clevertec.cacheservice.property.CustomCacheProperties;
 
 import java.util.Collection;
 import java.util.stream.Collectors;
 
 /**
  * Менеджер кэша, реализующий LRU.
- * Этот класс управляет кэшами, используя свойства, заданные в {@link LRUCacheProperties}.
  */
 @RequiredArgsConstructor
 public class LRUCacheManager extends AbstractCacheManager {
@@ -20,7 +19,7 @@ public class LRUCacheManager extends AbstractCacheManager {
     /**
      * Свойства конфигурации для LRU кэша.
      */
-    private final LRUCacheProperties lruCacheProperties;
+    private final CustomCacheProperties lruCacheProperties;
 
     /**
      * Общие свойства кэша.
