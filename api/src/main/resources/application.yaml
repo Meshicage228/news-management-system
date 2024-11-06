@@ -3,40 +3,8 @@ server:
 
 spring:
   profiles:
-    active: dev
-  data:
-    redis:
-      port: 6379
-  cache:
-    lfu:
-      max-entries:
-        size: 120
-    type: redis
-  datasource:
-    driver-class-name: org.postgresql.Driver
-    password: 123123
-    username: cleverMan
-    url: jdbc:postgresql://localhost:5430/cleverDbApi
-  liquibase:
-    enabled: true
-    change-log: db.migration/changelog-master.xml
-  jpa:
-    hibernate:
-      ddl-auto: none
-    show-sql: true
-    properties:
-      hibernate:
-        format_sql: true
-  jackson:
-    serialization:
-      fail-on-empty-beans: false
-logging:
-  level:
-    org:
-      springframework:
-        transaction: debug
-        orm:
-          jpa: debug
+    active:
+      - dev
 app:
   token:
     expire-time: 6000
@@ -45,3 +13,6 @@ app:
       client-name: userClient
       url: 127.0.0.1:8081
       client-path: /api/v1/users
+  cache:
+    type: LFU
+    size: 120
