@@ -7,7 +7,7 @@ spring:
       - dev
 app:
   token:
-    expire-time: 6000
+    expire-time: 40000
   clients:
     user:
       client-name: userClient
