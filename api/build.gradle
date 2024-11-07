@@ -55,6 +55,7 @@ dependencies {
     implementation "org.springdoc:springdoc-openapi-starter-webmvc-ui:${springdoc}"
 
     // Utils
+
     implementation "org.mapstruct:mapstruct:${mapstructVersion}"
     annotationProcessor "org.projectlombok:lombok-mapstruct-binding:${lombokMapstructBinding}"
     annotationProcessor "org.mapstruct:mapstruct-processor:${mapstructVersion}"
@@ -62,6 +63,7 @@ dependencies {
     annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
 
     // Tests
+    testImplementation "org.wiremock:wiremock-jetty12:3.9.2"
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.testcontainers:junit-jupiter'
     testImplementation 'org.springframework.boot:spring-boot-testcontainers'
