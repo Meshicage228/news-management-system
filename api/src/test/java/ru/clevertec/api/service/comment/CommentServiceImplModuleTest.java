@@ -24,7 +24,7 @@ import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
-@DisplayName("comment service module tests")
+@DisplayName("Comment service module tests")
 class CommentServiceImplModuleTest {
     @Mock
     private CommentMapper commentMapper;
@@ -51,8 +51,8 @@ class CommentServiceImplModuleTest {
     public void setUp() {
         newsSource = 1L;
         commentToUpdate = 1L;
-        createCommentDto = new CreateCommentDto();
-        updateCommentDto = new UpdateCommentDto();
+        createCommentDto = CreateCommentDto.builder().build();
+        updateCommentDto = UpdateCommentDto.builder().build();
         newsEntity = new NewsEntity();
         commentEntity = new CommentEntity();
         createdCommentDto = new CreatedCommentDto();
@@ -60,6 +60,7 @@ class CommentServiceImplModuleTest {
     }
 
     @Test
+    @DisplayName("Create comment successfully")
     public void testCreateComment() {
         // Given
         when(cacheNewsService.getNewsById(anyLong())).thenReturn(newsEntity);
@@ -79,6 +80,7 @@ class CommentServiceImplModuleTest {
     }
 
     @Test
+    @DisplayName("Part comment update")
     public void testPartCommentUpdate() {
         // Given
         when(cacheCommentService.getComment(anyLong())).thenReturn(commentEntity);
@@ -96,7 +98,8 @@ class CommentServiceImplModuleTest {
     }
 
     @Test
-    public void testPartCommentUpdate_CommentNotFound() {
+    @DisplayName("Comment not found while part update")
+    public void commentNotFound() {
         // Given
         when(cacheCommentService.getComment(anyLong())).thenReturn(null);
 
@@ -105,6 +108,7 @@ class CommentServiceImplModuleTest {
     }
 
     @Test
+    @DisplayName("Delete comment successfully")
     public void testDeleteComment() {
         // Given
         doNothing().when(cacheCommentService).deleteComment(anyLong());

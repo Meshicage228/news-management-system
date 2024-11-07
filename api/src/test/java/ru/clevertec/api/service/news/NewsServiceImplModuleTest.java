@@ -22,6 +22,7 @@ import ru.clevertec.api.service.impl.cache.CacheCommentService;
 import ru.clevertec.api.service.impl.cache.CacheNewsService;
 import ru.clevertec.globalexceptionhandlingstarter.exception.news.NewsNotFoundException;
 
+import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -30,7 +31,7 @@ import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 @DisplayName("News service module tests")
-class NewsServiceImplModuleTests {
+class NewsServiceImplModuleTest {
     @Mock
     private CacheNewsService cacheNewsService;
 
@@ -158,5 +159,47 @@ class NewsServiceImplModuleTests {
         verify(cacheNewsService).getNewsById(newsId);
         verify(cacheNewsService).fullUpdateNews(newsEntity, updateNewsDto);
         assertNotNull(result);
+    }
+
+    @Test
+    @DisplayName("Part news update")
+    public void testPartNewsUpdate() {
+        // Given
+        when(cacheNewsService.getNewsById(anyLong())).thenReturn(newsEntity);
+        when(cacheNewsService.patchUpdateNews(any(NewsEntity.class), any(UpdateNewsDto.class))).thenReturn(newsEntity);
+        when(newsMapper.toUpdatedDto(any(NewsEntity.class))).thenReturn(new UpdatedNewsDto());
+
+        // When
+        UpdatedNewsDto result = newsService.partNewsUpdate(newsId, updateNewsDto);
+
+        // Then
+        verify(cacheNewsService).getNewsById(newsId);
+        verify(cacheNewsService).patchUpdateNews(newsEntity, updateNewsDto);
+        verify(newsMapper).toUpdatedDto(newsEntity);
+        assertNotNull(result);
+    }
+
+    @Test
+    public void testDeleteNews() {
+        // Given
+        Long newsId = 1L;
+        NewsEntity newsEntity = new NewsEntity();
+        CommentEntity comment1 = new CommentEntity();
+        comment1.setId(1L);
+        CommentEntity comment2 = new CommentEntity();
+        comment2.setId(2L);
+        newsEntity.setComments(Arrays.asList(comment1, comment2));
+        when(cacheNewsService.getNewsById(anyLong())).thenReturn(newsEntity);
+        doNothing().when(cacheCommentService).deleteComment(anyLong());
+        doNothing().when(cacheNewsService).deleteNews(newsId);
+
+        // When
+        newsService.deleteNews(newsId);
+
+        // Then
+        verify(cacheNewsService).getNewsById(newsId);
+        verify(cacheCommentService).deleteComment(comment1.getId());
+        verify(cacheCommentService).deleteComment(comment2.getId());
+        verify(cacheNewsService).deleteNews(newsId);
     }
 }

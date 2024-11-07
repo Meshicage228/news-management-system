@@ -4,15 +4,15 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.context.annotation.Profile;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
-import ru.clevertec.api.ApiApplication;
 import ru.clevertec.api.config.TestSecurityConfig;
-import ru.clevertec.api.controller.NewsController;
 import ru.clevertec.api.dto.news.*;
 import ru.clevertec.api.service.impl.NewsServiceImpl;
 
@@ -23,8 +23,8 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 import static ru.clevertec.api.util.FileReaderUtil.readFile;
 
-@ContextConfiguration(classes = {TestSecurityConfig.class, ApiApplication.class})
-@WebMvcTest(controllers = NewsController.class)
+@AutoConfigureMockMvc
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @ActiveProfiles("test")
 @DisplayName("Mock news controller test")
 class NewsControllerTest {
@@ -42,7 +42,7 @@ class NewsControllerTest {
     void createNews() throws Exception {
         // Given
         CreatedNewsDto responseDto = objectMapper.readValue(readFile("/news/response/saved-news.json"), CreatedNewsDto.class);
-        String request = readFile("/news/request/create-news-request.json");
+        String request = readFile("/news/request/create-news.json");
 
         when(newsService.createNews(any(CreateNewsDto.class)))
                 .thenReturn(responseDto);
@@ -58,44 +58,6 @@ class NewsControllerTest {
                 .andExpect(jsonPath("$.id").value(responseDto.getId()))
                 .andExpect(jsonPath("$.time").value(responseDto.getTime().toString()));
     }
-
-//    @Test
-//    @DisplayName("Get all short news successfully")
-//    void getAllShortNews() throws Exception {
-//        // Given
-//        String expectedResult = readFile("/news/response/short-news.json");
-//        ShortNewsDto[] shortNewsDtos = objectMapper.readValue(expectedResult, ShortNewsDto[].class);
-//
-//        Page<ShortNewsDto> page = new PageImpl<>(List.of(shortNewsDtos), PageRequest.of(0, 10), shortNewsDtos.length);
-//
-//        when(newsService.getAllShortNews(anyInt(), anyInt(), any(NewsFilter.class)))
-//                .thenReturn(page);
-//
-//        // When / Then
-//        mockMvc.perform(get("/api/v1/news")
-//                        .param("page", "0")
-//                        .param("size", "10"))
-//                .andExpect(status().isOk())
-//                .andExpect(jsonPath("$.content").isArray())
-//                .andExpect(jsonPath("$.content").isNotEmpty());
-//    }
-//
-//    @Test
-//    @DisplayName("Get news by ID successfully")
-//    void getNewsById() throws Exception {
-//        // Given
-//        CreatedNewsDto responseDto = objectMapper.readValue(readFile("/news/saved-news.json"), CreatedNewsDto.class);
-//
-//        when(newsService.getNewsWithComments(anyInt(), anyInt(), any(CommentFilter.class)))
-//                .thenReturn(null);
-//
-//        // When / Then
-//        mockMvc.perform(get("/api/v1/news/{id}", 1)
-//                        .param("page", "0")
-//                        .param("size", "10"))
-//                .andExpect(status().isOk())
-//                .andExpect(jsonPath("$.id").value(2));
-//    }
 
     @Test
     @DisplayName("Delete news by ID successfully")
@@ -115,7 +77,7 @@ class NewsControllerTest {
         // Given
         Long newsId = 1L;
         UpdatedNewsDto updatedNewsDto = objectMapper.readValue(readFile("/news/response/saved-news.json"), UpdatedNewsDto.class);
-        String request = readFile("/news/request/full-update-news-request.json");
+        String request = readFile("/news/request/full-update-news.json");
 
         when(newsService.fullNewsUpdate(anyLong(), any(UpdateNewsDto.class)))
                 .thenReturn(updatedNewsDto);
