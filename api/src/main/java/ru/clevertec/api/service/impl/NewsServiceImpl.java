@@ -130,7 +130,6 @@ public class NewsServiceImpl implements NewsService {
      */
     @Override
     public void deleteNews(Long id) {
-        // todo : make cascade better
         log.info("Delete news: {}", id);
         cacheNewsService.getNewsById(id).getComments()
                 .stream()
