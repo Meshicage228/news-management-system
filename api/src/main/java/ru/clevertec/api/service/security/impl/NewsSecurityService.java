@@ -8,9 +8,25 @@ import ru.clevertec.api.service.security.strategy.JournalistAuthorizationStrateg
 
 import java.util.Map;
 
+/**
+ * Сервис для управления авторизацией новостей, наследующийся от {@link AbstractSecurityService}.
+ */
 @Component
 @RequiredArgsConstructor
 public class NewsSecurityService extends AbstractSecurityService {
+
+    /**
+     * Конструктор со стратегиями авторизации для различных ролей.
+     *
+     * <p>Создает сопоставление ролей с соответствующими стратегиями авторизации:</p>
+     * <ul>
+     *     <li>{@code "ROLE_ADMIN"} - {@link AdminAuthorizationStrategy}</li>
+     *     <li>{@code "ROLE_JOURNALIST"} - {@link JournalistAuthorizationStrategy}</li>
+     * </ul>
+     *
+     * @param journalistAuthorizationStrategy Стратегия авторизации для журналистов.
+     * @param adminAuthorizationStrategy Стратегия авторизации для администраторов.
+     */
     public NewsSecurityService(JournalistAuthorizationStrategy journalistAuthorizationStrategy, AdminAuthorizationStrategy adminAuthorizationStrategy) {
         roleAuthorizationStrategies = Map.of(
                 "ROLE_ADMIN", adminAuthorizationStrategy,
