@@ -10,15 +10,13 @@ repositories {
 
 ext {
     set('liquibase', '4.27.0')
-    set('springBootVersion', '3.3.5')
-    set('springDependencyManagementVersion', '1.1.6')
     set('springCloudVersion', '2023.0.3')
-    set('liquibase', '4.27.0')
-    set('wiremockVersion', '3.3.1')
+    set('wiremockVersion', '3.9.2')
     set('lombokVersion', '1.18.32')
     set('mapstructVersion', '1.5.3.Final')
     set('lombokMapstructBinding', '0.2.0')
     set('springdoc', '2.6.0')
+    set('jwtwebtoken', '0.12.6')
 }
 
 dependencies {
@@ -32,9 +30,9 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-aop'
 
     // Jwt
-    implementation group: 'io.jsonwebtoken', name: 'jjwt-jackson', version: '0.12.6'
-    implementation group: 'io.jsonwebtoken', name: 'jjwt-impl', version: '0.12.6'
-    implementation group: 'io.jsonwebtoken', name: 'jjwt-api', version: '0.12.6'
+    implementation "io.jsonwebtoken:jjwt-jackson:${jwtwebtoken}"
+    implementation "io.jsonwebtoken:jjwt-impl:${jwtwebtoken}"
+    implementation "io.jsonwebtoken:jjwt-api:${jwtwebtoken}"
 
     // Db
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
@@ -55,7 +53,7 @@ dependencies {
     implementation "org.springdoc:springdoc-openapi-starter-webmvc-ui:${springdoc}"
 
     // Utils
-
+    implementation group: 'com.fasterxml.jackson.datatype', name: 'jackson-datatype-jsr310', version: '2.18.1'
     implementation "org.mapstruct:mapstruct:${mapstructVersion}"
     annotationProcessor "org.projectlombok:lombok-mapstruct-binding:${lombokMapstructBinding}"
     annotationProcessor "org.mapstruct:mapstruct-processor:${mapstructVersion}"
@@ -63,7 +61,7 @@ dependencies {
     annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
 
     // Tests
-    testImplementation "org.wiremock:wiremock-jetty12:3.9.2"
+    testImplementation "org.wiremock:wiremock-jetty12:${wiremockVersion}"
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.testcontainers:junit-jupiter'
     testImplementation 'org.springframework.boot:spring-boot-testcontainers'

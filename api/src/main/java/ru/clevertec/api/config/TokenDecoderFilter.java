@@ -13,13 +13,28 @@ import ru.clevertec.api.service.TokenService;
 
 import java.io.IOException;
 
+/**
+ * Фильтр для декодирования токенов аутентификации.
+ * <p>
+ * Этот фильтр обрабатывает входящие HTTP-запросы и извлекает токен из заголовка
+ * "Authorization". Если токен присутствует и начинается с "Bearer ", он декодируется
+ * с помощью сервиса токенов {@link TokenService}. После декодирования аутентификация
+ * устанавливается в контексте.
+ * </p>
+ */
 @Service
 @RequiredArgsConstructor
 public class TokenDecoderFilter extends OncePerRequestFilter {
+
     private final TokenService tokenService;
 
+    /**
+     * Выполняет фильтрацию запроса, декодируя токен аутентификации.
+     */
     @Override
-    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
+    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
+            throws ServletException, IOException {
+
         String authorization = request.getHeader("Authorization");
 
         if (authorization != null) {

@@ -1,6 +1,7 @@
 package ru.clevertec.api.service.impl;
 
 import jakarta.persistence.EntityNotFoundException;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
@@ -129,6 +130,7 @@ public class NewsServiceImpl implements NewsService {
      * @param id Идентификатор новости, которую нужно удалить.
      */
     @Override
+    @Transactional
     public void deleteNews(Long id) {
         log.info("Delete news: {}", id);
         cacheNewsService.getNewsById(id).getComments()

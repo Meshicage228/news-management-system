@@ -3,7 +3,6 @@ package ru.clevertec.api.config;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Profile;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -12,11 +11,26 @@ import org.springframework.security.config.annotation.web.configurers.AbstractHt
 import org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter;
 import ru.clevertec.api.service.security.SecurityService;
 
+/**
+ * Конфигурация безопасности приложения.
+ * <p>
+ * Этот класс настраивает безопасность HTTP для приложения, определяя правила
+ * доступа к различным конечным точкам API и добавляя фильтр декодирования токенов.
+ * </p>
+ */
 @Configuration
 @RequiredArgsConstructor
 public class ApplicationSecurityConfig {
+
     private final TokenDecoderFilter tokenDecoderFilter;
 
+    /**
+     * Создает цепочку фильтров безопасности.
+     *
+     * @param http объект конфигурации безопасности для настройки
+     * @param newsSecurityService сервис для проверки доступа к новостям
+     * @param commentSecurityService сервис для проверки доступа к комментариям
+     */
     @Bean
     public SecurityFilterChain chain(HttpSecurity http,
                                      SecurityService newsSecurityService,
