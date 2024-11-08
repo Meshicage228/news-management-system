@@ -13,11 +13,13 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.web.servlet.MockMvc;
+import ru.clevertec.globalexceptionhandlingstarter.exception.user.IncorrectCredentialsException;
 import ru.clevertec.userservice.UserServiceApplication;
 import ru.clevertec.userservice.config.PostgresContainerConfig;
 import ru.clevertec.userservice.entity.UserEntity;
 import ru.clevertec.userservice.repository.UserRepository;
 
+import static org.junit.jupiter.api.Assertions.assertInstanceOf;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 import static ru.clevertec.userservice.util.FileReaderUtil.readFile;
@@ -48,13 +50,11 @@ class UserControllerTest {
         String expectedPassword = JsonPath.read(request, "$.password");
         long expectedId = 2;
 
-        // When
+        // When / Then
         mockMvc.perform(post("/api/v1/users")
                         .contentType(MediaType.APPLICATION_JSON_VALUE)
                         .content(request))
                 .andExpect(status().isCreated());
-
-        // Then
         Assertions.assertThat(userRepository.findAll()).hasSize(2);
         UserEntity createdUser = userRepository.findById(expectedId)
                 .orElseThrow();
@@ -77,5 +77,20 @@ class UserControllerTest {
                 .andExpect(jsonPath("$.role").value("ADMIN"))
                 .andExpect(jsonPath("$.id").value(1))
                 .andExpect(jsonPath("$.password").value("$2a$10$bubPP66FrlTdC8BXF0rcrehfqZr5X8PjTHS5M1pJQFBquIWp7lWua"));
+    }
+
+    @Test
+    @DisplayName("get registered user")
+    void getExceptionWithBadPassword() throws Exception {
+        // Given
+        String username = "Vlad";
+        String password = "1234";
+
+        // When / then
+        mockMvc.perform(get("/api/v1/users/login")
+                        .param("username", username)
+                        .param("password", password))
+                .andExpect(status().isBadRequest())
+                .andExpect(result -> assertInstanceOf(IncorrectCredentialsException.class, result.getResolvedException()));
     }
 }

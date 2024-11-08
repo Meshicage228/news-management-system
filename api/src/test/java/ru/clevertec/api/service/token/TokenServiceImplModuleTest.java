@@ -55,7 +55,7 @@ class TokenServiceImplModuleTest {
         // Given
         ReflectionTestUtils.setField(tokenService, "expiryTime", expiryTime);
         UserRequestDto userRequestDto = new UserRequestDto("testUser ", "password");
-        UserResponseDto userResponseDto = new UserResponseDto(1L, "testUser ", "ROLE_USER");
+        UserResponseDto userResponseDto = new UserResponseDto(1L, "testUser ", "", "ROLE_USER");
 
         when(userClient.getLoginUser(anyString(), anyString()))
                 .thenReturn(userResponseDto);

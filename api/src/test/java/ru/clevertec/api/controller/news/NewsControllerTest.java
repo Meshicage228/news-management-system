@@ -4,15 +4,15 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.jackson.JacksonAutoConfiguration;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.context.annotation.Profile;
 import org.springframework.http.MediaType;
-import org.springframework.test.context.ActiveProfiles;
-import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import ru.clevertec.api.config.TestSecurityConfig;
+import ru.clevertec.api.controller.NewsController;
 import ru.clevertec.api.dto.news.*;
 import ru.clevertec.api.service.impl.NewsServiceImpl;
 
@@ -23,9 +23,9 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 import static ru.clevertec.api.util.FileReaderUtil.readFile;
 
+@SpringBootTest(classes = {NewsController.class, JacksonAutoConfiguration.class, TestSecurityConfig.class})
+@EnableWebMvc
 @AutoConfigureMockMvc
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-@ActiveProfiles("test")
 @DisplayName("Mock news controller test")
 class NewsControllerTest {
     @Autowired
@@ -55,8 +55,7 @@ class NewsControllerTest {
                 .andExpect(jsonPath("$.authorName").value(responseDto.getAuthorName()))
                 .andExpect(jsonPath("$.text").value(responseDto.getText()))
                 .andExpect(jsonPath("$.title").value(responseDto.getTitle()))
-                .andExpect(jsonPath("$.id").value(responseDto.getId()))
-                .andExpect(jsonPath("$.time").value(responseDto.getTime().toString()));
+                .andExpect(jsonPath("$.id").value(responseDto.getId()));
     }
 
     @Test

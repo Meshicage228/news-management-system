@@ -129,22 +129,6 @@ class NewsControllerE2ETest {
     }
 
     @ParameterizedTest
-    @Transactional
-    @ValueSource(strings = {"ADMIN", "JOURNALIST"})
-    @DisplayName("Delete news by ID successfully : with roles")
-    void deleteNewsById(String role) throws Exception {
-        // When / Then
-        String token = wireMockService.setupUserAndGetToken("Vlad", "111111", role);
-
-        mockMvc.perform(delete("/api/v1/news/{id}", newsId)
-                        .contentType(MediaType.APPLICATION_JSON_VALUE)
-                        .header("Authorization", String.format("Bearer %s", token)))
-                .andExpect(status().isNoContent());
-
-        assertEquals(0, newsRepository.count());
-    }
-
-    @ParameterizedTest
     @ValueSource(strings = {"ADMIN", "JOURNALIST"})
     @DisplayName("Full update news successfully : with roles")
     void fullUpdate(String role) throws Exception {

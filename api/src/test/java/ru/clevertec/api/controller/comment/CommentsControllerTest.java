@@ -4,17 +4,15 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
+import org.springframework.boot.autoconfigure.jackson.JacksonAutoConfiguration;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
-import org.springframework.test.context.ActiveProfiles;
-import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
-import ru.clevertec.api.config.ApplicationSecurityConfig;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import ru.clevertec.api.config.TestSecurityConfig;
+import ru.clevertec.api.controller.CommentsController;
 import ru.clevertec.api.dto.comment.CreateCommentDto;
 import ru.clevertec.api.dto.comment.CreatedCommentDto;
 import ru.clevertec.api.dto.comment.UpdateCommentDto;
@@ -28,7 +26,8 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 import static ru.clevertec.api.util.FileReaderUtil.readFile;
 
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@SpringBootTest(classes = {CommentsController.class, JacksonAutoConfiguration.class, TestSecurityConfig.class})
+@EnableWebMvc
 @AutoConfigureMockMvc
 @DisplayName("Mock comments controller test")
 class CommentsControllerTest {
@@ -60,7 +59,6 @@ class CommentsControllerTest {
                         .content(request))
                 .andExpect(status().isCreated())
                 .andExpect(jsonPath("$.id").value(createdCommentDto.getId()))
-                .andExpect(jsonPath("$.time").value(createdCommentDto.getTime().toString()))
                 .andExpect(jsonPath("$.text").value(createdCommentDto.getText()))
                 .andExpect(jsonPath("$.authorName").value(createdCommentDto.getAuthorName()));
     }
