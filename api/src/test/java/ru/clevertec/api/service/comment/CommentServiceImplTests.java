@@ -15,7 +15,7 @@ import ru.clevertec.api.entity.CommentEntity;
 import ru.clevertec.api.repository.CommentsRepository;
 import ru.clevertec.api.service.impl.CommentServiceImpl;
 import ru.clevertec.api.service.impl.cache.CacheCommentService;
-import ru.clevertec.api.util.PersistencePostgreSQLTests;
+import ru.clevertec.api.util.annotation.PersistencePostgreSQLTests;
 
 import java.util.Optional;
 

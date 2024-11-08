@@ -1,0 +1,34 @@
+{
+  "id": 1,
+  "title": "Test news",
+  "text": "News test text",
+  "time": "2024-12-10",
+  "authorName": "Vlad",
+  "comments": {
+    "content": [
+      {
+        "id": 1,
+        "time": "2024-11-07",
+        "text": "Test commentary",
+        "authorName": "Vlad"
+      }
+    ],
+    "pageable": {
+      "pageNumber": 0,
+      "pageSize": 10,
+      "sort": [],
+      "offset": 0,
+      "paged": true,
+      "unpaged": false
+    },
+    "last": true,
+    "totalPages": 0,
+    "totalElements": 0,
+    "first": true,
+    "numberOfElements": 0,
+    "size": 10,
+    "number": 0,
+    "sort": [],
+    "empty": true
+  }
+}

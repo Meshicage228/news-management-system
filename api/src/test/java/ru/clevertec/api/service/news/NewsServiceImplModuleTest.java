@@ -62,9 +62,9 @@ class NewsServiceImplModuleTest {
     public void setUp() {
         pageNo = 1;
         pageSize = 10;
-        filter = new NewsFilter();
+        filter = NewsFilter.builder().build();
         newsId = 1L;
-        commentFilter = new CommentFilter();
+        commentFilter = CommentFilter.builder().build();
         commentFilter.setNewsId(newsId);
         createNewsDto = new CreateNewsDto();
         updateNewsDto = new UpdateNewsDto();

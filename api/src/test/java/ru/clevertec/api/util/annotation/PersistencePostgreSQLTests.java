@@ -1,4 +1,4 @@
-package ru.clevertec.api.util;
+package ru.clevertec.api.util.annotation;
 
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.jdbc.Sql;

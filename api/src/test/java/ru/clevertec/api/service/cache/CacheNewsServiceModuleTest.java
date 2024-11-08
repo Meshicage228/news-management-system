@@ -140,7 +140,7 @@ class CacheNewsServiceModuleTest {
     @DisplayName("Get paginated news successfully")
     public void testGetPaginatedNews() {
         // Given
-        NewsFilter newsFilter = new NewsFilter();
+        NewsFilter newsFilter = NewsFilter.builder().build();
         newsFilter.setText("sample text");
         newsFilter.setTitle("sample title");
         Page<NewsEntity> newsPage = new PageImpl<>(List.of(newsEntity));

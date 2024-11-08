@@ -120,7 +120,7 @@ class CacheCommentServiceTest {
     @DisplayName("Get paginated comments successfully")
     public void testGetPaginatedComments() {
         // Given
-        CommentFilter commentFilter = new CommentFilter();
+        CommentFilter commentFilter = CommentFilter.builder().build();
         commentFilter.setNewsId(1L);
         Page<CommentEntity> commentPage = new PageImpl<>(List.of(commentEntity));
 

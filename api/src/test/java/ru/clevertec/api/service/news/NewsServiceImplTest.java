@@ -12,7 +12,7 @@ import ru.clevertec.api.dto.news.*;
 import ru.clevertec.api.entity.NewsEntity;
 import ru.clevertec.api.repository.NewsRepository;
 import ru.clevertec.api.service.impl.NewsServiceImpl;
-import ru.clevertec.api.util.PersistencePostgreSQLTests;
+import ru.clevertec.api.util.annotation.PersistencePostgreSQLTests;
 
 import java.util.Optional;
 
