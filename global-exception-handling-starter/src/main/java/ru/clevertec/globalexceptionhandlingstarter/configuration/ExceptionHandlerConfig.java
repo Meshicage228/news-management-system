@@ -1,7 +1,10 @@
 package ru.clevertec.globalexceptionhandlingstarter.configuration;
 
+import feign.codec.ErrorDecoder;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import ru.clevertec.globalexceptionhandlingstarter.clients.FeignExceptionDecoder;
 import ru.clevertec.globalexceptionhandlingstarter.handler.AppExceptionHandler;
 
 /**
@@ -9,6 +12,13 @@ import ru.clevertec.globalexceptionhandlingstarter.handler.AppExceptionHandler;
  */
 @Configuration
 public class ExceptionHandlerConfig {
+    /**
+    * Декодер, обрабатывающий Feign исключения с клиентской части
+    * */
+    @Bean
+    public ErrorDecoder feignExceptionDecoder(){
+        return new FeignExceptionDecoder();
+    }
 
     /**
      * Глобальный обработчик исключений для контроллеров REST.
