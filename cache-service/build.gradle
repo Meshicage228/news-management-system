@@ -26,6 +26,10 @@ dependencies {
     compileOnly "org.projectlombok:lombok"
     annotationProcessor "org.projectlombok:lombok"
     annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
+
+    testImplementation 'org.mockito:mockito-junit-jupiter'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
 }
 
 tasks.named('test') {
