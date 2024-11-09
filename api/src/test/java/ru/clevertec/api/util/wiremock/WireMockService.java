@@ -9,7 +9,6 @@ import ru.clevertec.api.service.impl.TokenServiceImpl;
 
 import static ru.clevertec.api.util.FileReaderUtil.readFile;
 
-@TestComponent
 public class WireMockService {
     private final TokenServiceImpl tokenService;
 

@@ -14,7 +14,9 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
+import ru.clevertec.api.ApiApplication;
 import ru.clevertec.api.config.TestSecurityConfig;
+import ru.clevertec.api.config.WireMockConfig;
 import ru.clevertec.api.dto.filter.CommentFilter;
 import ru.clevertec.api.dto.filter.NewsFilter;
 import ru.clevertec.api.dto.news.CreatedNewsDto;
@@ -35,7 +37,8 @@ import static ru.clevertec.api.util.FileReaderUtil.readFile;
 
 @WireMockTest(httpPort = 7777)
 @ActiveProfiles("test")
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT,
+        classes = {ApiApplication.class, WireMockConfig.class})
 @PersistencePostgreSQLTests
 @AutoConfigureMockMvc
 class NewsControllerE2ETest {
