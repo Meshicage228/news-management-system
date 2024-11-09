@@ -4,8 +4,12 @@ plugins {
     id 'io.spring.dependency-management' version '1.1.6'
 }
 
+group = "ru.clevertec"
+version = "0.0.1"
+
 repositories {
     mavenCentral()
+    mavenLocal()
 }
 
 ext {
@@ -45,8 +49,8 @@ dependencies {
     implementation "org.springframework.boot:spring-boot-starter-json"
 
     // Submodules
-    implementation project(':global-exception-handling-starter')
-    implementation project(':logging-starter')
+    implementation 'ru.clevertec:global-exception-handling-starter:0.0.1'
+    implementation 'ru.clevertec:logging-starter:0.0.1'
     implementation project(':cache-service')
 
     // Doc

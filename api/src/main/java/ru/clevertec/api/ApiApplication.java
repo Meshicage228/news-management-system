@@ -7,7 +7,7 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
-@ComponentScan(basePackages = {"ru.clevertec.api", "ru.clevertec.globalexceptionhandlingstarter", "ru.clevertec.loggingstarter", "ru.clevertec.cacheservice"})
+@ComponentScan(basePackages = {"ru.clevertec.api", "ru.clevertec.cacheservice"})
 @EnableCaching
 @EnableFeignClients(basePackages = "ru.clevertec.api.clients")
 public class ApiApplication {

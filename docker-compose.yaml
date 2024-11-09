@@ -1,7 +1,6 @@
-version: '3.8'
-
+version: '3'
 services:
-  main-api:
+  main-postgresql:
     image: 'postgres:14.3-alpine'
     container_name: cleverDbApi
     restart: always
@@ -11,8 +10,37 @@ services:
       POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
       POSTGRES_DB: ${POSTGRES_DB_TITLE}
-  redis:
-    image: redis:latest
-    restart: always
+    healthcheck:
+      test: [ "CMD", "pg_isready", "-U", "${POSTGRES_USER}" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+  news-api:
+    container_name: News-api
+    profiles:
+      - dev
     ports:
-      - "${REDIS_LOCAL_PORT}:{REDIS_DOCKER_PORT}"
+      - "8080:8081"
+    build:
+      context: /api
+      dockerfile: Dockerfile
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://main-postgresql:${POSTGRES_DOCKER_PORT}/${POSTGRES_DB_TITLE}
+      SPRING_DATASOURCE_USERNAME: ${POSTGRES_USER}
+      SPRING_DATASOURCE_PASSWORD: ${POSTGRES_PASSWORD}
+    depends_on:
+      - main-postgresql
+      - user-service
+  user-service:
+    container_name: User-microservice
+    ports:
+      - "8081:8080"
+    build:
+      context: /user-service
+      dockerfile: Dockerfile
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://main-postgresql:${POSTGRES_DOCKER_PORT}/${POSTGRES_DB_TITLE}
+      SPRING_DATASOURCE_USERNAME: ${POSTGRES_USER}
+      SPRING_DATASOURCE_PASSWORD: ${POSTGRES_PASSWORD}
+    depends_on:
+      - main-postgresql
