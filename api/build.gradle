@@ -51,7 +51,7 @@ dependencies {
     // Submodules
     implementation 'ru.clevertec:global-exception-handling-starter:0.0.1'
     implementation 'ru.clevertec:logging-starter:0.0.1'
-    implementation project(':cache-service')
+    implementation 'ru.clevertec:cache-starter:0.0.1'
 
     // Doc
     implementation "org.springdoc:springdoc-openapi-starter-webmvc-ui:${springdoc}"
