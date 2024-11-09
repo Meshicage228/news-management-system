@@ -1,4 +1,5 @@
-version: '3'
+version: '3.8'
+
 services:
   main-postgresql:
     image: 'postgres:14.3-alpine'
@@ -15,12 +16,11 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
-  news-api:
+
+  api:
     container_name: News-api
-    profiles:
-      - dev
     ports:
-      - "8080:8081"
+      - "8083:8082"
     build:
       context: /api
       dockerfile: Dockerfile
@@ -28,9 +28,12 @@ services:
       SPRING_DATASOURCE_URL: jdbc:postgresql://main-postgresql:${POSTGRES_DOCKER_PORT}/${POSTGRES_DB_TITLE}
       SPRING_DATASOURCE_USERNAME: ${POSTGRES_USER}
       SPRING_DATASOURCE_PASSWORD: ${POSTGRES_PASSWORD}
+      APP_CLIENTS_USER_CLIENT_NAME: userClient
+      APP_CLIENTS_USER_URL: http://user-service:8080
+      APP_CLIENTS_USER_CLIENT_PATH: /api/v1/users
     depends_on:
       - main-postgresql
-      - user-service
+
   user-service:
     container_name: User-microservice
     ports:
