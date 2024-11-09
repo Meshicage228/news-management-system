@@ -23,8 +23,8 @@ public class UserController {
     }
 
     @GetMapping("/login")
-    public UserResponseDto getUser(@RequestParam(value = "username") @NotBlank(message = "Предоставьте логин") String username,
-                                   @RequestParam(value = "password") @NotBlank(message = "Предоставьте пароль") String password) {
+    public UserResponseDto getUser(@RequestParam(value = "username") @NotBlank(message = "Provide login") String username,
+                                   @RequestParam(value = "password") @NotBlank(message = "Provide password") String password) {
         return userService.login(username, password);
     }
 }
