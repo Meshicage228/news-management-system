@@ -2,7 +2,6 @@ package ru.clevertec.api.controller.news;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.tomakehurst.wiremock.junit5.WireMockTest;
-import jakarta.transaction.Transactional;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -11,9 +10,11 @@ import org.junit.jupiter.params.provider.ValueSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
+import ru.clevertec.api.config.TestSecurityConfig;
 import ru.clevertec.api.dto.filter.CommentFilter;
 import ru.clevertec.api.dto.filter.NewsFilter;
 import ru.clevertec.api.dto.news.CreatedNewsDto;
@@ -26,7 +27,6 @@ import ru.clevertec.api.util.wiremock.WireMockService;
 
 import java.util.stream.Stream;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.patch;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
@@ -46,6 +46,9 @@ class NewsControllerE2ETest {
 
     @Autowired
     private ObjectMapper objectMapper;
+
+    @MockBean
+    private TestSecurityConfig testSecurityConfig;
 
     @Autowired
     private NewsRepository newsRepository;

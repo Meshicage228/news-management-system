@@ -11,8 +11,8 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-import ru.clevertec.api.config.TestSecurityConfig;
 import ru.clevertec.api.controller.NewsController;
+import ru.clevertec.api.config.TestSecurityConfig;
 import ru.clevertec.api.dto.news.*;
 import ru.clevertec.api.service.impl.NewsServiceImpl;
 

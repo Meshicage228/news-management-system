@@ -8,9 +8,11 @@ import org.junit.jupiter.params.provider.ValueSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
+import ru.clevertec.api.config.TestSecurityConfig;
 import ru.clevertec.api.dto.comment.CreatedCommentDto;
 import ru.clevertec.api.repository.CommentsRepository;
 import ru.clevertec.api.util.annotation.PersistencePostgreSQLTests;
@@ -39,6 +41,9 @@ class CommentsControllerE2ETest {
 
     @Autowired
     private CommentsRepository commentsRepository;
+
+    @MockBean
+    private TestSecurityConfig testSecurityConfig;
 
     @Autowired
     private WireMockService wireMockService;
