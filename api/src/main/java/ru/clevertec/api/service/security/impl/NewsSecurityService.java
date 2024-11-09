@@ -1,6 +1,5 @@
 package ru.clevertec.api.service.security.impl;
 
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import ru.clevertec.api.service.security.AbstractSecurityService;
 import ru.clevertec.api.service.security.strategy.AdminAuthorizationStrategy;
@@ -12,7 +11,6 @@ import java.util.Map;
  * Сервис для управления авторизацией новостей, наследующийся от {@link AbstractSecurityService}.
  */
 @Component
-@RequiredArgsConstructor
 public class NewsSecurityService extends AbstractSecurityService {
 
     /**
