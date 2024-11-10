@@ -32,7 +32,7 @@ public class LRUCacheManager extends AbstractCacheManager {
      * @return Коллекция кэшей, загруженных из конфигурации.
      */
     @Override
-    protected Collection<? extends Cache> loadCaches() {
+    public Collection<? extends Cache> loadCaches() {
         return cacheProperties.getCacheNames()
                 .stream()
                 .map(this::getMissingCache)
@@ -46,7 +46,7 @@ public class LRUCacheManager extends AbstractCacheManager {
      * @return Новый экземпляр {@link LRUCache} с заданным именем и размером.
      */
     @Override
-    protected Cache getMissingCache(String name) {
+    public Cache getMissingCache(String name) {
         return new LRUCache(true, name, lruCacheProperties.getSize());
     }
 }
