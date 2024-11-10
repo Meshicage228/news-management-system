@@ -24,6 +24,8 @@ ext {
 	set('mapstructVersion', '1.5.3.Final')
 	set('lombokMapstructBinding', '0.2.0')
 	set('springCloudVersion', '2023.0.3')
+	set('springdoc', '2.6.0')
+	set('jackson', '2.18.1')
 }
 
 dependencies {
@@ -41,6 +43,10 @@ dependencies {
 
 	// exception
 	implementation 'ru.clevertec:global-exception-handling-starter:0.0.1'
+
+	// Doc
+	implementation "org.springdoc:springdoc-openapi-starter-webmvc-ui:${springdoc}"
+
 	// Utils
 	implementation group: 'com.fasterxml.jackson.datatype', name: 'jackson-datatype-jsr310', version: '2.18.1'
 	implementation "org.mapstruct:mapstruct:${mapstructVersion}"
