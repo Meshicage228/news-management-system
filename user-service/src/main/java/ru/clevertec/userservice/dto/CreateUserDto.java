@@ -9,17 +9,32 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import ru.clevertec.userservice.enums.Role;
 
+/**
+ * DTO для создания нового пользователя.
+ */
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
 public class CreateUserDto {
-    @NotBlank(message = "Provide login")
-    @Size(message = "Login should be from 3 symbols", min = 3)
+
+    /**
+     * Имя пользователя.
+     */
+    @NotBlank(message = "Укажите логин")
+    @Size(message = "Логин должен содержать от 3 символов", min = 3)
     private String username;
-    @NotBlank(message = "Introduce password")
-    @Size(message = "Password from 4 to 16 symbols", min = 4, max = 16)
+
+    /**
+     * Пароль пользователя.
+     */
+    @NotBlank(message = "Укажите пароль")
+    @Size(message = "Пароль должен содержать от 4 до 16 символов", min = 4, max = 16)
     private String password;
-    @NotNull(message = "Provide role")
+
+    /**
+     * Роль, назначенная пользователю.
+     */
+    @NotNull(message = "Укажите роль")
     private Role role;
 }
