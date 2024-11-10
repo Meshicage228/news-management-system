@@ -5,7 +5,7 @@
 
     <changeSet id="create-roles" author="vlad.zherko">
         <createTable tableName="roles" schemaName="public">
-            <column name="id" type="INT" remarks="role ID" autoIncrement="true">
+            <column name="id" type="INT" remarks="role ID" autoIncrement="true" startWith="1">
                 <constraints primaryKey="true" nullable="false" unique="true"/>
             </column>
             <column name="role" type="VARCHAR(20)" remarks="role title">

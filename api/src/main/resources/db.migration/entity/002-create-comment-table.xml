@@ -5,7 +5,7 @@
 
     <changeSet id="create-comments" author="vlad.zherko">
         <createTable tableName="comments" schemaName="public">
-            <column name="id" type="BIGINT" remarks="comment ID" autoIncrement="true">
+            <column name="id" type="BIGINT" remarks="comment ID" autoIncrement="true" startWith="1">
                 <constraints primaryKey="true" nullable="false" unique="true"/>
             </column>
             <column name="creation_date" type="DATE" remarks="comment creation date">

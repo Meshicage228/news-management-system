@@ -5,7 +5,7 @@
 
     <changeSet id="create-news" author="vlad.zherko">
         <createTable tableName="news" schemaName="public">
-            <column name="id" type="BIGINT" remarks="news ID" autoIncrement="true">
+            <column name="id" type="BIGINT" remarks="news ID" autoIncrement="true" startWith="1">
                 <constraints primaryKey="true" nullable="false" unique="true"/>
             </column>
             <column name="news_title" type="VARCHAR(50)" remarks="news title">

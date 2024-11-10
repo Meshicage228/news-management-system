@@ -5,15 +5,12 @@
 
     <changeSet id="insert-role-data" author="vlad.zherko">
         <insert tableName="roles">
-            <column name="id">1</column>
             <column name="role">ADMIN</column>
         </insert>
         <insert tableName="roles">
-            <column name="id">2</column>
             <column name="role">JOURNALIST</column>
         </insert>
         <insert tableName="roles">
-            <column name="id">3</column>
             <column name="role">SUBSCRIBER</column>
         </insert>
     </changeSet>
