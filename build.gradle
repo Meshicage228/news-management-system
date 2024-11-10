@@ -5,11 +5,6 @@ allprojects {
     }
 }
 
-ext {
-    set('springCloudVersion', '2023.0.3')
-    set('liquibaseVersion', '4.27.0')
-}
-
 subprojects {
     apply plugin: 'java'
 
@@ -19,5 +14,33 @@ subprojects {
         set('mapstructVersion', '1.5.3.Final')
         set('lombokMapstructBinding', '0.2.0')
         set('springCloudVersion', '2023.0.3')
+        set('springBootVersion', '3.3.5')
+        set('jsr310', '2.18.1')
+    }
+}
+
+tasks.register('publishStarters') {
+    group = 'application-custom'
+    description = 'Publishes starters to local maven repository'
+
+    finalizedBy {
+        subprojects.findAll().stream()
+        .filter(pr -> pr.name.endsWith('-starter'))
+        .map(pr -> pr.tasks.named('publishToMavenLocal').get())
+        .toArray()
+    }
+}
+
+tasks.register("buildApplicationBootJarsAndPublishStarters") {
+    group = 'application-custom'
+    description = 'Build necessary bootJars for docker and publishes starters'
+    dependsOn 'publishStarters'
+
+    finalizedBy {
+        subprojects.findAll().stream()
+                .filter(pr -> !pr.name.endsWith("-starter"))
+                .filter(pr -> pr.tasks.findByName('bootJar') != null)
+                .map(pr -> pr.tasks.named('bootJar').get())
+                .toArray()
     }
 }
