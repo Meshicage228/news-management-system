@@ -21,6 +21,7 @@ ext {
     set('lombokMapstructBinding', '0.2.0')
     set('springdoc', '2.6.0')
     set('jwtwebtoken', '0.12.6')
+    set('jackson', '2.18.1')
 }
 
 dependencies {
@@ -57,7 +58,7 @@ dependencies {
     implementation "org.springdoc:springdoc-openapi-starter-webmvc-ui:${springdoc}"
 
     // Utils
-    implementation group: 'com.fasterxml.jackson.datatype', name: 'jackson-datatype-jsr310', version: '2.18.1'
+    implementation "com.fasterxml.jackson.datatype:jackson-datatype-jsr310:${jackson}"
     implementation "org.mapstruct:mapstruct:${mapstructVersion}"
     annotationProcessor "org.projectlombok:lombok-mapstruct-binding:${lombokMapstructBinding}"
     annotationProcessor "org.mapstruct:mapstruct-processor:${mapstructVersion}"

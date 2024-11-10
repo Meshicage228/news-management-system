@@ -1,9 +1,15 @@
 version: '3.8'
 
 services:
+  redis-cache:
+    container_name: redis-cache
+    image: redis:latest
+    restart: always
+    ports:
+      - "${REDIS_LOCAL_PORT}:${REDIS_DOCKER_PORT}"
   main-postgresql:
     image: 'postgres:14.3-alpine'
-    container_name: cleverDbApi
+    container_name: main-api-db
     restart: always
     ports:
       - ${POSTGRES_LOCAL_PORT}:${POSTGRES_DOCKER_PORT}
@@ -16,7 +22,6 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
-
   api:
     container_name: News-api
     ports:
@@ -49,3 +54,4 @@ services:
       SPRING_DATASOURCE_PASSWORD: ${POSTGRES_PASSWORD}
     depends_on:
       - main-postgresql
+      - redis-cache
