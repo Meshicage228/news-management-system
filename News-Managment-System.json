@@ -1,0 +1,534 @@
+{
+	"info": {
+		"_postman_id": "00c6d12e-713e-4bd9-b20c-127a6d32a81d",
+		"name": "News-Managment-System",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29463280"
+	},
+	"item": [
+		{
+			"name": "newsActions",
+			"item": [
+				{
+					"name": "get",
+					"item": [
+						{
+							"name": "GetAllNewsShortInfo",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "127.0.0.1:8083/api/v1/news?page=0&size=3",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8083",
+									"path": [
+										"api",
+										"v1",
+										"news"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "0"
+										},
+										{
+											"key": "size",
+											"value": "3"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getSingleNews",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"news_id\" : 1\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "127.0.0.1:8083/api/v1/news/comments",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8083",
+									"path": [
+										"api",
+										"v1",
+										"news",
+										"comments"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "create",
+					"item": [
+						{
+							"name": "CreateNews",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "token",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title\" : \"created title\",\r\n    \"text\" : \"created text\",\r\n    \"author_name\" : \"Vlad\"  \r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "127.0.0.1:8083/api/v1/news",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8083",
+									"path": [
+										"api",
+										"v1",
+										"news"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "updates",
+					"item": [
+						{
+							"name": "fullUpdate",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "token",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title\" : \"Full title updated\",\r\n    \"text\" : \"Full text updated\",\r\n    \"author_name\" : \"Author updated\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "127.0.0.1:8083/api/v1/news/2",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8083",
+									"path": [
+										"api",
+										"v1",
+										"news",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "partNewsUpdate",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "token",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"text\" : \"Text patch updated\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "127.0.0.1:8083/api/v1/news/1",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8083",
+									"path": [
+										"api",
+										"v1",
+										"news",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "delete",
+					"item": [
+						{
+							"name": "DeleteNews",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "token",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "127.0.0.1:8083/api/v1/news/15",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8083",
+									"path": [
+										"api",
+										"v1",
+										"news",
+										"15"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "commentActions",
+			"item": [
+				{
+					"name": "leaveComment",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "token",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"text\" : \"Created comment\",\r\n    \"author_name\" : \"Vlad\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:8083/api/v1/news/10/comments",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8083",
+							"path": [
+								"api",
+								"v1",
+								"news",
+								"10",
+								"comments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "partCommentUpdate",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "token",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"news_id\" : 10,\r\n    \"text\" : \"Updated text\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:8083/api/v1/news/10/comments/22",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8083",
+							"path": [
+								"api",
+								"v1",
+								"news",
+								"10",
+								"comments",
+								"22"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteComment",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "token",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:8083/api/v1/news/10/comments/17",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8083",
+							"path": [
+								"api",
+								"v1",
+								"news",
+								"10",
+								"comments",
+								"17"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "userActions",
+			"item": [
+				{
+					"name": "registration",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\" : \"NewUser\",\r\n    \"password\" : \"532325\",\r\n    \"role\" : \"ADMIN\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:8081/api/v1/users",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"v1",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "username",
+									"value": "Vlad",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "111111",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "127.0.0.1:8081/api/v1/users/login",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "token",
+			"item": [
+				{
+					"name": "GetJwt",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\" : \"Vlad\",\r\n    \"password\" : \"111111\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:8083/tokens",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8083",
+							"path": [
+								"tokens"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
