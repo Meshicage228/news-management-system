@@ -23,6 +23,7 @@ services:
       timeout: 5s
       retries: 5
   api:
+    restart: on-failure
     container_name: News-api
     ports:
       - "8083:8082"
@@ -38,10 +39,14 @@ services:
       APP_CLIENTS_USER_CLIENT_PATH: /api/v1/users
       APP_CACHE_TYPE: LRU
       APP_CACHE_SIZE: 120
+      SPRING_DATA_REDIS_HOST: redis-cache
+      SPRING_DATA_REDIS_PORT: 6379
     depends_on:
-      - user-service
+      - redis-cache
+      - main-postgresql
 
   user-service:
+    restart: on-failure
     container_name: User-microservice
     ports:
       - "8081:8080"

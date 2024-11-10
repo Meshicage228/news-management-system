@@ -72,7 +72,7 @@ public class CacheConfig {
 
     @Bean
     @ConditionalOnMissingBean(value = {LFUCacheManager.class, LRUCacheManager.class, CacheManager.class})
-    @ConditionalOnProperty(prefix = "spring.cache", name = "type", havingValue = "redis", matchIfMissing = true)
+    @ConditionalOnProperty(prefix = "app.cache", name = "type", havingValue = "REDIS")
     public RedisCacheConfiguration defaultCacheConfig(CacheProperties properties, ObjectMapper objectMapper) {
         CacheProperties.Redis redisProperties = properties.getRedis();
         ObjectMapper redisObjectMapper = objectMapper.copy()

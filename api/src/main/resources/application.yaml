@@ -13,5 +13,5 @@ app:
       url: 127.0.0.1:8081
       client-path: /api/v1/users
   cache:
-    type: LFU
+    type: REDIS
     size: 120
