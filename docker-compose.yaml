@@ -31,8 +31,10 @@ services:
       APP_CLIENTS_USER_CLIENT_NAME: userClient
       APP_CLIENTS_USER_URL: http://user-service:8080
       APP_CLIENTS_USER_CLIENT_PATH: /api/v1/users
+      APP_CACHE_TYPE: LRU
+      APP_CACHE_SIZE: 120
     depends_on:
-      - main-postgresql
+      - user-service
 
   user-service:
     container_name: User-microservice
