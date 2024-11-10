@@ -14,16 +14,6 @@ java {
     }
 }
 
-repositories {
-    mavenCentral()
-    mavenLocal()
-}
-
-ext {
-    set('lombokVersion', '1.18.32')
-    set('jsr310', '2.18.1')
-}
-
 dependencies {
     api "org.springframework.boot:spring-boot-starter"
     api "org.springframework.boot:spring-boot-starter-web"
