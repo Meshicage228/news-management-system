@@ -1,0 +1,43 @@
+plugins {
+    id 'java-library'
+    id 'maven-publish'
+    id 'org.springframework.boot' version '3.3.5'
+    id 'io.spring.dependency-management' version '1.1.6'
+}
+
+group = 'ru.clevertec'
+version = '0.0.1'
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
+}
+
+repositories {
+    mavenCentral()
+    mavenLocal()
+}
+
+dependencies {
+    api 'org.springframework.boot:spring-boot-starter-aop:3.3.5'
+    api 'org.springframework.boot:spring-boot-starter:3.3.5'
+
+    compileOnly "org.projectlombok:lombok"
+    annotationProcessor "org.projectlombok:lombok"
+
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+    annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+        }
+    }
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}

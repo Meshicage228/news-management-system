@@ -1,0 +1,11 @@
+server:
+  port: 8080
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    password: 123123
+    username: cleverMan
+    url: jdbc:postgresql://localhost:5430/cleverDbApi
+  liquibase:
+    enabled: true
+    change-log: db.migration/user-changelog.xml

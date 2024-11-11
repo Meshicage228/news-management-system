@@ -1,0 +1,50 @@
+version: '3.8'
+
+services:
+  redis-cache:
+    container_name: redis-cache
+    image: redis:latest
+    restart: always
+    ports:
+      - "${REDIS_LOCAL_PORT}:${REDIS_DOCKER_PORT}"
+  main-postgresql:
+    image: 'postgres:14.3-alpine'
+    container_name: main-api-db
+    restart: always
+    ports:
+      - ${POSTGRES_LOCAL_PORT}:${POSTGRES_DOCKER_PORT}
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB_TITLE}
+    healthcheck:
+      test: [ "CMD", "pg_isready", "-U", "${POSTGRES_USER}" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+  api:
+    restart: on-failure
+    container_name: News-api
+    ports:
+      - "8083:8082"
+    build:
+      context: /api
+      dockerfile: Dockerfile
+    environment:
+      SPRING_PROFILES_ACTIVE: prod
+    depends_on:
+      - redis-cache
+      - main-postgresql
+  user-service:
+    restart: on-failure
+    container_name: User-microservice
+    ports:
+      - "8081:8080"
+    build:
+      context: /user-service
+      dockerfile: Dockerfile
+    environment:
+      SPRING_PROFILES_ACTIVE: prod
+    depends_on:
+      - main-postgresql
+      - redis-cache

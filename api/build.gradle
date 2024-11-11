@@ -1,0 +1,104 @@
+plugins {
+    id 'java'
+    id 'jacoco'
+    id 'org.springframework.boot' version '3.3.5'
+    id 'io.spring.dependency-management' version '1.1.6'
+}
+
+group = "ru.clevertec"
+version = "0.0.1"
+
+repositories {
+    mavenCentral()
+    mavenLocal()
+}
+
+ext {
+    set('liquibase', '4.27.0')
+    set('springCloudVersion', '2023.0.3')
+    set('wiremockVersion', '3.9.2')
+    set('lombokVersion', '1.18.32')
+    set('mapstructVersion', '1.5.3.Final')
+    set('lombokMapstructBinding', '0.2.0')
+    set('springdoc', '2.6.0')
+    set('jwtwebtoken', '0.12.6')
+    set('jackson', '2.18.1')
+}
+
+dependencies {
+
+    // Spring
+    implementation "org.springframework.boot:spring-boot-starter-web"
+    implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    implementation 'org.springframework.boot:spring-boot-starter-oauth2-resource-server'
+    implementation 'org.springframework.boot:spring-boot-starter-aop'
+
+    // Jwt
+    implementation "io.jsonwebtoken:jjwt-jackson:${jwtwebtoken}"
+    implementation "io.jsonwebtoken:jjwt-impl:${jwtwebtoken}"
+    implementation "io.jsonwebtoken:jjwt-api:${jwtwebtoken}"
+
+    // Db
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    runtimeOnly 'org.postgresql:postgresql'
+    implementation "org.liquibase:liquibase-core:${liquibase}"
+
+    // Cache
+    implementation "org.springframework.boot:spring-boot-starter-cache"
+    implementation "org.springframework.boot:spring-boot-starter-data-redis"
+    implementation "org.springframework.boot:spring-boot-starter-json"
+
+    // Submodules
+    implementation 'ru.clevertec:global-exception-handling-starter:0.0.1'
+    implementation 'ru.clevertec:logging-starter:0.0.1'
+    implementation 'ru.clevertec:cache-starter:0.0.1'
+
+    // Doc
+    implementation "org.springdoc:springdoc-openapi-starter-webmvc-ui:${springdoc}"
+
+    // Utils
+    implementation "com.fasterxml.jackson.datatype:jackson-datatype-jsr310:${jackson}"
+    implementation "org.mapstruct:mapstruct:${mapstructVersion}"
+    annotationProcessor "org.projectlombok:lombok-mapstruct-binding:${lombokMapstructBinding}"
+    annotationProcessor "org.mapstruct:mapstruct-processor:${mapstructVersion}"
+    compileOnly "org.projectlombok:lombok:${lombokVersion}"
+    annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
+
+    // Tests
+    testImplementation "org.wiremock:wiremock-jetty12:${wiremockVersion}"
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.testcontainers:junit-jupiter'
+    testImplementation 'org.springframework.boot:spring-boot-testcontainers'
+    testImplementation 'org.testcontainers:postgresql'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+dependencyManagement {
+    imports {
+        mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+    }
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
+
+test {
+    finalizedBy jacocoTestReport
+}
+jacocoTestReport {
+    dependsOn test
+}
+
+compileJava {
+    options.compilerArgs = [
+            '-Amapstruct.defaultComponentModel=spring'
+    ]
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+    options.compilerArgs << "-parameters"
+}

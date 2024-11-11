@@ -1,0 +1,14 @@
+spring:
+  liquibase:
+    enabled: false
+app:
+  token:
+    expire-time: 40000
+  clients:
+    user:
+      client-name: userClient
+      url: 127.0.0.1:7777
+      client-path: /api/v1/users
+  cache:
+    type: LRU
+    size: 120

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog logicalFilePath="db.changelog-master.xml" xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <changeSet id="insert-user-data" author="vlad.zherko">
+        <insert tableName="users">
+            <column name="username">Vlad</column>
+            <column name="password">$2a$10$bubPP66FrlTdC8BXF0rcrehfqZr5X8PjTHS5M1pJQFBquIWp7lWua</column>
+<!--            111111-->
+            <column name="role_id">1</column>
+        </insert>
+        <insert tableName="users">
+            <column name="username">Lolita</column>
+            <column name="password">$2a$10$3iIpTr6TyZ8b7ELsmn90au4/uqIsOSR6/i5PCaNr7/lo2dK2qXxke</column>
+            <!--            123123-->
+            <column name="role_id">3</column>
+        </insert>
+        <insert tableName="users">
+            <column name="username">Tosha</column>
+            <column name="password">$2a$10$s1xfFGnZ2QbkTo8O/wxjEO0zySJsZ6dX278HFcGkJYPpOOXkGtlCW</column>
+            <!--            1234-->
+            <column name="role_id">2</column>
+        </insert>
+    </changeSet>
+</databaseChangeLog>

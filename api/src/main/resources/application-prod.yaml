@@ -1,0 +1,15 @@
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    password: 123123
+    username: cleverMan
+    url: jdbc:postgresql://main-postgresql:5432/cleverDbApi
+app:
+  clients:
+    user:
+      client-name: userClient
+      url: user-service:8080
+      client-path: /api/v1/users
+  cache:
+    type: LRU
+    size: 120

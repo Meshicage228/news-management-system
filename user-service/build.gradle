@@ -1,0 +1,89 @@
+plugins {
+	id 'java'
+	id 'jacoco'
+	id 'org.springframework.boot' version '3.3.5'
+	id 'io.spring.dependency-management' version '1.1.6'
+}
+
+group = 'ru.clevertec'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(21)
+	}
+}
+
+repositories {
+	mavenCentral()
+	mavenLocal()
+}
+
+ext {
+	set('liquibase', '4.27.0')
+	set('lombokVersion', '1.18.32')
+	set('mapstructVersion', '1.5.3.Final')
+	set('lombokMapstructBinding', '0.2.0')
+	set('springCloudVersion', '2023.0.3')
+	set('springdoc', '2.6.0')
+	set('jackson', '2.18.1')
+}
+
+dependencies {
+
+	// Spring
+	implementation "org.springframework.boot:spring-boot-starter"
+	implementation "org.springframework.boot:spring-boot-starter-web"
+	implementation 'org.springframework.boot:spring-boot-starter-validation'
+	implementation 'org.springframework.security:spring-security-crypto'
+	implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
+	// Db
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	runtimeOnly 'org.postgresql:postgresql'
+	implementation "org.liquibase:liquibase-core:${liquibase}"
+
+	// exception
+	implementation 'ru.clevertec:global-exception-handling-starter:0.0.1'
+
+	// Doc
+	implementation "org.springdoc:springdoc-openapi-starter-webmvc-ui:${springdoc}"
+
+	// Utils
+	implementation group: 'com.fasterxml.jackson.datatype', name: 'jackson-datatype-jsr310', version: '2.18.1'
+	implementation "org.mapstruct:mapstruct:${mapstructVersion}"
+	annotationProcessor "org.projectlombok:lombok-mapstruct-binding:${lombokMapstructBinding}"
+	annotationProcessor "org.mapstruct:mapstruct-processor:${mapstructVersion}"
+	compileOnly "org.projectlombok:lombok:${lombokVersion}"
+	annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
+
+	// Tests
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'org.testcontainers:junit-jupiter'
+	testImplementation 'org.springframework.boot:spring-boot-testcontainers'
+	testImplementation 'org.testcontainers:postgresql'
+	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+dependencyManagement {
+	imports {
+		mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+	}
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
+
+test {
+	finalizedBy jacocoTestReport
+}
+
+jacocoTestReport {
+	dependsOn test
+}
+
+compileJava {
+	options.compilerArgs = [
+			'-Amapstruct.defaultComponentModel=spring'
+	]
+}

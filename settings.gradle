@@ -1,1 +1,6 @@
 rootProject.name = 'news-management-system'
+include 'api'
+include 'logging-starter'
+include 'global-exception-handling-starter'
+include 'cache-starter'
+include 'user-service'
