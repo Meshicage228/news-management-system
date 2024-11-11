@@ -1,0 +1,19 @@
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    password: 123123
+    username: cleverMan
+    url: jdbc:postgresql://main-postgresql:5432/cleverDbApi
+  data:
+    redis:
+      host: redis-cache
+      port: 6379
+app:
+  clients:
+    user:
+      client-name: userClient
+      url: user-service:8080
+      client-path: /api/v1/users
+  cache:
+    type: REDIS
+    size: 120

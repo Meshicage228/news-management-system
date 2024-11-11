@@ -31,20 +31,10 @@ services:
       context: /api
       dockerfile: Dockerfile
     environment:
-      SPRING_DATASOURCE_URL: jdbc:postgresql://main-postgresql:${POSTGRES_DOCKER_PORT}/${POSTGRES_DB_TITLE}
-      SPRING_DATASOURCE_USERNAME: ${POSTGRES_USER}
-      SPRING_DATASOURCE_PASSWORD: ${POSTGRES_PASSWORD}
-      APP_CLIENTS_USER_CLIENT_NAME: userClient
-      APP_CLIENTS_USER_URL: http://user-service:8080
-      APP_CLIENTS_USER_CLIENT_PATH: /api/v1/users
-      APP_CACHE_TYPE: LRU
-      APP_CACHE_SIZE: 120
-      SPRING_DATA_REDIS_HOST: redis-cache
-      SPRING_DATA_REDIS_PORT: 6379
+      SPRING_PROFILES_ACTIVE: prod
     depends_on:
       - redis-cache
       - main-postgresql
-
   user-service:
     restart: on-failure
     container_name: User-microservice
@@ -54,9 +44,7 @@ services:
       context: /user-service
       dockerfile: Dockerfile
     environment:
-      SPRING_DATASOURCE_URL: jdbc:postgresql://main-postgresql:${POSTGRES_DOCKER_PORT}/${POSTGRES_DB_TITLE}
-      SPRING_DATASOURCE_USERNAME: ${POSTGRES_USER}
-      SPRING_DATASOURCE_PASSWORD: ${POSTGRES_PASSWORD}
+      SPRING_PROFILES_ACTIVE: prod
     depends_on:
       - main-postgresql
       - redis-cache
