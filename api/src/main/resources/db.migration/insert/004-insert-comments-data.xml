@@ -4,6 +4,8 @@
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
 
     <changeSet id="insert-comments-data" author="vlad.zherko">
+
+<!--        Новость №1:-->
         <insert tableName="comments">
             <column name="news_id">1</column>
             <column name="text">Интересно, какие именно технологии будут представлены.</column>
@@ -11,58 +13,1423 @@
             <column name="author_name">Lolita</column>
         </insert>
         <insert tableName="comments">
+            <column name="news_id">1</column>
+            <column name="text">С нетерпением жду, когда смогу увидеть эти технологии в действии!</column>
+            <column name="creation_date">2024-01-03</column>
+            <column name="author_name">Vlad</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">1</column>
+            <column name="text">Надеюсь, что новые технологии будут более доступными для всех.</column>
+            <column name="creation_date">2024-01-04</column>
+            <column name="author_name">Lolita</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">1</column>
+            <column name="text">А какие технологии вы имеете в виду? Это очень интересно!</column>
+            <column name="creation_date">2024-01-05</column>
+            <column name="author_name">Vlad</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">1</column>
+            <column name="text">Мне кажется, что искусственный интеллект будет на первом месте.</column>
+            <column name="creation_date">2024-01-06</column>
+            <column name="author_name">Lolita</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">1</column>
+            <column name="text">Интересно, как это повлияет на нашу повседневную жизнь.</column>
+            <column name="creation_date">2024-01-07</column>
+            <column name="author_name">Vlad</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">1</column>
+            <column name="text">Надеюсь, что новые технологии будут безопасными для пользователей.</column>
+            <column name="creation_date">2024-01-08</column>
+            <column name="author_name">Lolita</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">1</column>
+            <column name="text">Согласен, что технологии должны быть этичными и полезными.</column>
+            <column name="creation_date">2024-01-09</column>
+            <column name="author_name">Vlad</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">1</column>
+            <column name="text">Жду новостей о роботах и автоматизации!</column>
+            <column name="creation_date">2024-01-10</column>
+            <column name="author_name">Lolita</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">1</column>
+            <column name="text">Интересно, как это повлияет на рынок труда.</column>
+            <column name="creation_date">2024-01-11</column>
+            <column name="author_name">Vlad</column>
+        </insert>
+
+        <!--        Новость №2:-->
+        <insert tableName="comments">
             <column name="news_id">2</column>
             <column name="text">Спортсмены действительно показывают отличные результаты!</column>
             <column name="creation_date">2024-01-03</column>
             <column name="author_name">Lolita</column>
         </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">2</column>
+            <column name="text">Замечательные достижения! Молодцы наши спортсмены!</column>
+            <column name="creation_date">2024-01-03</column>
+            <column name="author_name">Vlad</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">2</column>
+            <column name="text">Каждый раз горжусь нашей сборной!</column>
+            <column name="creation_date">2024-01-04</column>
+            <column name="author_name">Lolita</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">2</column>
+            <column name="text">Интересно, какие виды спорта будут следующими на олимпиаде?</column>
+            <column name="creation_date">2024-01-05</column>
+            <column name="author_name">Vlad</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">2</column>
+            <column name="text">Спортсмены вдохновляют! Надеюсь, они продолжат в том же духе.</column>
+            <column name="creation_date">2024-01-06</column>
+            <column name="author_name">Lolita</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">2</column>
+            <column name="text">Согласен, что успехи спортсменов поднимают дух всей страны!</column>
+            <column name="creation_date">2024-01-07</column>
+            <column name="author_name">Vlad</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">2</column>
+            <column name="text">Не могу дождаться следующего чемпионата!</column>
+            <column name="creation_date">2024-01-08</column>
+            <column name="author_name">Lolita</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">2</column>
+            <column name="text">Надеюсь, что наши спортсмены завоюют больше медалей!</column>
+            <column name="creation_date">2024-01-09</column>
+            <column name="author_name">Vlad</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">2</column>
+            <column name="text">Смотрела соревнования, было очень интересно!</column>
+            <column name="creation_date">2024-01-10</column>
+            <column name="author_name">Lolita</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">2</column>
+            <column name="text">Надеюсь, что в будущем у нас будет еще больше чемпионов!</column>
+            <column name="creation_date">2024-01-11</column>
+            <column name="author_name">Vlad</column>
+        </insert>
+
+        <!--        Новость №3:-->
         <insert tableName="comments">
             <column name="news_id">3</column>
             <column name="text">Экологические инициативы — это важный шаг вперед.</column>
             <column name="creation_date">2024-01-04</column>
             <column name="author_name">Lolita</column>
         </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">3</column>
+            <column name="text">Это отличная новость! Надеюсь, что инициативы будут успешными.</column>
+            <column name="creation_date">2024-01-04</column>
+            <column name="author_name">Vlad</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">3</column>
+            <column name="text">Согласна! Мы должны заботиться о нашей планете.</column>
+            <column name="creation_date">2024-01-05</column>
+            <column name="author_name">Lolita</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">3</column>
+            <column name="text">Интересно, какие именно инициативы будут реализованы?</column>
+            <column name="creation_date">2024-01-06</column>
+            <column name="author_name">Vlad</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">3</column>
+            <column name="text">Надеюсь, что это поможет улучшить ситуацию с экологией.</column>
+            <column name="creation_date">2024-01-07</column>
+            <column name="author_name">Lolita</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">3</column>
+            <column name="text">Важно, чтобы каждый из нас тоже принимал участие в этих инициативах.</column>
+            <column name="creation_date">2024-01-08</column>
+            <column name="author_name">Vlad</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">3</column>
+            <column name="text">Надеюсь, что власти будут активно поддерживать эти начинания.</column>
+            <column name="creation_date">2024-01-09</column>
+            <column name="author_name">Lolita</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">3</column>
+            <column name="text">Экология — это наше будущее! Нужно действовать сейчас.</column>
+            <column name="creation_date">2024-01-10</column>
+            <column name="author_name">Vlad</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">3</column>
+            <column name="text">Согласна, что каждый шаг к улучшению экологии важен.</column>
+            <column name="creation_date">2024-01-11</column>
+            <column name="author_name">Lolita</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">3</column>
+            <column name="text">Давайте все вместе поддерживать эти инициативы!</column>
+            <column name="creation_date">2024-01-12</column>
+            <column name="author_name">Vlad</column>
+        </insert>
+
+        <!--        Новость №4:-->
         <insert tableName="comments">
             <column name="news_id">4</column>
             <column name="text">С нетерпением жду культурных мероприятий!</column>
             <column name="creation_date">2024-01-05</column>
             <column name="author_name">Vlad</column>
         </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">4</column>
+            <column name="text">С нетерпением жду культурных мероприятий! Что интересного будет?</column>
+            <column name="creation_date">2024-01-05</column>
+            <column name="author_name">Vlad</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">4</column>
+            <column name="text">Я тоже жду! Надеюсь, что будут выставки современных художников.</column>
+            <column name="creation_date">2024-01-06</column>
+            <column name="author_name">Lolita</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">4</column>
+            <column name="text">Культурные события всегда вдохновляют и радуют!</column>
+            <column name="creation_date">2024-01-07</column>
+            <column name="author_name">Vlad</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">4</column>
+            <column name="text">Надеюсь, что будут интересные лекции и мастер-классы.</column>
+            <column name="creation_date">2024-01-08</column>
+            <column name="author_name">Lolita</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">4</column>
+            <column name="text">Согласен! Важно поддерживать культурные инициативы.</column>
+            <column name="creation_date">2024-01-09</column>
+            <column name="author_name">Vlad</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">4</column>
+            <column name="text">Я люблю посещать выставки. Это всегда что-то новое и интересное!</column>
+            <column name="creation_date">2024-01-10</column>
+            <column name="author_name">Lolita</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">4</column>
+            <column name="text">Не могу дождаться, когда узнаю расписание мероприятий!</column>
+            <column name="creation_date">2024-01-11</column>
+            <column name="author_name">Vlad</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">4</column>
+            <column name="text">Культурные события — это отличная возможность для общения и обмена идеями.</column>
+            <column name="creation_date">2024-01-12</column>
+            <column name="author_name">Lolita</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">4</column>
+            <column name="text">Давайте соберемся и посетим некоторые мероприятия вместе!</column>
+            <column name="creation_date">2024-01-13</column>
+            <column name="author_name">Vlad</column>
+        </insert>
+
+        <!--        Новость №5:-->
         <insert tableName="comments">
             <column name="news_id">5</column>
             <column name="text">Политические изменения всегда вызывают много обсуждений.</column>
             <column name="creation_date">2024-01-06</column>
             <column name="author_name">Vlad</column>
         </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">5</column>
+            <column name="text">Это очень важная тема! Интересно, какие изменения нас ждут.</column>
+            <column name="creation_date">2024-01-06</column>
+            <column name="author_name">Vlad</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">5</column>
+            <column name="text">Согласна, политические изменения могут сильно повлиять на нашу жизнь.</column>
+            <column name="creation_date">2024-01-07</column>
+            <column name="author_name">Lolita</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">5</column>
+            <column name="text">Надеюсь, что эти изменения будут в лучшую сторону.</column>
+            <column name="creation_date">2024-01-08</column>
+            <column name="author_name">Vlad</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">5</column>
+            <column name="text">Иногда изменения могут быть неожиданными и сложными.</column>
+            <column name="creation_date">2024-01-09</column>
+            <column name="author_name">Lolita</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">5</column>
+            <column name="text">Важно, чтобы граждане были вовлечены в процесс изменений.</column>
+            <column name="creation_date">2024-01-10</column>
+            <column name="author_name">Vlad</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">5</column>
+            <column name="text">Согласна! Мы должны следить за тем, что происходит в стране.</column>
+            <column name="creation_date">2024-01-11</column>
+            <column name="author_name">Lolita</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">5</column>
+            <column name="text">Надеюсь, что изменения приведут к улучшению жизни людей.</column>
+            <column name="creation_date">2024-01-12</column>
+            <column name="author_name">Vlad</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">5</column>
+            <column name="text">Каждый из нас может внести свой вклад в позитивные изменения.</column>
+            <column name="creation_date">2024-01-13</column>
+            <column name="author_name">Lolita</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">5</column>
+            <column name="text">Давайте следить за новостями и не оставаться в стороне!</column>
+            <column name="creation_date">2024-01-14</column>
+            <column name="author_name">Vlad</column>
+        </insert>
+
+        <!--        Новость №6:-->
         <insert tableName="comments">
             <column name="news_id">6</column>
             <column name="text">Научные открытия вдохновляют на новые достижения.</column>
             <column name="creation_date">2024-01-07</column>
             <column name="author_name">Vlad</column>
         </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">6</column>
+            <column name="text">Это невероятно! Научные открытия всегда вдохновляют.</column>
+            <column name="creation_date">2024-01-07</column>
+            <column name="author_name">Vlad</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">6</column>
+            <column name="text">Согласна! Интересно, какие именно открытия были сделаны.</column>
+            <column name="creation_date">2024-01-08</column>
+            <column name="author_name">Lolita</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">6</column>
+            <column name="text">Надеюсь, что эти открытия помогут решить важные проблемы.</column>
+            <column name="creation_date">2024-01-09</column>
+            <column name="author_name">Vlad</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">6</column>
+            <column name="text">Наука движется вперед, и это радует!</column>
+            <column name="creation_date">2024-01-10</column>
+            <column name="author_name">Lolita</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">6</column>
+            <column name="text">Каждое новое открытие — это шаг к лучшему будущему.</column>
+            <column name="creation_date">2024-01-11</column>
+            <column name="author_name">Vlad</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">6</column>
+            <column name="text">Ученые действительно делают удивительные вещи!</column>
+            <column name="creation_date">2024-01-12</column>
+            <column name="author_name">Lolita</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">6</column>
+            <column name="text">Интересно, как эти открытия повлияют на наше общество.</column>
+            <column name="creation_date">2024-01-13</column>
+            <column name="author_name">Vlad</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">6</column>
+            <column name="text">Научные исследования открывают новые горизонты!</column>
+            <column name="creation_date">2024-01-14</column>
+            <column name="author_name">Lolita</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">6</column>
+            <column name="text">Давайте будем следить за новыми открытиями и их последствиями!</column>
+            <column name="creation_date">2024-01-15</column>
+            <column name="author_name">Vlad</column>
+        </insert>
+
+        <!--        Новость №7:-->
         <insert tableName="comments">
             <column name="news_id">7</column>
             <column name="text">Какие книги рекомендуете из новых поступлений?</column>
             <column name="creation_date">2024-01-08</column>
             <column name="author_name">Tosha</column>
         </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">7</column>
+            <column name="text">Я обожаю читать! Какие книги вы рекомендуете в этом месяце?</column>
+            <column name="creation_date">2024-01-08</column>
+            <column name="author_name">Vlad</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">7</column>
+            <column name="text">Согласна, книги — это отличный способ провести время!</column>
+            <column name="creation_date">2024-01-09</column>
+            <column name="author_name">Lolita</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">7</column>
+            <column name="text">Интересно, какие жанры книг будут популярны в этом месяце?</column>
+            <column name="creation_date">2024-01-10</column>
+            <column name="author_name">Vlad</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">7</column>
+            <column name="text">Я всегда ищу новые книги для чтения! Надеюсь, будут интересные новинки.</column>
+            <column name="creation_date">2024-01-11</column>
+            <column name="author_name">Lolita</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">7</column>
+            <column name="text">Книги — это лучший способ узнать что-то новое и расширить кругозор.</column>
+            <column name="creation_date">2024-01-12</column>
+            <column name="author_name">Vlad</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">7</column>
+            <column name="text">Я люблю читать художественную литературу. Надеюсь, что выйдет что-то стоящее!</column>
+            <column name="creation_date">2024-01-13</column>
+            <column name="author_name">Lolita</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">7</column>
+            <column name="text">Обязательно поделитесь своими впечатлениями от новых книг!</column>
+            <column name="creation_date">2024-01-14</column>
+            <column name="author_name">Vlad</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">7</column>
+            <column name="text">Книги — это замечательный способ отвлечься от повседневной рутины.</column>
+            <column name="creation_date">2024-01-15</column>
+            <column name="author_name">Lolita</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">7</column>
+            <column name="text">Давайте обсудим прочитанные книги позже! Это всегда интересно.</column>
+            <column name="creation_date">2024-01-16</column>
+            <column name="author_name">Vlad</column>
+        </insert>
+
+        <!--        Новость №8:-->
         <insert tableName="comments">
             <column name="news_id">8</column>
             <column name="text">Мода всегда меняется, и это здорово!</column>
             <column name="creation_date">2024-01-09</column>
             <column name="author_name">Tosha</column>
         </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">8</column>
+            <column name="text">Я в восторге от новых модных трендов! Какие из них вам нравятся больше всего?</column>
+            <column name="creation_date">2024-01-09</column>
+            <column name="author_name">Vlad</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">8</column>
+            <column name="text">Согласна! В этом году действительно много интересных идей.</column>
+            <column name="creation_date">2024-01-10</column>
+            <column name="author_name">Lolita</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">8</column>
+            <column name="text">Мне нравятся яркие цвета и необычные фасоны, которые сейчас в моде.</column>
+            <column name="creation_date">2024-01-11</column>
+            <column name="author_name">Vlad</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">8</column>
+            <column name="text">А мне нравятся более классические вещи, которые можно комбинировать.</column>
+            <column name="creation_date">2024-01-12</column>
+            <column name="author_name">Lolita</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">8</column>
+            <column name="text">Интересно, как эти тренды будут восприниматься в повседневной жизни.</column>
+            <column name="creation_date">2024-01-13</column>
+            <column name="author_name">Vlad</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">8</column>
+            <column name="text">Я надеюсь, что тренды будут доступны и для обычных людей!</column>
+            <column name="creation_date">2024-01-14</column>
+            <column name="author_name">Lolita</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">8</column>
+            <column name="text">Мода должна быть не только красивой, но и комфортной!</column>
+            <column name="creation_date">2024-01-15</column>
+            <column name="author_name">Vlad</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">8</column>
+            <column name="text">Полностью согласна! Важно чувствовать себя хорошо в одежде.</column>
+            <column name="creation_date">2024-01-16</column>
+            <column name="author_name">Lolita</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">8</column>
+            <column name="text">Давайте следить за модными показами и обсуждать новинки!</column>
+            <column name="creation_date">2024-01-17</column>
+            <column name="author_name">Vlad</column>
+        </insert>
+
+        <!--        Новость №9:-->
         <insert tableName="comments">
             <column name="news_id">9</column>
             <column name="text">Экономические вопросы актуальны для всех нас.</column>
             <column name="creation_date">2024-01-10</column>
             <column name="author_name">Tosha</column>
         </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">9</column>
+            <column name="text">Экономика — это важная тема, которая касается каждого из нас.</column>
+            <column name="creation_date">2024-01-10</column>
+            <column name="author_name">Vlad</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">9</column>
+            <column name="text">Согласна! Необходимо больше обсуждать экономические проблемы.</column>
+            <column name="creation_date">2024-01-11</column>
+            <column name="author_name">Lolita</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">9</column>
+            <column name="text">Интересно, какие меры будут предприняты для улучшения ситуации.</column>
+            <column name="creation_date">2024-01-12</column>
+            <column name="author_name">Vlad</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">9</column>
+            <column name="text">Многие люди не понимают, как экономика влияет на их жизнь.</column>
+            <column name="creation_date">2024-01-13</column>
+            <column name="author_name">Lolita</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">9</column>
+            <column name="text">Надеюсь, что власти будут прислушиваться к мнению граждан.</column>
+            <column name="creation_date">2024-01-14</column>
+            <column name="author_name">Vlad</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">9</column>
+            <column name="text">Важно, чтобы экономические решения были прозрачными и понятными.</column>
+            <column name="creation_date">2024-01-15</column>
+            <column name="author_name">Lolita</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">9</column>
+            <column name="text">Экономические вопросы требуют комплексного подхода и анализа.</column>
+            <column name="creation_date">2024-01-16</column>
+            <column name="author_name">Vlad</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">9</column>
+            <column name="text">Давайте будем следить за развитием событий и обсуждать их!</column>
+            <column name="creation_date">2024-01-17</column>
+            <column name="author_name">Lolita</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">9</column>
+            <column name="text">Согласен, важно быть в курсе экономических изменений.</column>
+            <column name="creation_date">2024-01-18</column>
+            <column name="author_name">Vlad</column>
+        </insert>
+
+        <!--        Новость №10:-->
         <insert tableName="comments">
             <column name="news_id">10</column>
             <column name="text">Здравоохранение — это тема, которая касается каждого.</column>
             <column name="creation_date">2024-01-11</column>
             <column name="author_name">Tosha</column>
         </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">10</column>
+            <column name="text">Проблемы здравоохранения — это тема, которая волнует многих из нас.</column>
+            <column name="creation_date">2024-01-11</column>
+            <column name="author_name">Vlad</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">10</column>
+            <column name="text">Согласна! Необходимо уделять больше внимания этой сфере.</column>
+            <column name="creation_date">2024-01-12</column>
+            <column name="author_name">Lolita</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">10</column>
+            <column name="text">Интересно, какие конкретные проблемы стоят на повестке дня?</column>
+            <column name="creation_date">2024-01-13</column>
+            <column name="author_name">Vlad</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">10</column>
+            <column name="text">Я надеюсь, что будут предприняты меры для улучшения ситуации.</column>
+            <column name="creation_date">2024-01-14</column>
+            <column name="author_name">Lolita</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">10</column>
+            <column name="text">Система здравоохранения должна быть доступной для всех.</column>
+            <column name="creation_date">2024-01-15</column>
+            <column name="author_name">Vlad</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">10</column>
+            <column name="text">Важно, чтобы врачи получали достойную оплату за свою работу.</column>
+            <column name="creation_date">2024-01-16</column>
+            <column name="author_name">Lolita</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">10</column>
+            <column name="text">Необходимо улучшить инфраструктуру медицинских учреждений.</column>
+            <column name="creation_date">2024-01-17</column>
+            <column name="author_name">Vlad</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">10</column>
+            <column name="text">Согласна, это критически важный аспект для здоровья населения.</column>
+            <column name="creation_date">2024-01-18</column>
+            <column name="author_name">Lolita</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">10</column>
+            <column name="text">Давайте надеяться на позитивные изменения в системе здравоохранения!</column>
+            <column name="creation_date">2024-01-19</column>
+            <column name="author_name">Vlad</column>
+        </insert>
+
+        <!--        Новость №11:-->
+        <insert tableName="comments">
+            <column name="news_id">11</column>
+            <column name="text">Туризм всегда интересен! Какие новые направления вы имеете в виду?</column>
+            <column name="creation_date">2024-01-12</column>
+            <column name="author_name">Vlad</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">11</column>
+            <column name="text">Я слышала, что многие страны открываются для туристов снова!</column>
+            <column name="creation_date">2024-01-13</column>
+            <column name="author_name">Lolita</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">11</column>
+            <column name="text">Надеюсь, что новые правила будут удобными для путешественников.</column>
+            <column name="creation_date">2024-01-14</column>
+            <column name="author_name">Vlad</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">11</column>
+            <column name="text">Важно, чтобы безопасность туристов была на первом месте!</column>
+            <column name="creation_date">2024-01-15</column>
+            <column name="author_name">Lolita</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">11</column>
+            <column name="text">Какие направления вы бы рекомендовали для отдыха в этом году?</column>
+            <column name="creation_date">2024-01-16</column>
+            <column name="author_name">Vlad</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">11</column>
+            <column name="text">Я бы хотела посетить новые экзотические места!</column>
+            <column name="creation_date">2024-01-17</column>
+            <column name="author_name">Lolita</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">11</column>
+            <column name="text">Согласен, экзотика всегда привлекает внимание туристов!</column>
+            <column name="creation_date">2024-01-18</column>
+            <column name="author_name">Vlad</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">11</column>
+            <column name="text">Не забывайте про экологический туризм, он становится все более популярным.</column>
+            <column name="creation_date">2024-01-19</column>
+            <column name="author_name">Lolita</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">11</column>
+            <column name="text">Да, это отличная возможность увидеть природу и поддержать ее!</column>
+            <column name="creation_date">2024-01-20</column>
+            <column name="author_name">Vlad</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">11</column>
+            <column name="text">Давайте следить за новыми трендами в туризме и делиться впечатлениями!</column>
+            <column name="creation_date">2024-01-21</column>
+            <column name="author_name">Lolita</column>
+        </insert>
+
+        <!--        Новость №12:-->
+        <insert tableName="comments">
+            <column name="news_id">12</column>
+            <column name="text">Цифровизация действительно меняет наш образ жизни. Какие технологии вас впечатляют больше всего?</column>
+            <column name="creation_date">2024-01-13</column>
+            <column name="author_name">Vlad</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">12</column>
+            <column name="text">Я считаю, что искусственный интеллект — это будущее!</column>
+            <column name="creation_date">2024-01-14</column>
+            <column name="author_name">Lolita</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">12</column>
+            <column name="text">Согласен, AI уже сейчас меняет многие сферы, включая медицину и образование.</column>
+            <column name="creation_date">2024-01-15</column>
+            <column name="author_name">Vlad</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">12</column>
+            <column name="text">Не могу дождаться, когда новые технологии станут доступны для всех!</column>
+            <column name="creation_date">2024-01-16</column>
+            <column name="author_name">Lolita</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">12</column>
+            <column name="text">А как насчет безопасности данных? Это тоже важный аспект цифровизации.</column>
+            <column name="creation_date">2024-01-17</column>
+            <column name="author_name">Vlad</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">12</column>
+            <column name="text">Совершенно верно! Защита личной информации должна быть приоритетом.</column>
+            <column name="creation_date">2024-01-18</column>
+            <column name="author_name">Lolita</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">12</column>
+            <column name="text">Цифровые технологии также открывают новые возможности для бизнеса.</column>
+            <column name="creation_date">2024-01-19</column>
+            <column name="author_name">Vlad</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">12</column>
+            <column name="text">Да, особенно в сфере электронной коммерции и онлайн-сервисов.</column>
+            <column name="creation_date">2024-01-20</column>
+            <column name="author_name">Lolita</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">12</column>
+            <column name="text">Интересно, как быстро будут внедряться новые технологии в повседневную жизнь.</column>
+            <column name="creation_date">2024-01-21</column>
+            <column name="author_name">Vlad</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">12</column>
+            <column name="text">Давайте следить за новыми трендами и обсуждать их!</column>
+            <column name="creation_date">2024-01-22</column>
+            <column name="author_name">Lolita</column>
+        </insert>
+
+        <!--        Новость №13:-->
+
+        <insert tableName="comments">
+            <column name="news_id">13</column>
+            <column name="text">Изменение климата — это действительно серьезная проблема, требующая внимания.</column>
+            <column name="creation_date">2024-01-14</column>
+            <column name="author_name">Vlad</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">13</column>
+            <column name="text">Согласна! Мы все должны быть более ответственными к окружающей среде.</column>
+            <column name="creation_date">2024-01-15</column>
+            <column name="author_name">Lolita</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">13</column>
+            <column name="text">Как вы думаете, какие меры должны быть приняты на международном уровне?</column>
+            <column name="creation_date">2024-01-16</column>
+            <column name="author_name">Vlad</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">13</column>
+            <column name="text">Мне кажется, что переход на возобновляемые источники энергии — это ключевой шаг.</column>
+            <column name="creation_date">2024-01-17</column>
+            <column name="author_name">Lolita</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">13</column>
+            <column name="text">Да, и также важно снижать выбросы углерода в атмосферу.</column>
+            <column name="creation_date">2024-01-18</column>
+            <column name="author_name">Vlad</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">13</column>
+            <column name="text">А что насчет образования? Нужно больше говорить об экологии в школах.</column>
+            <column name="creation_date">2024-01-19</column>
+            <column name="author_name">Lolita</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">13</column>
+            <column name="text">Согласен! Образование играет важную роль в формировании экологического сознания.</column>
+            <column name="creation_date">2024-01-20</column>
+            <column name="author_name">Vlad</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">13</column>
+            <column name="text">Климатические изменения также влияют на экономику многих стран.</column>
+            <column name="creation_date">2024-01-21</column>
+            <column name="author_name">Lolita</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">13</column>
+            <column name="text">Это правда. Необходимо учитывать последствия для экономики при принятии решений.</column>
+            <column name="creation_date">2024-01-22</column>
+            <column name="author_name">Vlad</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">13</column>
+            <column name="text">Давайте надеяться, что международное сообщество сможет объединиться для решения этих проблем!</column>
+            <column name="creation_date">2024-01-23</column>
+            <column name="author_name">Lolita</column>
+        </insert>
+
+        <!--        Новость №14:-->
+
+        <insert tableName="comments">
+            <column name="news_id">14</column>
+            <column name="text">Нестабильность на финансовых рынках действительно настораживает. Что вы думаете об этом?</column>
+            <column name="creation_date">2024-01-15</column>
+            <column name="author_name">Vlad</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">14</column>
+            <column name="text">Согласна, это может привести к серьезным последствиям для экономики.</column>
+            <column name="creation_date">2024-01-16</column>
+            <column name="author_name">Lolita</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">14</column>
+            <column name="text">Какие факторы, по вашему мнению, влияют на эту нестабильность?</column>
+            <column name="creation_date">2024-01-17</column>
+            <column name="author_name">Vlad</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">14</column>
+            <column name="text">Я думаю, что геополитическая ситуация и инфляция играют ключевую роль.</column>
+            <column name="creation_date">2024-01-18</column>
+            <column name="author_name">Lolita</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">14</column>
+            <column name="text">Верно! Инвесторы должны быть особенно внимательны в такие времена.</column>
+            <column name="creation_date">2024-01-19</column>
+            <column name="author_name">Vlad</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">14</column>
+            <column name="text">Как вы считаете, стоит ли сейчас инвестировать в акции?</column>
+            <column name="creation_date">2024-01-20</column>
+            <column name="author_name">Lolita</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">14</column>
+            <column name="text">Это зависит от конкретных акций и вашей стратегии. Нужно быть осторожным.</column>
+            <column name="creation_date">2024-01-21</column>
+            <column name="author_name">Vlad</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">14</column>
+            <column name="text">Интересно, как изменятся рынки в ближайшие месяцы. Будем следить за новостями!</column>
+            <column name="creation_date">2024-01-22</column>
+            <column name="author_name">Lolita</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">14</column>
+            <column name="text">Да, и важно следить за экономическими индикаторами и отчетами компаний.</column>
+            <column name="creation_date">2024-01-23</column>
+            <column name="author_name">Vlad</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">14</column>
+            <column name="text">Надеюсь, что ситуация улучшится, и инвесторы смогут чувствовать себя более уверенно.</column>
+            <column name="creation_date">2024-01-24</column>
+            <column name="author_name">Lolita</column>
+        </insert>
+
+        <!--        Новость №15:-->
+
+        <insert tableName="comments">
+            <column name="news_id">15</column>
+            <column name="text">Новые методики обучения действительно могут сделать образование более доступным и эффективным.</column>
+            <column name="creation_date">2024-01-16</column>
+            <column name="author_name">Vlad</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">15</column>
+            <column name="text">Согласна! Технологии, такие как онлайн-курсы, открывают новые горизонты для студентов.</column>
+            <column name="creation_date">2024-01-17</column>
+            <column name="author_name">Lolita</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">15</column>
+            <column name="text">Какие методики, по вашему мнению, наиболее перспективны в образовании?</column>
+            <column name="creation_date">2024-01-18</column>
+            <column name="author_name">Vlad</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">15</column>
+            <column name="text">Я считаю, что проектное обучение и гибкие программы — это будущее образования.</column>
+            <column name="creation_date">2024-01-19</column>
+            <column name="author_name">Lolita</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">15</column>
+            <column name="text">Да, и использование технологий, таких как VR и AR, может значительно улучшить восприятие материала.</column>
+            <column name="creation_date">2024-01-20</column>
+            <column name="author_name">Vlad</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">15</column>
+            <column name="text">Интересно, как учителя адаптируются к новым методам обучения.</column>
+            <column name="creation_date">2024-01-21</column>
+            <column name="author_name">Lolita</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">15</column>
+            <column name="text">Некоторые учителя могут быть консервативными и сопротивляться изменениям.</column>
+            <column name="creation_date">2024-01-22</column>
+            <column name="author_name">Vlad</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">15</column>
+            <column name="text">Но важно, чтобы они были открыты для новых идей и технологий.</column>
+            <column name="creation_date">2024-01-23</column>
+            <column name="author_name">Lolita</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">15</column>
+            <column name="text">Согласен! Образование должно идти в ногу с прогрессом.</column>
+            <column name="creation_date">2024-01-24</column>
+            <column name="author_name">Vlad</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">15</column>
+            <column name="text">Надеюсь, что новые методики помогут студентам лучше усваивать материал!</column>
+            <column name="creation_date">2024-01-25</column>
+            <column name="author_name">Lolita</column>
+        </insert>
+
+        <!--        Новость №16:-->
+
+        <insert tableName="comments">
+            <column name="news_id">16</column>
+            <column name="text">Кибератаки становятся все более изощренными. Это действительно вызывает беспокойство.</column>
+            <column name="creation_date">2024-01-17</column>
+            <column name="author_name">Vlad</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">16</column>
+            <column name="text">Согласна! Безопасность данных сейчас важнее, чем когда-либо.</column>
+            <column name="creation_date">2024-01-18</column>
+            <column name="author_name">Lolita</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">16</column>
+            <column name="text">Какие меры, по вашему мнению, должны быть приняты для повышения безопасности?</column>
+            <column name="creation_date">2024-01-19</column>
+            <column name="author_name">Vlad</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">16</column>
+            <column name="text">Я думаю, что обучение сотрудников основам кибербезопасности — это первый шаг.</column>
+            <column name="creation_date">2024-01-20</column>
+            <column name="author_name">Lolita</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">16</column>
+            <column name="text">Да, и внедрение современных технологий защиты данных также имеет значение.</column>
+            <column name="creation_date">2024-01-21</column>
+            <column name="author_name">Vlad</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">16</column>
+            <column name="text">Интересно, как компании реагируют на новые угрозы и адаптируются к ним.</column>
+            <column name="creation_date">2024-01-22</column>
+            <column name="author_name">Lolita</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">16</column>
+            <column name="text">Некоторые компании все еще недостаточно инвестируют в кибербезопасность.</column>
+            <column name="creation_date">2024-01-23</column>
+            <column name="author_name">Vlad</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">16</column>
+            <column name="text">Но с ростом числа атак, надеюсь, они начнут это делать.</column>
+            <column name="creation_date">2024-01-24</column>
+            <column name="author_name">Lolita</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">16</column>
+            <column name="text">Согласен! Проблемы кибербезопасности касаются всех, и мы должны быть готовы.</column>
+            <column name="creation_date">2024-01-25</column>
+            <column name="author_name">Vlad</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">16</column>
+            <column name="text">Надеюсь, что в 2024 году будет больше инициатив по улучшению кибербезопасности!</column>
+            <column name="creation_date">2024-01-26</column>
+            <column name="author_name">Lolita</column>
+        </insert>
+
+        <!--        Новость №17:-->
+
+        <insert tableName="comments">
+            <column name="news_id">17</column>
+            <column name="text">Здоровый образ жизни действительно становится трендом среди молодежи. Это радует!</column>
+            <column name="creation_date">2024-01-18</column>
+            <column name="author_name">Tosha</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">17</column>
+            <column name="text">Согласна! Молодежь все больше интересуется спортом и правильным питанием.</column>
+            <column name="creation_date">2024-01-19</column>
+            <column name="author_name">Lolita</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">17</column>
+            <column name="text">Какие виды спорта сейчас наиболее популярны среди молодежи?</column>
+            <column name="creation_date">2024-01-20</column>
+            <column name="author_name">Tosha</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">17</column>
+            <column name="text">Я заметила, что фитнес и йога становятся все более популярными.</column>
+            <column name="creation_date">2024-01-21</column>
+            <column name="author_name">Lolita</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">17</column>
+            <column name="text">Да, и многие выбирают здоровое питание, отказываясь от фастфуда.</column>
+            <column name="creation_date">2024-01-22</column>
+            <column name="author_name">Tosha</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">17</column>
+            <column name="text">Это замечательно! Здоровое питание — это основа хорошего самочувствия.</column>
+            <column name="creation_date">2024-01-23</column>
+            <column name="author_name">Lolita</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">17</column>
+            <column name="text">Надеюсь, что этот тренд продолжится и в будущем.</column>
+            <column name="creation_date">2024-01-24</column>
+            <column name="author_name">Tosha</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">17</column>
+            <column name="text">Согласна! Это важно для здоровья и долголетия.</column>
+            <column name="creation_date">2024-01-25</column>
+            <column name="author_name">Lolita</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">17</column>
+            <column name="text">Интересно, как социальные сети влияют на популяризацию здорового образа жизни.</column>
+            <column name="creation_date">2024-01-26</column>
+            <column name="author_name">Tosha</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">17</column>
+            <column name="text">Да, многие блогеры делятся своими рецептами и тренировками, что вдохновляет людей.</column>
+            <column name="creation_date">2024-01-27</column>
+            <column name="author_name">Lolita</column>
+        </insert>
+
+        <!--        Новость №18:-->
+
+        <insert tableName="comments">
+            <column name="news_id">18</column>
+            <column name="text">Космические исследования действительно открывают невероятные возможности для человечества!</column>
+            <column name="creation_date">2024-01-19</column>
+            <column name="author_name">Tosha</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">18</column>
+            <column name="text">Согласна! Мы можем узнать так много о Вселенной и нашем месте в ней.</column>
+            <column name="creation_date">2024-01-20</column>
+            <column name="author_name">Lolita</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">18</column>
+            <column name="text">Какие миссии сейчас наиболее интересны для вас?</column>
+            <column name="creation_date">2024-01-21</column>
+            <column name="author_name">Tosha</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">18</column>
+            <column name="text">Мне интересны исследования Марса и планы по колонизации!</column>
+            <column name="creation_date">2024-01-22</column>
+            <column name="author_name">Lolita</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">18</column>
+            <column name="text">Да, и миссия "Артемида" по возвращению людей на Луну тоже впечатляет!</column>
+            <column name="creation_date">2024-01-23</column>
+            <column name="author_name">Tosha</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">18</column>
+            <column name="text">Это действительно важный шаг для дальнейших исследований в космосе.</column>
+            <column name="creation_date">2024-01-24</column>
+            <column name="author_name">Lolita</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">18</column>
+            <column name="text">Надеюсь, что в будущем мы сможем отправить людей на другие планеты!</column>
+            <column name="creation_date">2024-01-25</column>
+            <column name="author_name">Tosha</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">18</column>
+            <column name="text">Это было бы невероятно! Я мечтаю о межпланетных путешествиях.</column>
+            <column name="creation_date">2024-01-26</column>
+            <column name="author_name">Lolita</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">18</column>
+            <column name="text">И технологии, которые развиваются, делают это все более реальным.</column>
+            <column name="creation_date">2024-01-27</column>
+            <column name="author_name">Tosha</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">18</column>
+            <column name="text">Согласна! Мы живем в удивительное время для науки и технологий.</column>
+            <column name="creation_date">2024-01-28</column>
+            <column name="author_name">Lolita</column>
+        </insert>
+
+        <!--        Новость №19:-->
+
+        <insert tableName="comments">
+            <column name="news_id">19</column>
+            <column name="text">Изменения в законодательстве могут значительно повлиять на права граждан. Это важно!</column>
+            <column name="creation_date">2024-01-20</column>
+            <column name="author_name">Tosha</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">19</column>
+            <column name="text">Согласна! Нужно внимательно следить за тем, как это повлияет на нас.</column>
+            <column name="creation_date">2024-01-21</column>
+            <column name="author_name">Lolita</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">19</column>
+            <column name="text">Какие конкретно изменения обсуждаются? Это может быть очень важно.</column>
+            <column name="creation_date">2024-01-22</column>
+            <column name="author_name">Tosha</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">19</column>
+            <column name="text">Говорят о новых законах, касающихся защиты данных и прав потребителей.</column>
+            <column name="creation_date">2024-01-23</column>
+            <column name="author_name">Lolita</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">19</column>
+            <column name="text">Это действительно актуально в наше время, когда безопасность данных так важна.</column>
+            <column name="creation_date">2024-01-24</column>
+            <column name="author_name">Tosha</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">19</column>
+            <column name="text">Надеюсь, что изменения будут направлены на защиту прав граждан.</column>
+            <column name="creation_date">2024-01-25</column>
+            <column name="author_name">Lolita</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">19</column>
+            <column name="text">Важно, чтобы новые законы были прозрачными и доступными для всех.</column>
+            <column name="creation_date">2024-01-26</column>
+            <column name="author_name">Tosha</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">19</column>
+            <column name="text">Согласна! Общество должно быть вовлечено в процесс обсуждения таких изменений.</column>
+            <column name="creation_date">2024-01-27</column>
+            <column name="author_name">Lolita</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">19</column>
+            <column name="text">Надеюсь, что изменения будут способствовать улучшению качества жизни граждан.</column>
+            <column name="creation_date">2024-01-28</column>
+            <column name="author_name">Tosha</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">19</column>
+            <column name="text">Это действительно важно, чтобы законы работали на благо людей.</column>
+            <column name="creation_date">2024-01-29</column>
+            <column name="author_name">Lolita</column>
+        </insert>
+
+        <!--        Новость №20:-->
+        <insert tableName="comments">
+            <column name="news_id">20</column>
+            <column name="text">Искусственный интеллект действительно меняет наше общество. Это захватывающе!</column>
+            <column name="creation_date">2024-01-22</column>
+            <column name="author_name">Tosha</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">20</column>
+            <column name="text">Согласна! Я впечатлён, как ИИ внедряется в медицину и образование.</column>
+            <column name="creation_date">2024-01-23</column>
+            <column name="author_name">Lolita</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">20</column>
+            <column name="text">Какие сферы, по вашему мнению, больше всего выиграют от ИИ?</column>
+            <column name="creation_date">2024-01-24</column>
+            <column name="author_name">Tosha</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">20</column>
+            <column name="text">Я думаю, что транспорт и логистика будут основными направлениями.</column>
+            <column name="creation_date">2024-01-25</column>
+            <column name="author_name">Lolita</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">20</column>
+            <column name="text">Да, и автоматизация процессов сделает работу более эффективной.</column>
+            <column name="creation_date">2024-01-26</column>
+            <column name="author_name">Tosha</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">20</column>
+            <column name="text">Но не стоит забывать о возможных рисках, связанных с ИИ.</column>
+            <column name="creation_date">2024-01-27</column>
+            <column name="author_name">Lolita</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">20</column>
+            <column name="text">Согласна! Важно, чтобы развитие ИИ проходило с учетом этических норм.</column>
+            <column name="creation_date">2024-01-28</column>
+            <column name="author_name">Tosha</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">20</column>
+            <column name="text">И еще важно, чтобы технологии были доступны для всех, а не только для избранных.</column>
+            <column name="creation_date">2024-01-29</column>
+            <column name="author_name">Lolita</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">20</column>
+            <column name="text">Надеюсь, что мы сможем использовать ИИ для решения глобальных проблем.</column>
+            <column name="creation_date">2024-01-30</column>
+            <column name="author_name">Tosha</column>
+        </insert>
+
+        <insert tableName="comments">
+            <column name="news_id">20</column>
+            <column name="text">Это действительно возможно! Время покажет, как мы сможем это сделать.</column>
+            <column name="creation_date">2024-01-31</column>
+            <column name="author_name">Lolita</column>
+        </insert>
+
     </changeSet>
 </databaseChangeLog>
